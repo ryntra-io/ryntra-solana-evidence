@@ -1,0 +1,264 @@
+{
+  "$id": "https://ryntra.io/schemas/spl-transfer-preflight.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "schema": {
+      "type": "string",
+      "const": "ryntra.solana.spl-transfer-preflight"
+    },
+    "schemaVersion": {
+      "type": "string",
+      "const": "0.1.0"
+    },
+    "network": {
+      "type": "string",
+      "enum": [
+        "mainnet",
+        "devnet"
+      ]
+    },
+    "mint": {
+      "type": "string",
+      "pattern": "^[1-9A-HJ-NP-Za-km-z]{32,44}$"
+    },
+    "sender": {
+      "type": "string",
+      "pattern": "^[1-9A-HJ-NP-Za-km-z]{32,44}$"
+    },
+    "recipient": {
+      "type": "string",
+      "pattern": "^[1-9A-HJ-NP-Za-km-z]{32,44}$"
+    },
+    "amountRequestedRaw": {
+      "type": "string",
+      "pattern": "^(0|[1-9]\\d*)$"
+    },
+    "transferFee": {
+      "type": "object",
+      "properties": {
+        "feeRaw": {
+          "type": "string",
+          "pattern": "^(0|[1-9]\\d*)$"
+        },
+        "basisPoints": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 10000
+        },
+        "maximumFeeRaw": {
+          "type": "string",
+          "pattern": "^(0|[1-9]\\d*)$"
+        },
+        "capApplied": {
+          "type": "boolean"
+        },
+        "configUsed": {
+          "type": "string",
+          "enum": [
+            "NEWER",
+            "OLDER",
+            "NONE"
+          ]
+        },
+        "epochBasis": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^(0|[1-9]\\d*)$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "feeRaw",
+        "basisPoints",
+        "maximumFeeRaw",
+        "capApplied",
+        "configUsed",
+        "epochBasis"
+      ],
+      "additionalProperties": false
+    },
+    "estimatedReceivedRaw": {
+      "type": "string",
+      "pattern": "^(0|[1-9]\\d*)$"
+    },
+    "expectedBalanceDeltas": {
+      "minItems": 1,
+      "maxItems": 4,
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "account": {
+            "type": "string",
+            "pattern": "^[1-9A-HJ-NP-Za-km-z]{32,44}$"
+          },
+          "mint": {
+            "type": "string",
+            "pattern": "^[1-9A-HJ-NP-Za-km-z]{32,44}$"
+          },
+          "rawDelta": {
+            "type": "string",
+            "pattern": "^-?(0|[1-9]\\d*)$"
+          }
+        },
+        "required": [
+          "account",
+          "mint",
+          "rawDelta"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "feeWithheldRaw": {
+      "type": "string",
+      "pattern": "^(0|[1-9]\\d*)$"
+    },
+    "hookProgramId": {
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "^[1-9A-HJ-NP-Za-km-z]{32,44}$"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "structuralBlockers": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "NON_TRANSFERABLE",
+          "PAUSED",
+          "DEFAULT_ACCOUNT_STATE_FROZEN"
+        ]
+      }
+    },
+    "unsupportedKinds": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "networkFeeLamports": {
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "^(0|[1-9]\\d*)$"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "computeBudget": {
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "^(0|[1-9]\\d*)$"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "unfilledReason": {
+      "type": "string",
+      "minLength": 1
+    },
+    "simulation": {
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "status": {
+              "type": "string",
+              "const": "SKIPPED"
+            },
+            "reason": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "required": [
+            "status",
+            "reason"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "status": {
+              "type": "string",
+              "const": "PRESENT"
+            },
+            "succeeded": {
+              "type": "boolean"
+            },
+            "error": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "unitsConsumed": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "pattern": "^(0|[1-9]\\d*)$"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            }
+          },
+          "required": [
+            "status",
+            "succeeded",
+            "error",
+            "unitsConsumed"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    },
+    "observedAt": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "schema",
+    "schemaVersion",
+    "network",
+    "mint",
+    "sender",
+    "recipient",
+    "amountRequestedRaw",
+    "transferFee",
+    "estimatedReceivedRaw",
+    "expectedBalanceDeltas",
+    "feeWithheldRaw",
+    "hookProgramId",
+    "structuralBlockers",
+    "unsupportedKinds",
+    "networkFeeLamports",
+    "computeBudget",
+    "unfilledReason",
+    "simulation",
+    "observedAt"
+  ],
+  "additionalProperties": false
+}

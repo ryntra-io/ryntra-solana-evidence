@@ -1,0 +1,81 @@
+{
+  "$id": "https://ryntra.io/schemas/solana-policy-verdict.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "schema": {
+      "type": "string",
+      "const": "ryntra.solana.policy-verdict"
+    },
+    "schemaVersion": {
+      "type": "string",
+      "const": "0.1.0"
+    },
+    "verdict": {
+      "type": "string",
+      "enum": [
+        "NO_KNOWN_BLOCKER",
+        "REVIEW_REQUIRED",
+        "BLOCKED",
+        "INCOMPLETE"
+      ]
+    },
+    "findings": {
+      "minItems": 1,
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "rule": {
+            "type": "string",
+            "enum": [
+              "NETWORK_ALLOWED",
+              "MINT_ALLOWED",
+              "TOKEN_PROGRAM_ALLOWED",
+              "NOT_STRUCTURALLY_DOOMED",
+              "PERMANENT_DELEGATE_ACCEPTED",
+              "TRANSFER_HOOK_ALLOWLISTED",
+              "FEE_WITHIN_CAP",
+              "RECIPIENT_ALLOWED",
+              "AMOUNT_WITHIN_LIMIT",
+              "DEFAULT_FROZEN_ACCEPTED",
+              "EVIDENCE_FRESH",
+              "EXTENSIONS_UNDERSTOOD",
+              "HUMAN_APPROVAL"
+            ]
+          },
+          "outcome": {
+            "type": "string",
+            "enum": [
+              "ALLOWED",
+              "REVIEW_REQUIRED",
+              "BLOCKED",
+              "INCOMPLETE"
+            ]
+          },
+          "detail": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "required": [
+          "rule",
+          "outcome",
+          "detail"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "evaluatedAt": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "schema",
+    "schemaVersion",
+    "verdict",
+    "findings",
+    "evaluatedAt"
+  ],
+  "additionalProperties": false
+}

@@ -1,0 +1,45 @@
+{
+  "name": "ryntra-solana-evidence",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Read-only Solana evidence kit: Token Extensions asset passports, exact transfer preflight against a declared policy, offline Outcome Receipt verification, an MCP server and a CLI.",
+  "author": "Dmytro Plavutskyi",
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ryntra-io/ryntra-solana-evidence.git"
+  },
+  "engines": {
+    "node": ">=22 <25"
+  },
+  "packageManager": "npm@10.9.8",
+  "workspaces": [
+    "packages/*",
+    "examples/*"
+  ],
+  "scripts": {
+    "build": "tsc --noEmit --incremental false",
+    "typecheck": "tsc --noEmit --incremental false",
+    "lint": "eslint lib packages examples scripts --max-warnings=0",
+    "test": "node --test packages/solana-evidence-sdk/src/index.test.mjs packages/solana-evidence-sdk/boundaries.test.mjs packages/solana-evidence-mcp/server.test.mjs examples/solana-evidence-cli/cli.test.mjs",
+    "verify:boundaries": "node scripts/verify-boundaries.mjs",
+    "verify": "npm run lint && npm run typecheck && npm test && npm run verify:boundaries",
+    "cli": "node examples/solana-evidence-cli/cli.ts",
+    "mcp": "node packages/solana-evidence-mcp/src/stdio.ts"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/server": "2.0.0",
+    "@solana-program/token-2022": "0.15.0",
+    "@solana/kit": "7.1.0",
+    "zod": "4.4.3"
+  },
+  "devDependencies": {
+    "@modelcontextprotocol/client": "2.0.0",
+    "@types/node": "24.10.0",
+    "@typescript-eslint/eslint-plugin": "8.66.0",
+    "@typescript-eslint/parser": "8.66.0",
+    "eslint": "9.39.5",
+    "typescript": "5.9.3"
+  }
+}

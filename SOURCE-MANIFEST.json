@@ -1,0 +1,391 @@
+{
+  "schemaVersion": "1.0.0",
+  "kind": "SOLANA_EVIDENCE_KIT_EXTRACTION_MANIFEST",
+  "taskId": "RYN-SOL-A6",
+  "publicationState": "PREPARED_NOT_PUBLISHED",
+  "licenseState": "APACHE-2.0_SELECTED",
+  "licenseArtifacts": [
+    "open-source/solana/LICENSE",
+    "open-source/solana/NOTICE"
+  ],
+  "generatedArtifacts": [
+    "open-source/solana",
+    "open-source/solana/package-lock.json",
+    "scripts/build-solana-public-repo.mjs"
+  ],
+  "reproducibility": {
+    "packageManager": "npm@10.9.8",
+    "installCommand": "npm ci",
+    "lockfile": {
+      "path": "open-source/solana/package-lock.json",
+      "bytes": 100144,
+      "sha256": "0x7c4579aaa868c8c248f0ce135ec7b8902759ff6ddc94183fd7044961d00643ca"
+    }
+  },
+  "packageBoundary": {
+    "description": "Apache-2.0 read-only Solana evidence core, typed SDK, local stdio MCP server, published JSON Schemas and a runnable CLI.",
+    "runtimeImportsOutsideManifest": [],
+    "repositoryOnlyGates": [
+      "lib/solana/passport.test.mjs",
+      "lib/solana/preflight.test.mjs",
+      "lib/solana/policy.test.mjs",
+      "lib/solana/contracts.test.mjs",
+      "lib/solana/amounts.test.mjs",
+      "lib/solana/quotes.test.mjs",
+      "lib/solana/receipt.test.mjs",
+      "scripts/generate-solana-kit-extraction-manifest.mjs"
+    ],
+    "externalDependencies": [
+      {
+        "name": "@modelcontextprotocol/client",
+        "version": "2.0.0",
+        "use": "network-free MCP interoperability tests"
+      },
+      {
+        "name": "@modelcontextprotocol/server",
+        "version": "2.0.0",
+        "use": "local stdio MCP runtime"
+      },
+      {
+        "name": "@solana-program/token-2022",
+        "version": "0.15.0",
+        "use": "official generated mint and extension decoders"
+      },
+      {
+        "name": "@solana/kit",
+        "version": "7.1.0",
+        "use": "Solana JSON-RPC transport"
+      },
+      {
+        "name": "zod",
+        "version": "4.4.3",
+        "use": "strict contract and tool input schemas"
+      }
+    ]
+  },
+  "limitations": [
+    "This manifest records the prepared source subset; the exact publication commit, tag and CI binding lives in the private post-publication evidence.",
+    "Apache-2.0 is selected and this repository contains tracked LICENSE and NOTICE artifacts.",
+    "This repository is source-distributed and blocks accidental npm publication; no npm package is claimed.",
+    "The tracked npm@10.9.8 lockfile is copied by the extraction recipe and enables replay with npm ci.",
+    "The kit is read-only: no key, no signer, no transaction building, no state-changing RPC method, no funds and no settlement.",
+    "The signed receipt fixtures were minted with a throwaway key that was discarded; each carries only its public key."
+  ],
+  "files": [
+    {
+      "path": "docs/solana/schemas/solana-asset-passport.schema.json",
+      "role": "published_schema",
+      "bytes": 7316,
+      "sha256": "0x9debd469a245302f6c40cb62171409e12dde0b3273285780c9618822d753f3fd",
+      "license": "Apache-2.0"
+    },
+    {
+      "path": "docs/solana/schemas/solana-owner-policy.schema.json",
+      "role": "published_schema",
+      "bytes": 2933,
+      "sha256": "0x8f55f9aada6e92c4d50c3907b9daa3c01087eaf8f920799d60bee25477a9da72",
+      "license": "Apache-2.0"
+    },
+    {
+      "path": "docs/solana/schemas/solana-policy-verdict.schema.json",
+      "role": "published_schema",
+      "bytes": 1868,
+      "sha256": "0xca31c99426a37671eef70b89a0e2611885d3c2d426e6c5574c130ea610e53b2c",
+      "license": "Apache-2.0"
+    },
+    {
+      "path": "docs/solana/schemas/spl-transfer-preflight.schema.json",
+      "role": "published_schema",
+      "bytes": 5632,
+      "sha256": "0x9c1cc795f4e24900aa6c03f6cd034e6005b7a606229cea80cc2115a6b1a74e5c",
+      "license": "Apache-2.0"
+    },
+    {
+      "path": "examples/solana-evidence-cli/README.md",
+      "role": "documentation",
+      "bytes": 3145,
+      "sha256": "0x4218dcd26dbfe86ef3b4b10df18deb68892728d8a148af84e1b0147b8ce4dcba",
+      "license": "Apache-2.0"
+    },
+    {
+      "path": "examples/solana-evidence-cli/cli.test.mjs",
+      "role": "network_free_test",
+      "bytes": 4634,
+      "sha256": "0x4584b034a5e5a5847894925bd55e724ca2f40b813412d0ec8d9046fbc7592984",
+      "license": "Apache-2.0"
+    },
+    {
+      "path": "examples/solana-evidence-cli/cli.ts",
+      "role": "source",
+      "bytes": 12103,
+      "sha256": "0x1478977d0b7a83fac9369a8650f0127cac1c93258c7aebafff1be8ff9653074c",
+      "license": "Apache-2.0"
+    },
+    {
+      "path": "examples/solana-evidence-cli/package.json",
+      "role": "package_metadata",
+      "bytes": 310,
+      "sha256": "0xa675e9eba028e2c3cbc4ac18a812b3eaccd716326948f51bb1f1ac6dc47436e6",
+      "license": "Apache-2.0"
+    },
+    {
+      "path": "lib/agent-control/adapters/solana-token-2022.ts",
+      "role": "source",
+      "bytes": 5161,
+      "sha256": "0x70fffd23517929033e494eb37a85adb2a32fa19e8879219f50c18b9bc166c767",
+      "license": "Apache-2.0"
+    },
+    {
+      "path": "lib/agent-control/canonical.ts",
+      "role": "source",
+      "bytes": 3610,
+      "sha256": "0x096307121f64081658334bcb495adb5cc65ec012681e70386a8f8fe10e292f9c",
+      "license": "Apache-2.0"
+    },
+    {
+      "path": "lib/guard/canonical-json.ts",
+      "role": "source",
+      "bytes": 2146,
+      "sha256": "0x62a44c5b296041a4af951790ca7a7022a9c346b38afc111ad70836d92921046a",
+      "license": "Apache-2.0"
+    },
+    {
+      "path": "lib/solana/amounts.ts",
+      "role": "source",
+      "bytes": 1972,
+      "sha256": "0x1e7f7a249ad15eb806d1c89cc25478312d4c5c074786b87e10cfef46cdd37b77",
+      "license": "Apache-2.0"
+    },
+    {
+      "path": "lib/solana/contracts.ts",
+      "role": "source",
+      "bytes": 7717,
+      "sha256": "0xb8175544bf4906a44bfe3140404e8d09a5fba8be9b7d736185582695b70ecf34",
+      "license": "Apache-2.0"
+    },
+    {
+      "path": "lib/solana/evidence.ts",
+      "role": "source",
+      "bytes": 912,
+      "sha256": "0x1c197b944eb30c6a520f602804810c6cd26f742165f3ee8abfecfedf96f5de5d",
+      "license": "Apache-2.0"
+    },
+    {
+      "path": "lib/solana/fixtures/bern-t22.json",
+      "role": "mint_fixture",
+      "bytes": 649,
+      "sha256": "0x1676a7460a1db4180ef507861221734581eb5c41674ca12c2792e4c1f0bd7f7a",
+      "license": "Apache-2.0"
+    },
+    {
+      "path": "lib/solana/fixtures/bonk-spl.json",
+      "role": "mint_fixture",
+      "bytes": 389,
+      "sha256": "0x14e788c50d8cc6e8af581f6e8d03d901c5d33456b0ca90fbe4c8d57f70a8f70c",
+      "license": "Apache-2.0"
+    },
+    {
+      "path": "lib/solana/fixtures/not-a-mint.json",
+      "role": "mint_fixture",
+      "bytes": 324,
+      "sha256": "0xf144812ff7a30f88722f194c5f6ca3f19bc96151469edfc84b2e7c00756e3b35",
+      "license": "Apache-2.0"
+    },
+    {
+      "path": "lib/solana/fixtures/pyusd-t22.json",
+      "role": "mint_fixture",
+      "bytes": 1433,
+      "sha256": "0x73c66ab21e6999d2bb624150cf062d57a0d1f464927cf4dc94dee0351555a4fe",
+      "license": "Apache-2.0"
+    },
+    {
+      "path": "lib/solana/fixtures/receipt-other-chain-signed.json",
+      "role": "receipt_fixture",
+      "bytes": 1884,
+      "sha256": "0x0ec114d00a57aba33eb0bb1dcaec996411ec9c8c3d23bdbbe7c7862c687a29dd",
+      "license": "Apache-2.0"
+    },
+    {
+      "path": "lib/solana/fixtures/receipt-solana-deviation-unsigned.json",
+      "role": "receipt_fixture",
+      "bytes": 1849,
+      "sha256": "0x412e4768fa0c1af873fc5c17da56196a1ac99a4fb813d91827178c8cab5e64f3",
+      "license": "Apache-2.0"
+    },
+    {
+      "path": "lib/solana/fixtures/receipt-solana-matched-signed.json",
+      "role": "receipt_fixture",
+      "bytes": 2185,
+      "sha256": "0xf34975d68b9140015a5cb94d25e2367e7744826b901ef354b88345506e058c1d",
+      "license": "Apache-2.0"
+    },
+    {
+      "path": "lib/solana/fixtures/receipt-solana-tampered.json",
+      "role": "receipt_fixture",
+      "bytes": 2185,
+      "sha256": "0x29e920f4a2d8cc5ac87eb870e729e9b00fe7234fabe0193c1f003b2e2a623134",
+      "license": "Apache-2.0"
+    },
+    {
+      "path": "lib/solana/fixtures/usdc-spl.json",
+      "role": "mint_fixture",
+      "bytes": 389,
+      "sha256": "0x4f674e724dd9a5402cf36e20799cb4a71bac39265f2a0bc4b872a4a0e49e3a7e",
+      "license": "Apache-2.0"
+    },
+    {
+      "path": "lib/solana/fixtures/usdt-spl.json",
+      "role": "mint_fixture",
+      "bytes": 389,
+      "sha256": "0x18f0777ae05ba30db1c81ba8a76f91b2a1e24a6e887bc0cbb99ac1936c19559b",
+      "license": "Apache-2.0"
+    },
+    {
+      "path": "lib/solana/fixtures/wsol-spl.json",
+      "role": "mint_fixture",
+      "bytes": 388,
+      "sha256": "0xf0ebf7c83dc5d8a9132dca6ce2e0fd096a35eff93bcb0826f680bf029d93191d",
+      "license": "Apache-2.0"
+    },
+    {
+      "path": "lib/solana/mint.ts",
+      "role": "source",
+      "bytes": 5840,
+      "sha256": "0xa3a0cfa9eca38412b6a7aaffeb1a4d4eaf37fde9fd6bb9470bbd92e700aaeb81",
+      "license": "Apache-2.0"
+    },
+    {
+      "path": "lib/solana/passport.ts",
+      "role": "source",
+      "bytes": 3504,
+      "sha256": "0x9bd4a487c1670ce993e5abbb7195c1c6743e4bc952cfc52d2d16b3c9ca89615c",
+      "license": "Apache-2.0"
+    },
+    {
+      "path": "lib/solana/policy.ts",
+      "role": "source",
+      "bytes": 10585,
+      "sha256": "0xd23fa73d10e57c0b3cf08a025b42ad3b4a288f4ffacd7447e942d227f44227fa",
+      "license": "Apache-2.0"
+    },
+    {
+      "path": "lib/solana/preflight.ts",
+      "role": "source",
+      "bytes": 6478,
+      "sha256": "0x852f7423e4b4393e381c857439ed4fa4d5ca5dd5df428532217382fdfa69c094",
+      "license": "Apache-2.0"
+    },
+    {
+      "path": "lib/solana/receipt.ts",
+      "role": "source",
+      "bytes": 12600,
+      "sha256": "0xa5f3fc397e1075ccca7e8f0b409c17b296a7f278193001a1743fe4de986911e6",
+      "license": "Apache-2.0"
+    },
+    {
+      "path": "lib/solana/rpc.ts",
+      "role": "source",
+      "bytes": 3876,
+      "sha256": "0x5649f6c6bc2eabb533b8558005f450933b6919c252e01c2f46df9ca9e886c68e",
+      "license": "Apache-2.0"
+    },
+    {
+      "path": "lib/solana/semantics.ts",
+      "role": "source",
+      "bytes": 10719,
+      "sha256": "0xde1cbf58fe0e1d2f5ce3afb321cf0f137701504364b0afce8b863d1fec8b4524",
+      "license": "Apache-2.0"
+    },
+    {
+      "path": "lib/solana/types.ts",
+      "role": "source",
+      "bytes": 3925,
+      "sha256": "0x1fbef5065bdbb8e5a17cc96c18057c7095c6531040dbfcc3d5f33950dbce09a7",
+      "license": "Apache-2.0"
+    },
+    {
+      "path": "lib/stellar/evidence.ts",
+      "role": "source",
+      "bytes": 5775,
+      "sha256": "0xc5e61ee9777f4bfd80eefd79a679ed5e74262b5aa9612a9f426c9937b4cbe930",
+      "license": "Apache-2.0"
+    },
+    {
+      "path": "packages/solana-evidence-mcp/README.md",
+      "role": "documentation",
+      "bytes": 2218,
+      "sha256": "0x9cfc327e6eeb2b231687ec6f7a60995e806d3ac773c0ea3057ae999fb0a2ff53",
+      "license": "Apache-2.0"
+    },
+    {
+      "path": "packages/solana-evidence-mcp/package.json",
+      "role": "package_metadata",
+      "bytes": 1100,
+      "sha256": "0x5f715587aa8b8fb95a3a2542199f13cdf33fd70cf16457cd126b9a176837755b",
+      "license": "Apache-2.0"
+    },
+    {
+      "path": "packages/solana-evidence-mcp/server.test.mjs",
+      "role": "network_free_test",
+      "bytes": 10404,
+      "sha256": "0x10f8b5214d4c47e1be19a9367e3e644afc982a95dab5a92b76848921ec6b136d",
+      "license": "Apache-2.0"
+    },
+    {
+      "path": "packages/solana-evidence-mcp/src/serve.ts",
+      "role": "source",
+      "bytes": 585,
+      "sha256": "0x8dc18f113919c23727f04d0c746ad34601dbece0839a855883790e7f1899ee1a",
+      "license": "Apache-2.0"
+    },
+    {
+      "path": "packages/solana-evidence-mcp/src/server.ts",
+      "role": "source",
+      "bytes": 11674,
+      "sha256": "0x604ad624d7a37a13ccda142bb0752100f8025c48baaeaeaba19142afcdef8fb5",
+      "license": "Apache-2.0"
+    },
+    {
+      "path": "packages/solana-evidence-mcp/src/stdio.ts",
+      "role": "source",
+      "bytes": 362,
+      "sha256": "0xce63353c41613ec6dd2ee7464ae9cb8f8e00612ac0ffd9770a425564e60ab9a4",
+      "license": "Apache-2.0"
+    },
+    {
+      "path": "packages/solana-evidence-sdk/README.md",
+      "role": "documentation",
+      "bytes": 5548,
+      "sha256": "0x416d35a86ac9e9a44001c9737da65d300fe4c212fc37f3f23077871752af5499",
+      "license": "Apache-2.0"
+    },
+    {
+      "path": "packages/solana-evidence-sdk/boundaries.test.mjs",
+      "role": "network_free_test",
+      "bytes": 9409,
+      "sha256": "0x870b6b2be793c40f87fc2331597e71f2a7f5d6b7768bb0242d74924e5a68da74",
+      "license": "Apache-2.0"
+    },
+    {
+      "path": "packages/solana-evidence-sdk/package.json",
+      "role": "package_metadata",
+      "bytes": 1050,
+      "sha256": "0xeaf3f61c46beb3317f0cb9df2d6f2b5ff63a48eee10a1136577686665aa66739",
+      "license": "Apache-2.0"
+    },
+    {
+      "path": "packages/solana-evidence-sdk/src/index.test.mjs",
+      "role": "network_free_test",
+      "bytes": 10813,
+      "sha256": "0x32cc9102d6c535c74226c97b9e24c5ad110caea919fa6e7b097746062598f16f",
+      "license": "Apache-2.0"
+    },
+    {
+      "path": "packages/solana-evidence-sdk/src/index.ts",
+      "role": "source",
+      "bytes": 9303,
+      "sha256": "0xba57b085a0aff3a4562c31589108d8e0bfa38458527b05335c8c36b0d5e1a3a1",
+      "license": "Apache-2.0"
+    }
+  ]
+}
