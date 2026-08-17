@@ -80,6 +80,9 @@ assert.deepEqual(packageJson.workspaces, ["packages/*", "examples/*"]);
 const manifest = JSON.parse(await readFile(resolve(root, "SOURCE-MANIFEST.json"), "utf8"));
 assert.equal(manifest.kind, "SOLANA_EVIDENCE_KIT_EXTRACTION_MANIFEST");
 assert.equal(manifest.publication, undefined, "The public manifest must not carry the private publication block");
+/* Nor a publication state: a manifest that names one is describing the commit
+   it is part of, so it is stale the moment the tree is pushed. */
+assert.equal(manifest.publicationState, undefined, "The public manifest must not claim its own publication state");
 const shipped = new Set(manifest.files.map((entry) => entry.path));
 for (const file of files) {
   const path = relative(root, file).replaceAll("\\", "/");

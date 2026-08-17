@@ -2,7 +2,6 @@
   "schemaVersion": "1.0.0",
   "kind": "SOLANA_EVIDENCE_KIT_EXTRACTION_MANIFEST",
   "taskId": "RYN-SOL-A6",
-  "publicationState": "PREPARED_NOT_PUBLISHED",
   "licenseState": "APACHE-2.0_SELECTED",
   "licenseArtifacts": [
     "open-source/solana/LICENSE",
@@ -64,7 +63,7 @@
     ]
   },
   "limitations": [
-    "This manifest records the prepared source subset; the exact publication commit, tag and CI binding lives in the private post-publication evidence.",
+    "This manifest records the exact source subset and its hashes. The publication commit, tag and CI binding live in the private post-publication evidence, because a manifest cannot name the commit it is part of.",
     "Apache-2.0 is selected and this repository contains tracked LICENSE and NOTICE artifacts.",
     "This repository is source-distributed and blocks accidental npm publication; no npm package is claimed.",
     "The tracked npm@10.9.8 lockfile is copied by the extraction recipe and enables replay with npm ci.",
