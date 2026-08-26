@@ -1,0 +1,15 @@
+{
+  "name": "@ryntra/example-solana-evidence-cli",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "bin": {
+    "ryntra-solana": "./cli.ts"
+  },
+  "scripts": {
+    "start": "node cli.ts"
+  },
+  "dependencies": {
+    "@ryntra/solana-evidence-sdk": "file:../../packages/solana-evidence-sdk"
+  }
+}

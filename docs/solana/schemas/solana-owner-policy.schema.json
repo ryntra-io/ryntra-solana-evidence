@@ -1,0 +1,147 @@
+{
+  "$id": "https://ryntra.io/schemas/solana-owner-policy.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "schema": {
+      "type": "string",
+      "const": "ryntra.solana.owner-policy"
+    },
+    "schemaVersion": {
+      "type": "string",
+      "const": "0.1.0"
+    },
+    "allowedNetworks": {
+      "minItems": 1,
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "mainnet",
+          "devnet"
+        ]
+      }
+    },
+    "allowedMints": {
+      "anyOf": [
+        {
+          "type": "string",
+          "const": "ANY"
+        },
+        {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[1-9A-HJ-NP-Za-km-z]{32,44}$"
+          }
+        }
+      ]
+    },
+    "allowedTokenPrograms": {
+      "minItems": 1,
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "SPL_TOKEN",
+          "TOKEN_2022"
+        ]
+      }
+    },
+    "acceptPermanentDelegate": {
+      "type": "boolean"
+    },
+    "transferHookAllowlist": {
+      "anyOf": [
+        {
+          "type": "string",
+          "const": "NONE_ALLOWED"
+        },
+        {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[1-9A-HJ-NP-Za-km-z]{32,44}$"
+          }
+        }
+      ]
+    },
+    "maxFeeBasisPoints": {
+      "anyOf": [
+        {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 10000
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "maxFeeRaw": {
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "^(0|[1-9]\\d*)$"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "recipientAllowlist": {
+      "anyOf": [
+        {
+          "type": "string",
+          "const": "ANY"
+        },
+        {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[1-9A-HJ-NP-Za-km-z]{32,44}$"
+          }
+        }
+      ]
+    },
+    "maxAmountRaw": {
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "^(0|[1-9]\\d*)$"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "maxEvidenceAgeSeconds": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 9007199254740991
+    },
+    "acceptDefaultFrozenAccounts": {
+      "type": "boolean"
+    },
+    "requireHumanApproval": {
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "schema",
+    "schemaVersion",
+    "allowedNetworks",
+    "allowedMints",
+    "allowedTokenPrograms",
+    "acceptPermanentDelegate",
+    "transferHookAllowlist",
+    "maxFeeBasisPoints",
+    "maxFeeRaw",
+    "recipientAllowlist",
+    "maxAmountRaw",
+    "maxEvidenceAgeSeconds",
+    "acceptDefaultFrozenAccounts",
+    "requireHumanApproval"
+  ],
+  "additionalProperties": false
+}

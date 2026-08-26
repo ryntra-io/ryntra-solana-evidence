@@ -1,0 +1,197 @@
+{
+  "schemaVersion": "1.0.0",
+  "kind": "RYNTRA_PUBLIC_FILE_LIST",
+  "repository": "ryntra-solana-evidence",
+  "license": "Apache-2.0",
+  "note": "The files this package is made of. Generated from the publication allowlist; the boundary test reads this list and scans exactly these files, so a file added without being listed never reaches the public repository.",
+  "files": [
+    {
+      "path": "docs/solana/schemas/solana-asset-passport.schema.json",
+      "role": "published_schema"
+    },
+    {
+      "path": "docs/solana/schemas/solana-owner-policy.schema.json",
+      "role": "published_schema"
+    },
+    {
+      "path": "docs/solana/schemas/solana-policy-verdict.schema.json",
+      "role": "published_schema"
+    },
+    {
+      "path": "docs/solana/schemas/spl-transfer-preflight.schema.json",
+      "role": "published_schema"
+    },
+    {
+      "path": "examples/solana-evidence-cli/README.md",
+      "role": "documentation"
+    },
+    {
+      "path": "examples/solana-evidence-cli/cli.test.mjs",
+      "role": "network_free_test"
+    },
+    {
+      "path": "examples/solana-evidence-cli/cli.ts",
+      "role": "source"
+    },
+    {
+      "path": "examples/solana-evidence-cli/package.json",
+      "role": "package_metadata"
+    },
+    {
+      "path": "lib/agent-control/adapters/solana-token-2022.ts",
+      "role": "source"
+    },
+    {
+      "path": "lib/agent-control/canonical.ts",
+      "role": "source"
+    },
+    {
+      "path": "lib/guard/canonical-json.ts",
+      "role": "source"
+    },
+    {
+      "path": "lib/solana/address.ts",
+      "role": "source"
+    },
+    {
+      "path": "lib/solana/amounts.ts",
+      "role": "source"
+    },
+    {
+      "path": "lib/solana/contracts.ts",
+      "role": "source"
+    },
+    {
+      "path": "lib/solana/evidence.ts",
+      "role": "source"
+    },
+    {
+      "path": "lib/solana/fixtures/bern-t22.json",
+      "role": "public_fixture"
+    },
+    {
+      "path": "lib/solana/fixtures/bonk-spl.json",
+      "role": "public_fixture"
+    },
+    {
+      "path": "lib/solana/fixtures/not-a-mint.json",
+      "role": "public_fixture"
+    },
+    {
+      "path": "lib/solana/fixtures/pyusd-t22.json",
+      "role": "public_fixture"
+    },
+    {
+      "path": "lib/solana/fixtures/receipt-other-chain-signed.json",
+      "role": "public_fixture"
+    },
+    {
+      "path": "lib/solana/fixtures/receipt-solana-deviation-unsigned.json",
+      "role": "public_fixture"
+    },
+    {
+      "path": "lib/solana/fixtures/receipt-solana-matched-signed.json",
+      "role": "public_fixture"
+    },
+    {
+      "path": "lib/solana/fixtures/receipt-solana-tampered.json",
+      "role": "public_fixture"
+    },
+    {
+      "path": "lib/solana/fixtures/usdc-spl.json",
+      "role": "public_fixture"
+    },
+    {
+      "path": "lib/solana/fixtures/usdt-spl.json",
+      "role": "public_fixture"
+    },
+    {
+      "path": "lib/solana/fixtures/wsol-spl.json",
+      "role": "public_fixture"
+    },
+    {
+      "path": "lib/solana/mint.ts",
+      "role": "source"
+    },
+    {
+      "path": "lib/solana/passport.ts",
+      "role": "source"
+    },
+    {
+      "path": "lib/solana/policy.ts",
+      "role": "source"
+    },
+    {
+      "path": "lib/solana/preflight.ts",
+      "role": "source"
+    },
+    {
+      "path": "lib/solana/receipt.ts",
+      "role": "source"
+    },
+    {
+      "path": "lib/solana/rpc.ts",
+      "role": "source"
+    },
+    {
+      "path": "lib/solana/semantics.ts",
+      "role": "source"
+    },
+    {
+      "path": "lib/solana/types.ts",
+      "role": "source"
+    },
+    {
+      "path": "lib/stellar/evidence.ts",
+      "role": "source"
+    },
+    {
+      "path": "packages/solana-evidence-mcp/README.md",
+      "role": "documentation"
+    },
+    {
+      "path": "packages/solana-evidence-mcp/package.json",
+      "role": "package_metadata"
+    },
+    {
+      "path": "packages/solana-evidence-mcp/server.test.mjs",
+      "role": "network_free_test"
+    },
+    {
+      "path": "packages/solana-evidence-mcp/src/serve.ts",
+      "role": "source"
+    },
+    {
+      "path": "packages/solana-evidence-mcp/src/server.ts",
+      "role": "source"
+    },
+    {
+      "path": "packages/solana-evidence-mcp/src/stdio.ts",
+      "role": "source"
+    },
+    {
+      "path": "packages/solana-evidence-sdk/README.md",
+      "role": "documentation"
+    },
+    {
+      "path": "packages/solana-evidence-sdk/boundaries.test.mjs",
+      "role": "network_free_test"
+    },
+    {
+      "path": "packages/solana-evidence-sdk/package.json",
+      "role": "package_metadata"
+    },
+    {
+      "path": "packages/solana-evidence-sdk/public-files.json",
+      "role": "generated_file_list"
+    },
+    {
+      "path": "packages/solana-evidence-sdk/src/index.test.mjs",
+      "role": "network_free_test"
+    },
+    {
+      "path": "packages/solana-evidence-sdk/src/index.ts",
+      "role": "source"
+    }
+  ]
+}
