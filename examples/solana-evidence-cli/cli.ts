@@ -265,6 +265,9 @@ function runVerify(positional: readonly string[], flags: Flags): void {
   const result = verifySolanaReceipt(receipt, {
     trustedPublicKeys: Array.isArray(trusted) ? trusted : undefined,
   });
+  /* Exit status is independent of output format: invalid receipts must also
+     fail in JSON pipelines. Issuer trust and chain binding remain separate axes. */
+  if (!result.recognised || !result.integrity.valid) process.exitCode = 2;
   if (flags.json) {
     emitJson({ verification: result, limitations: SOLANA_EVIDENCE_KIT_LIMITATIONS });
     return;
@@ -272,9 +275,6 @@ function runVerify(positional: readonly string[], flags: Flags): void {
   printVerification(result);
   printLimitations();
 
-  /* A non-zero exit lets this run inside somebody else's pipeline: a receipt
-     whose hashes do not recompute must not read as success to a script. */
-  if (!result.recognised || !result.integrity.valid) process.exitCode = 2;
 }
 
 async function main(): Promise<void> {

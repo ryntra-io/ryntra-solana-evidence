@@ -16,13 +16,8 @@
  */
 
 /**
- * The five states, as a value.
- *
- * The type alone cannot be rendered, so every surface that wanted to show the
- * vocabulary retyped it — and a retyped vocabulary is how a document ends up
- * naming states the code stopped using, which is the exact drift canon §12 had
- * to repair. The type is derived from this array rather than the other way
- * round, so adding a state to one and forgetting the other is a compile error.
+ * Shared evidence states for runtime rendering and static typing.
+ * Deriving EvidenceState from this array keeps both vocabularies in sync.
  */
 export const EVIDENCE_STATES = ["FRESH", "STALE", "CONFLICTING", "UNKNOWN", "UNAVAILABLE"] as const;
 

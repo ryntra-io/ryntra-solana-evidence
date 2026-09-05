@@ -12,19 +12,11 @@ export const AGENT_HASH_DOMAINS = {
 } as const;
 
 /**
- * The v2 domain set, and the point at which this serialization becomes
- * **frozen**.
+ * Frozen v2 hash domains for signed artifacts.
  *
- * Frozen means the preimage bytes for a given value may never change again:
- * not the domain string, not the separator, not the canonicalizer's key order
- * or `undefined` handling. `canonical.golden.test.mjs` pins the exact preimage
- * and the exact digest for one fixed input per domain as literals, so any drift
- * fails there before it can reach an artifact.
- *
- * The freeze exists because Release B adds an issuer signature. A signature is
- * a claim about exact bytes; if the bytes a verifier reconstructs can move, the
- * signature says nothing. The v1 domains above stay exported and unchanged so
- * artifacts written before this packet keep verifying.
+ * Domain strings, the newline separator, canonical key ordering and undefined
+ * handling must stay stable so existing signatures remain verifiable.
+ * The v1 domains remain available for older artifacts.
  */
 export const AGENT_HASH_DOMAINS_V2 = {
   intent: "ryntra.agent-control.intent.v2",
@@ -40,11 +32,8 @@ export const AGENT_HASH_DOMAINS_V2 = {
      payment record be replayed as a settled action outcome, which is exactly
      the substitution domain separation exists to stop. */
   commerceReceipt: "ryntra.agent-control.commerce-receipt.v2",
-  /* An inbound A2A Agent Card is somebody else's document, and its digest is
-     the only thing canon `12 §9` asks Ryntra to keep of it. It gets its own
-     domain for the same reason a commerce receipt does: sharing one would let
-     a card digest be replayed where an Agent Passport digest belongs, and an
-     Agent Passport is Ryntra's own observation while a card is a claim. */
+  /* An externally supplied A2A Agent Card is a claim, not an Agent Passport.
+     A separate domain prevents substituting its digest for an observed passport. */
   a2aAgentCard: "ryntra.agent-control.a2a-agent-card.v2",
   authorizationProof: "ryntra.agent-control.authorization-proof.v2",
   issuerSignature: "ryntra.agent-control.issuer-signature.v2",

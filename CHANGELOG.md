@@ -1,54 +1,30 @@
 # Changelog
 
-Notable changes to the Ryntra Solana Evidence Kit. Format follows
-[Keep a Changelog](https://keepachangelog.com/en/1.1.0/); versions follow
-[Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+## Unreleased
 
-## [1.0.0] — unreleased
+- Fix the CLI's JSON verification exit status: tampered or unrecognised receipts
+  now exit with code 2, matching text output. Verification results are unchanged.
+- Clarify the toolkit's scope, quick start and integration boundaries.
 
-**Initial public release** of this repository. The kit itself is not new — it
-was published as `ryntra-solana-evidence` v0.1.0 on 2026-08-17 — but that
-repository is retired with its history rather than continued, so the same
-discipline applies across the whole organization: fresh repository, fresh
-history, and a first tag that does not imply a predecessor inside it.
+## [1.0.0] — 2026-08-26
 
-No capability changes from v0.1.0. Everything below is publication hygiene.
+### Included
 
-### Added
+- SPL Token and Token-2022 mint inspection with asset passports, issuer
+  authorities, extension semantics and provenance.
+- Transfer preflight with integer fee calculations and caller-defined policy
+  evaluation.
+- Offline Outcome Receipt verification: schema, integrity, issuer signature and
+  Solana binding reported separately.
+- Typed SDK, local stdio MCP server, CLI and four JSON Schemas.
+- Base58 address checks, receipt fixtures and network-free tests.
+- Continuous lint, type checking and read-only boundary verification.
 
-- `packages/solana-evidence-sdk/public-files.json` — the list of files this kit
-  is made of, carrying paths and roles and nothing else. The boundary test reads
-  it, so a file added to the kit without being listed never ships.
-- `lib/solana/address.ts`, the Base58 and confusables checks. It was written
-  after v0.1.0 and has not been published before.
+### Boundaries
 
-### Changed
+This release does not build, simulate, sign or submit transactions. Receipt
+verification does not independently establish on-chain settlement. A policy
+verdict is not a safety judgement. The software has not been independently
+audited.
 
-- The boundary gate asserts that the removed manifest's leaked fields cannot
-  come back, rather than merely not shipping them.
-- Two preflight sentences that named an internal work item now say what is
-  actually true of the kit: it builds no transaction, so there is nothing to
-  simulate and no fee to quote.
-- Comments that referenced internal planning were rewritten to describe the
-  code.
-
-### Removed
-
-- `SOURCE-MANIFEST.json`. It published an internal task id, the private export
-  paths that generated the tree, and an array that mapped private test layout. Its useful half — the file list — is now
-  `public-files.json`.
-
-### Not in this release
-
-- No transaction building, signing, submission or simulation. This kit reads.
-- No audit, and no safety judgement. A policy verdict reports the absence of
-  known blockers under a policy the caller declared.
-
-## [0.1.0] — 2026-08-17, in the retired repository
-
-Token-2022 asset passports, SPL and Token-2022 transfer preflight against a
-declared owner policy, offline receipt verification, four published JSON
-Schemas, a typed SDK, a local stdio MCP server and a CLI.
-
-Kept here as the record of when this work was first published. It is not a tag
-in this repository — the history it belonged to is not this one.
+[1.0.0]: https://github.com/ryntra-io/ryntra-solana-evidence/releases/tag/v1.0.0

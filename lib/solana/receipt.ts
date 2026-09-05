@@ -1,19 +1,12 @@
 /**
  * Reading an Outcome Receipt without asking the issuer whether it is real.
  *
- * A receipt whose only verifier is the party that wrote it proves nothing, so
- * this module is deliberately the *bounded* half of `lib/agent-control/verify.ts`:
- * everything a stranger needs to check a Solana receipt offline, and nothing
- * that would drag Guard's private money-path contracts into a public kit.
+ * This verifier checks the supplied artifact without contacting its issuer
+ * or fetching the on-chain transaction. It does not independently establish
+ * settlement or reconstruct an original action plan.
  *
- * The two things that must never be re-implemented are not re-implemented.
- * Canonicalization comes from `lib/guard/canonical-json.ts` and the frozen v2
- * hash domains come from `lib/agent-control/canonical.ts` — the same bytes the
- * issuer signed, by import rather than by imitation. What *is* stated twice is
- * the receipt's shape and the issuer-axis ladder, because the authoritative
- * ones live behind that heavy import chain; `receipt.test.mjs` mints a real
- * signed receipt through `createOutcomeReceipt` and fails the moment the two
- * readings disagree on any axis, clean or tampered.
+ * Canonicalization and frozen v2 hash domains are imported from the shared
+ * modules so the reconstructed preimages match the bytes covered by a signature.
  *
  * Four axes, reported separately and never merged into one word:
  *

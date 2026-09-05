@@ -72,25 +72,12 @@ assert.equal(packageJson.license, "Apache-2.0", "Root package must declare Apach
 assert.deepEqual(packageJson.workspaces, ["packages/*", "examples/*"]);
 
 /**
- * The generated tree must be exactly the listed files plus this template, with
- * no `lib/` file arriving by accident: the extraction copies an explicit list,
- * and an unexpected private module in a public repository is the failure this
- * whole recipe exists to make impossible.
- *
- * The list used to be `SOURCE-MANIFEST.json`, and that file published four
- * things it should never have carried: an internal task id, the private export
- * paths that generated it, an array mapping private test
- * layout, and its own publication state — which was true when built and false
- * one push later. It is replaced by a list that carries paths and roles and
- * nothing else, and the fields that leaked are asserted absent rather than
- * merely omitted, so re-adding one fails here.
+ * Every lib/ and docs/ file must appear in the public file list.
+ * Reject unexpected source files and unrecognised manifest metadata.
  */
 const list = JSON.parse(await readFile(resolve(root, "packages/solana-evidence-sdk/public-files.json"), "utf8"));
 assert.equal(list.kind, "RYNTRA_PUBLIC_FILE_LIST");
-/* An exact key set, not a list of fields to refuse. Naming the fields that
-   leaked would publish them a second time, in the file asserting they are gone,
-   and a refusal list only ever refuses what somebody thought of. This rejects
-   every field that is not one of the five, including the next one. */
+/* An exact six-field schema rejects unrecognised metadata by default. */
 assert.deepEqual(
   Object.keys(list).sort(),
   ["files", "kind", "license", "note", "repository", "schemaVersion"],

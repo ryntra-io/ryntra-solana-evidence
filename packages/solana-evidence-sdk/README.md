@@ -1,8 +1,8 @@
 # @ryntra/solana-evidence-sdk
 
-Three read-only calls over Solana: read what a mint structurally is, preview an
-exact SPL transfer against a policy you declare, and check an Outcome Receipt
-without asking the party that issued it.
+Three read-only calls over Solana: inspect mint structure, calculate a proposed
+SPL transfer's mint-based effects against a declared policy, and verify a
+supplied Outcome Receipt offline.
 
 ```ts
 import {
@@ -44,12 +44,12 @@ the passport says exactly that — plus who can install one. Same for a
 
 ## `preflightSolanaAction({ input, policy, epoch?, now?, connection? })`
 
-The exact preview, then the judgement, kept apart:
+Structural preflight and declared-policy evaluation are separate:
 
-- **preflight** — what will happen: fee math from the mint's own configuration,
-  what the recipient actually receives, the resolved transfer-hook program,
-  structural blockers, and two honest nulls (network fee and compute budget) that
-  name why they are empty instead of guessing;
+- **preflight** — expected mint-based effects: configured transfer fees,
+  calculated recipient amount, transfer-hook program and structural blockers.
+  This is not a transaction simulation. Network fee and compute budget are
+  unknown, with explicit reasons;
 - **verdict** — what *your* policy makes of that, as thirteen rules each
   producing one finding, aggregated by a written precedence:
   `BLOCKED > INCOMPLETE > REVIEW_REQUIRED > NO_KNOWN_BLOCKER`.
@@ -88,7 +88,9 @@ Four axes, reported separately and never merged into one word:
 | `issuer` | Is the Ed25519 signature sound — and separately, is the key one *you* trust |
 | `binding` | Does the receipt's registry pin name the Solana adapter |
 
-Entirely local. No network call, and nothing is asked of Ryntra.
+Entirely local. No network call is made. These checks do not fetch the on-chain
+transaction, establish settlement, or compare the receipt with an original
+action plan or quote. Treat the four results independently.
 
 ```ts
 const check = verifySolanaReceipt(JSON.parse(receiptJson), {
@@ -134,5 +136,5 @@ the kit renders the boundary instead of retyping it:
 - **A verdict is not a safety judgement.**
 
 `boundaries.test.mjs` asserts all of it by reading the shipped files listed in
-the extraction manifest — so a file added to the kit is scanned from its first
-run, and a file that is not in the manifest never ships.
+`public-files.json`. The repository boundary check also rejects unlisted
+source files.

@@ -8,11 +8,8 @@
  * no state-changing RPC method. `boundaries.test.mjs` asserts that by reading
  * the shipped sources rather than by trusting this paragraph.
  *
- * The evidence core is imported, not copied. `lib/solana/` is the one
- * implementation the Ryntra product itself runs on, and the public extraction
- * carries those exact files — so a result from this SDK and a result from
- * ryntra.io come from the same code, or the extraction is broken and its
- * tests say so.
+ * All three interfaces share the evidence core in `lib/solana/`.
+ * This versioned kit and the hosted application may evolve independently.
  */
 
 import { SplTransferInputSchema, type SplTransferInput } from "../../../lib/agent-control/adapters/solana-token-2022.ts";
