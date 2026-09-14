@@ -1,6 +1,18 @@
 # Changelog
 
-## Unreleased
+## [1.1.0] — 2026-09-14
+
+- Move the shared evidence envelope to `lib/evidence/envelope.ts`; the Solana
+  modules import the neutral implementation and no longer reach into a
+  Stellar path. Public JSON formats, hashes and API signatures are unchanged.
+- Harden `scripts/verify-boundaries.mjs`: sensitive filenames are refused in
+  every path segment, every dependency must resolve from the public npm
+  registry, and every file outside the repository template must be named by
+  the public file list.
+- Documentation: the README describes the toolkit's scope,
+  quick start and boundaries; the organization profile points here.
+
+
 
 - Fix the CLI's JSON verification exit status: tampered or unrecognised receipts
   now exit with code 2, matching text output. Verification results are unchanged.

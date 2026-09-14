@@ -1,6 +1,6 @@
 {
   "name": "ryntra-solana-evidence",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "private": true,
   "type": "module",
   "description": "Read-only Solana evidence kit: Token Extensions asset passports, exact transfer preflight against a declared policy, offline Outcome Receipt verification, an MCP server and a CLI.",

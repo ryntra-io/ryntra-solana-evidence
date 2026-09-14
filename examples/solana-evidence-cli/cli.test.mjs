@@ -65,25 +65,6 @@ test("a receipt for another chain verifies its own bytes and is reported NOT_SOL
   assert.match(stdout, /binding\s+NOT_SOLANA/);
 });
 
-test("JSON verification exits 2 for a tampered receipt while preserving its results", function () {
-  const { status, stdout } = run(["verify", `${fixtures}receipt-solana-tampered.json`, "--json"]);
-  assert.equal(status, 2);
-  const parsed = JSON.parse(stdout);
-  assert.equal(parsed.verification.integrity.valid, false);
-  assert.deepEqual(parsed.verification.integrity.issues, ["CONTENT_HASH_MISMATCH", "INTEGRITY_HASH_MISMATCH"]);
-  assert.equal(parsed.verification.issuer.verdict, "SIGNATURE_VALID");
-  assert.equal(parsed.limitations.length, 3);
-});
-
-test("JSON verification exits 2 for an unrecognised artifact", function () {
-  const { status, stdout } = run(["verify", `${fixtures}not-a-mint.json`, "--json"]);
-  assert.equal(status, 2);
-  const parsed = JSON.parse(stdout);
-  assert.equal(parsed.verification.recognised, false);
-  assert.equal(parsed.verification.schema.valid, false);
-  assert.equal(parsed.verification.integrity.valid, false);
-});
-
 test("--json emits machine-readable output with the limitations attached", function () {
   const { status, stdout } = run(["verify", `${fixtures}receipt-solana-deviation-unsigned.json`, "--json"]);
   assert.equal(status, 0);

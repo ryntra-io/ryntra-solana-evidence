@@ -25,6 +25,8 @@ import { SOLANA_NETWORKS } from "../../solana/rpc.ts";
 
 export const SOLANA_TOKEN_2022_ADAPTER_REF = "adapter:solana-token-2022@1";
 export const SPL_TRANSFER_ACTION_REF = "action:solana-token-2022/spl-transfer@1";
+/** Native SOL is a System Program transfer, not an SPL movement. Own action type, same adapter. */
+export const NATIVE_SOL_TRANSFER_ACTION_REF = "action:solana-token-2022/native-sol-transfer@1";
 
 /**
  * CAIP-2 chain references. The Solana namespace identifies a chain by the
@@ -62,6 +64,15 @@ export const SOLANA_TOKEN_2022_DEFINITIONS = [
     budget: "OPTIONAL",
     status: "ALLOWED",
   },
+  {
+    kind: "ACTION_SCHEMA",
+    ref: NATIVE_SOL_TRANSFER_ACTION_REF,
+    displayName: "Native SOL transfer",
+    adapterRef: SOLANA_TOKEN_2022_ADAPTER_REF,
+    canonicalClass: "VALUE_TRANSFER",
+    budget: "OPTIONAL",
+    status: "ALLOWED",
+  },
 ] as const;
 
 const BASE58_SIGNATURE = /^[1-9A-HJ-NP-Za-km-z]{64,88}$/;
@@ -78,6 +89,10 @@ const BASE58_PUBKEY_SHAPE =
  * survive JavaScript numbers, and a lossy amount is a wrong amount. */
 const RAW_AMOUNT = /^(0|[1-9]\d*)$/;
 const RAW_DELTA = /^-?(0|[1-9]\d*)$/;
+const POSITIVE_RAW_AMOUNT = z
+  .string()
+  .regex(RAW_AMOUNT, "The amount must be a whole number of base units — no decimal point, sign or separator.")
+  .refine((amountRaw) => amountRaw !== "0", "The amount must be greater than zero base units.");
 
 /**
  * What an SPL transfer proposal must state — exactly, before evaluation.
@@ -94,13 +109,39 @@ export const SplTransferInputSchema = z
     mint: z.string().regex(BASE58_PUBKEY, `The mint ${BASE58_PUBKEY_SHAPE}.`),
     sender: z.string().regex(BASE58_PUBKEY, `The sender ${BASE58_PUBKEY_SHAPE}.`),
     recipient: z.string().regex(BASE58_PUBKEY, `The recipient ${BASE58_PUBKEY_SHAPE}.`),
-    amountRaw: z
-      .string()
-      .regex(RAW_AMOUNT, "The amount must be a whole number of base units — no decimal point, sign or separator."),
+    amountRaw: POSITIVE_RAW_AMOUNT,
   })
-  .strict();
+  .strict()
+  .refine(({ sender, recipient }) => sender !== recipient, {
+    path: ["recipient"],
+    message: "The recipient must be different from the sender.",
+  });
 
 export type SplTransferInput = z.output<typeof SplTransferInputSchema>;
+
+export const NativeSolTransferInputSchema = z
+  .object({
+    schemaVersion: z.literal("1.0.0"),
+    actionRef: z.literal(NATIVE_SOL_TRANSFER_ACTION_REF),
+    network: z.enum(SOLANA_NETWORKS),
+    sender: z.string().regex(BASE58_PUBKEY, `The sender ${BASE58_PUBKEY_SHAPE}.`),
+    recipient: z.string().regex(BASE58_PUBKEY, `The recipient ${BASE58_PUBKEY_SHAPE}.`),
+    amountRaw: POSITIVE_RAW_AMOUNT,
+  })
+  .strict()
+  .refine(({ sender, recipient }) => sender !== recipient, {
+    path: ["recipient"],
+    message: "The recipient must be different from the sender.",
+  });
+
+export type NativeSolTransferInput = z.output<typeof NativeSolTransferInputSchema>;
+
+export const SendTransferInputSchema = z.discriminatedUnion("actionRef", [
+  SplTransferInputSchema,
+  NativeSolTransferInputSchema,
+]);
+
+export type SendTransferInput = z.output<typeof SendTransferInputSchema>;
 
 /**
  * What an independent read-back of the executed transfer must carry.
@@ -113,7 +154,10 @@ export type SplTransferInput = z.output<typeof SplTransferInputSchema>;
 export const SplTransferObservationSchema = z
   .object({
     schemaVersion: z.literal("1.0.0"),
-    actionRef: z.literal(SPL_TRANSFER_ACTION_REF),
+    actionRef: z.union([
+      z.literal(SPL_TRANSFER_ACTION_REF),
+      z.literal(NATIVE_SOL_TRANSFER_ACTION_REF),
+    ]),
     network: z.enum(SOLANA_NETWORKS),
     signature: z.string().regex(BASE58_SIGNATURE),
     slot: z.string().regex(RAW_AMOUNT),
@@ -142,6 +186,17 @@ export const SplTransferObservationSchema = z
           .strict(),
       )
       .max(16),
+    /** Raw account lamport movement from this transaction's pre/post balances. */
+    lamportBalanceDeltas: z
+      .array(
+        z
+          .object({
+            account: z.string().regex(BASE58_PUBKEY),
+            rawDelta: z.string().regex(RAW_DELTA),
+          })
+          .strict(),
+      )
+      .max(64),
     sources: z
       .array(z.object({ ref: z.string().min(1).max(256), label: z.string().min(1).max(128) }).strict())
       .min(1)

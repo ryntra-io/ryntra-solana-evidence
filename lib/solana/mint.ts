@@ -126,7 +126,7 @@ export async function fetchRawMintAccount(handle: SolanaRpcHandle, mint: string)
       dataBase64,
       observedAt,
       slot: response.context?.slot !== undefined ? String(response.context.slot) : null,
-      endpointHost: new URL(handle.endpoint).host,
+      endpointHost: handle.host(),
     };
   } catch (failure) {
     return {

@@ -27,7 +27,7 @@ export type PreflightSimulation = SplTransferPreflight["simulation"];
 
 export type PreflightFailure = Readonly<{
   ok: false;
-  code: "INPUT_MINT_MISMATCH" | "MINT_NOT_INITIALIZED";
+  code: "INPUT_MINT_MISMATCH" | "MINT_NOT_INITIALIZED" | "ZERO_AMOUNT" | "SENDER_RECIPIENT_SAME";
   reason: string;
 }>;
 
@@ -73,7 +73,9 @@ export function computeTransferFee(
   const chosen = useOlder ? config.olderTransferFee : config.newerTransferFee;
   const basisPoints = chosen.transferFeeBasisPoints;
   const maximumFee = chosen.maximumFee;
-  const uncapped = (amountRaw * BigInt(basisPoints)) / 10_000n;
+  /* spl-token-2022 uses ceiling division: a fractional base-unit fee must not
+     be rounded down in the reviewed expectation. */
+  const uncapped = (amountRaw * BigInt(basisPoints) + 9_999n) / 10_000n;
   const capApplied = uncapped > maximumFee;
   const feeRaw = capApplied ? maximumFee : uncapped;
   return {
@@ -94,6 +96,8 @@ export function buildTransferPreflight(args: {
   /** Current epoch when the caller knows it; null is recorded, not hidden. */
   epoch?: bigint | null;
   simulation?: PreflightSimulation;
+  /** Exact base fee priced from the built message; omitted by the read-only kit. */
+  networkFeeLamports?: string | null;
   now?: Date;
 }): PreflightResult {
   const { read, passport, input } = args;
@@ -110,6 +114,20 @@ export function buildTransferPreflight(args: {
       ok: false,
       code: "MINT_NOT_INITIALIZED",
       reason: `Mint ${input.mint} exists but is not initialized; no transfer semantics exist yet.`,
+    };
+  }
+  if (input.amountRaw === "0") {
+    return {
+      ok: false,
+      code: "ZERO_AMOUNT",
+      reason: "A zero-value transfer is not a Send action and cannot be previewed.",
+    };
+  }
+  if (input.sender === input.recipient) {
+    return {
+      ok: false,
+      code: "SENDER_RECIPIENT_SAME",
+      reason: "The sender and recipient are the same account, so this cannot be a transfer.",
     };
   }
 
@@ -153,9 +171,15 @@ export function buildTransferPreflight(args: {
     hookProgramId,
     structuralBlockers,
     unsupportedKinds: [...passport.unsupportedKinds],
-    networkFeeLamports: null,
-    computeBudget: null,
-    unfilledReason: UNFILLED_REASON,
+    networkFeeLamports: args.networkFeeLamports ?? null,
+    computeBudget:
+      args.simulation?.status === "PRESENT" && args.simulation.unitsConsumed
+        ? args.simulation.unitsConsumed
+        : null,
+    unfilledReason:
+      args.networkFeeLamports === undefined || args.networkFeeLamports === null
+        ? UNFILLED_REASON
+        : "The exact base fee is priced from the reviewed message; no priority-fee instruction is present.",
     simulation: args.simulation ?? {
       status: "SKIPPED",
       reason: "This kit builds no transaction, so there is nothing to simulate.",

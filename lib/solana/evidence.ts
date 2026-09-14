@@ -1,12 +1,9 @@
 /**
  * The evidence envelope, reused — not copied.
  *
- * The envelope in `lib/stellar/evidence.ts` is chain-neutral: nothing in it
- * knows about Stellar beyond one example string in a comment. Copying it here
- * would create the second-copy-that-drifts this repository has recorded every
- * time it happened, so Solana imports the one implementation. Extracting it
- * to a neutral `lib/evidence/` home is deferred until a third consumer
- * exists — with two, the seam is visible but the move is not yet earned.
+ * The envelope in `lib/evidence/envelope.ts` is chain-neutral: a value arrives
+ * with its provenance or with the reason it could not. Copying it here would
+ * create the second copy that drifts, so Solana imports the one implementation.
  */
 export {
   EVIDENCE_STATES,
@@ -17,7 +14,7 @@ export {
   conflicting,
   mapEvidence,
   toEnvelope,
-} from "../stellar/evidence.ts";
+} from "../evidence/envelope.ts";
 export type {
   Evidence,
   EvidenceSource,
@@ -25,4 +22,4 @@ export type {
   EvidenceState,
   ResolvedEvidence,
   UnresolvedEvidence,
-} from "../stellar/evidence.ts";
+} from "../evidence/envelope.ts";

@@ -1,9 +1,19 @@
 /**
- * Shared Solana address shape validation.
+ * What a Solana address is, defined once.
  *
- * Schemas and callers use this import-free definition to reject invalid input
- * before an RPC read. Base58 excludes 0, O, I and l to reduce ambiguity.
- * Passing this check establishes string shape, not account existence or ownership.
+ * This rule existed twice in effect and nowhere by name: the transfer schema
+ * carried the regex, and every surface that collects an address carried
+ * nothing — so a value that could never be an address travelled to the network,
+ * was read against the chain, and came back as a schema refusal that named no
+ * field. The founder hit exactly that: a recipient beginning `claude-` produced
+ * "The transfer proposal or policy was not accepted."
+ *
+ * So the shape lives here, with no imports, and the schema consumes it. One
+ * definition is the point — this repository has recorded, more than once, that
+ * two lists which must agree eventually disagree in silence.
+ *
+ * Base58 omits `0`, `O`, `I` and `l` deliberately, because those are the four
+ * characters people mistake for each other when copying a key by eye.
  */
 export const BASE58_PUBKEY = /^[1-9A-HJ-NP-Za-km-z]{32,44}$/;
 
@@ -28,8 +38,12 @@ export function parseSolanaAddress(value: string, field = "Solana address"): Par
   if (BASE58_PUBKEY.test(trimmed)) {
     return { ok: true, address: trimmed };
   }
-  /* Reject non-alphanumeric characters before confusable Base58 characters.
-     This distinguishes a non-address string from a likely transcription error. */
+  /* Order is the useful part. A character base58 never uses at all means this
+     was never an address; a 0/O/I/l means it probably is one, misread. Testing
+     the confusables first would answer `claude-opu5xkpx…` with "contains I,
+     which base58 does not use", which reads as a near miss and sends the reader
+     hunting one character in a string that is not an address in the first
+     place. So the definite failure is reported before the likely typo. */
   const foreign = trimmed.match(/[^1-9A-HJ-NP-Za-km-z0OIl]/);
   if (foreign) {
     const shown = foreign[0] === " " ? "a space" : `"${foreign[0]}"`;

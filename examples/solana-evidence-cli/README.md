@@ -14,10 +14,10 @@ That is PayPal USD on Solana mainnet. It prints the identity block, then every
 token extension with what it means for a holder, with `!` marking the ones that
 can change the outcome of a transfer.
 
-The output describes current account data returned by the RPC endpoint. For
-example, a TransferHook extension with an all-zero program id is reported as
-having no installed hook program; extension presence alone does not mean a
-hook will run.
+Note what it says about `TransferHook`: the extension is present, and the
+program id is the all-zero key — so no hook program runs today, and the sentence
+says so along with who can install one. A passport that announced a running
+program there would be describing a slot instead of a setting.
 
 ## Preview a transfer and judge it
 
@@ -39,9 +39,8 @@ output. Pass your own to judge against your own stance:
 node examples/solana-evidence-cli/cli.ts preflight ... --policy ./my-policy.json
 ```
 
-The result is a structural preflight and a declared-policy verdict, not a
-simulation. Nothing is built, signed or sent. Network fees and compute budget
-are unknown.
+The exit is a preview and a verdict. Nothing is built, nothing is signed and
+nothing is sent — there is no code path in this kit that could.
 
 ## Check a receipt
 
@@ -52,8 +51,7 @@ node examples/solana-evidence-cli/cli.ts verify ./receipt.json --trusted-key <ba
 
 Offline. It recomputes both hashes, checks the Ed25519 signature against the key
 the receipt carries, and reports whether the receipt's registry pin names the
-Solana adapter. It does not fetch a transaction or independently prove settlement.
-Schema, integrity, issuer and binding are reported separately.
+Solana adapter. Four axes, never one word.
 
 `--trusted-key` is what turns "this signature is sound" into "this signature is
 one I trust". It can be repeated.

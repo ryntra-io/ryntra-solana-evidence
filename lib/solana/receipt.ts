@@ -1,12 +1,19 @@
 /**
  * Reading an Outcome Receipt without asking the issuer whether it is real.
  *
- * This verifier checks the supplied artifact without contacting its issuer
- * or fetching the on-chain transaction. It does not independently establish
- * settlement or reconstruct an original action plan.
+ * A receipt whose only verifier is the party that wrote it proves nothing, so
+ * this module is deliberately the *bounded* half of `lib/agent-control/verify.ts`:
+ * everything a stranger needs to check a Solana receipt offline, and nothing
+ * that would drag Guard's private money-path contracts into a public kit.
  *
- * Canonicalization and frozen v2 hash domains are imported from the shared
- * modules so the reconstructed preimages match the bytes covered by a signature.
+ * The two things that must never be re-implemented are not re-implemented.
+ * Canonicalization comes from `lib/guard/canonical-json.ts` and the frozen v2
+ * hash domains come from `lib/agent-control/canonical.ts` — the same bytes the
+ * issuer signed, by import rather than by imitation. What *is* stated twice is
+ * the receipt's shape and the issuer-axis ladder, because the authoritative
+ * ones live behind that heavy import chain; `receipt.test.mjs` mints a real
+ * signed receipt through `createOutcomeReceipt` and fails the moment the two
+ * readings disagree on any axis, clean or tampered.
  *
  * Four axes, reported separately and never merged into one word:
  *
@@ -26,16 +33,29 @@ import {
   SOLANA_TOKEN_2022_ADAPTER_REF,
   SPL_TRANSFER_ACTION_REF,
 } from "../agent-control/adapters/solana-token-2022.ts";
+import {
+  JUPITER_SWAP_ACTION_REF,
+  JUPITER_SWAP_ADAPTER_REF,
+  JUPITER_SWAP_ADOPTED_RPC_ACTION_REF,
+  JUPITER_SWAP_UNKNOWN_SUBMISSION_ACTION_REF,
+} from "../agent-control/adapters/jupiter-swap.ts";
 import { AGENT_HASH_DOMAINS_V2, agentCanonicalPreimage, hashAgentPayloadV2 } from "../agent-control/canonical.ts";
+import { correctionForReceipt, type ReceiptCorrection } from "./receipt-corrections.ts";
 
 const HEX_HASH = /^0x[0-9a-f]{64}$/;
 const BASE64 = /^[A-Za-z0-9+/]+={0,2}$/;
 const timestamp = z.string().datetime({ offset: true });
 
-/** The receipt's own limitation lines, quoted so a reader can see them here. */
-export const SOLANA_RECEIPT_LIMITATIONS = [
+/** Historical v2.0 receipt copy retained so already signed bytes still parse. */
+export const LEGACY_SOLANA_RECEIPT_LIMITATIONS = [
   "OUTCOME RECEIPT — AN OBSERVATION, NOT AN INSTRUCTION",
   "Ryntra observed and reconciled this outcome; it did not sign, submit, fund or execute it.",
+] as const;
+
+/** The current neutral limitation: submitter truth comes from the action pin. */
+export const SOLANA_RECEIPT_LIMITATIONS = [
+  "OUTCOME RECEIPT — AN OBSERVATION, NOT AN INSTRUCTION",
+  "Ryntra observed and reconciled this outcome. The wallet supplied any required signature; submission responsibility is stated by the receipt's bound action path.",
 ] as const;
 
 const IssuerAttestationShape = z.discriminatedUnion("status", [
@@ -105,9 +125,15 @@ export const SolanaOutcomeReceiptSchema = z
         reconciledAt: timestamp,
       })
       .strict(),
-    limitations: z.tuple([
-      z.literal(SOLANA_RECEIPT_LIMITATIONS[0]),
-      z.literal(SOLANA_RECEIPT_LIMITATIONS[1]),
+    limitations: z.union([
+      z.tuple([
+        z.literal(SOLANA_RECEIPT_LIMITATIONS[0]),
+        z.literal(SOLANA_RECEIPT_LIMITATIONS[1]),
+      ]),
+      z.tuple([
+        z.literal(LEGACY_SOLANA_RECEIPT_LIMITATIONS[0]),
+        z.literal(LEGACY_SOLANA_RECEIPT_LIMITATIONS[1]),
+      ]),
     ]),
     contentHash: z.string().regex(HEX_HASH),
     issuer: IssuerAttestationShape,
@@ -125,7 +151,12 @@ export const SOLANA_RECEIPT_ISSUER_VERDICTS = [
 ] as const;
 export type SolanaReceiptIssuerVerdict = (typeof SOLANA_RECEIPT_ISSUER_VERDICTS)[number];
 
-export const SOLANA_RECEIPT_BINDING_VERDICTS = ["SOLANA_PINNED", "NOT_SOLANA", "UNREADABLE"] as const;
+export const SOLANA_RECEIPT_BINDING_VERDICTS = [
+  "SOLANA_PINNED",
+  "SOLANA_PINNED_WITH_PROVENANCE_MISMATCH",
+  "NOT_SOLANA",
+  "UNREADABLE",
+] as const;
 export type SolanaReceiptBindingVerdict = (typeof SOLANA_RECEIPT_BINDING_VERDICTS)[number];
 
 export type SolanaReceiptVerification = Readonly<{
@@ -137,6 +168,7 @@ export type SolanaReceiptVerification = Readonly<{
   integrity: Readonly<{ valid: boolean; issues: readonly string[] }>;
   issuer: Readonly<{ verdict: SolanaReceiptIssuerVerdict; keyId: string | null; detail: string }>;
   binding: Readonly<{ verdict: SolanaReceiptBindingVerdict; detail: string; refs: readonly string[] }>;
+  correction: ReceiptCorrection | null;
   /** A plain reading of what was observed. Null when the shape failed. */
   outcome: Readonly<{
     status: "MATCHED" | "DEVIATION_RECORDED" | "FAILED";
@@ -160,6 +192,7 @@ const UNRECOGNISED: SolanaReceiptVerification = Object.freeze({
     detail: "no receipt to read a registry pin from",
     refs: Object.freeze([]),
   }),
+  correction: null,
   outcome: null,
 });
 
@@ -239,12 +272,35 @@ function checkIssuer(
 
 function checkBinding(receipt: SolanaOutcomeReceipt): SolanaReceiptVerification["binding"] {
   const refs = receipt.registry.refs.map((entry) => entry.ref);
-  const hasAdapter = refs.includes(SOLANA_TOKEN_2022_ADAPTER_REF);
+  const hasTokenAdapter = refs.includes(SOLANA_TOKEN_2022_ADAPTER_REF);
+  const hasJupiterAdapter = refs.includes(JUPITER_SWAP_ADAPTER_REF);
   const hasAction = refs.includes(SPL_TRANSFER_ACTION_REF);
-  if (!hasAdapter) {
+  const correction = correctionForReceipt(receipt);
+  if (correction) {
+    return {
+      verdict: "SOLANA_PINNED_WITH_PROVENANCE_MISMATCH",
+      detail: `${correction.codes.join(", ")}. The original signed receipt remains immutable; correction ${correction.correctionHash} binds its exact hashes and adopted RPC lane.`,
+      refs,
+    };
+  }
+  if (!hasTokenAdapter && !hasJupiterAdapter) {
     return {
       verdict: "NOT_SOLANA",
-      detail: `The receipt pins ${refs.join(", ")} and none of them is ${SOLANA_TOKEN_2022_ADAPTER_REF}; this is a valid receipt for something else.`,
+      detail: `The receipt pins ${refs.join(", ")} and none is ${SOLANA_TOKEN_2022_ADAPTER_REF} or ${JUPITER_SWAP_ADAPTER_REF}; this is a valid receipt for something else.`,
+      refs,
+    };
+  }
+  if (hasJupiterAdapter) {
+    const action = [
+      JUPITER_SWAP_ACTION_REF,
+      JUPITER_SWAP_ADOPTED_RPC_ACTION_REF,
+      JUPITER_SWAP_UNKNOWN_SUBMISSION_ACTION_REF,
+    ].find((ref) => refs.includes(ref));
+    return {
+      verdict: "SOLANA_PINNED",
+      detail: action
+        ? `The receipt pins ${JUPITER_SWAP_ADAPTER_REF} and ${action}.`
+        : `The receipt pins ${JUPITER_SWAP_ADAPTER_REF}; no supported Jupiter submission action is pinned alongside it.`,
       refs,
     };
   }
@@ -308,6 +364,7 @@ export function verifySolanaOutcomeReceipt(
     integrity: Object.freeze({ valid: integrityIssues.length === 0, issues: Object.freeze(integrityIssues) }),
     issuer: Object.freeze(checkIssuer(receipt, options.trustedPublicKeys)),
     binding: Object.freeze(checkBinding(receipt)),
+    correction: correctionForReceipt(receipt),
     outcome: Object.freeze({
       status: receipt.outcome.status,
       chainRef: receipt.outcome.chainRef,

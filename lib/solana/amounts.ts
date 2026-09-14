@@ -16,6 +16,19 @@ export function scaleRawAmount(rawAmount: string, decimals: number): string {
   return fraction ? `${grouped}.${fraction}` : grouped;
 }
 
+/**
+ * Exact amount with trailing zeros stripped. `0.000000000` becomes `0`;
+ * `95,500,000.000000` becomes `95,500,000`. The chain's decimals are not
+ * discarded — remaining fractional digits stay.
+ */
+export function displayAmount(rawAmount: string, decimals: number): string {
+  const exact = scaleRawAmount(rawAmount, decimals);
+  if (!exact.includes(".")) return exact;
+  const [whole, fraction] = exact.split(".");
+  const trimmed = fraction.replace(/0+$/, "");
+  return trimmed.length > 0 ? `${whole}.${trimmed}` : whole;
+}
+
 export type ParsedAmount = Readonly<{ ok: true; raw: string }> | Readonly<{ ok: false; reason: string }>;
 
 /**

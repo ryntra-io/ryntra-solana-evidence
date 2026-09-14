@@ -9,7 +9,7 @@ no key, builds no transaction, and calls no state-changing RPC method.
 | Tool | What it does | Reaches the network |
 |---|---|---|
 | `inspect_solana_mint` | One mint → Asset Passport: identity, issuer authorities, every Token Extension with provenance and holder-language meaning | yes, read-only RPC |
-| `preflight_solana_action` | Structural SPL transfer preflight + declared-policy verdict; not a simulation | yes, read-only RPC |
+| `preflight_solana_action` | Exact SPL transfer preview + owner-policy verdict | yes, read-only RPC |
 | `verify_solana_receipt` | Recompute a receipt's hashes, check its Ed25519 signature, read its Solana binding | no — entirely local |
 | `read_example_owner_policy` | The cautious example policy, as an editable shape | no |
 
@@ -44,7 +44,6 @@ that no tool's JSON Schema contains an endpoint or URL field.
 
 - No key is read, held, derived or requested. There is no signing path.
 - No transaction is built, simulated for submission, or sent.
-- Receipt verification does not fetch a transaction or independently prove settlement.
 - A policy verdict's best value is `NO_KNOWN_BLOCKER`. The word "safe" is not in
   this server's vocabulary, and a test greps for it.
 - Results are byte-bounded, and a failure returns a fixed code without echoing

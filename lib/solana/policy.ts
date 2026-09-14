@@ -15,7 +15,7 @@
  * as INCOMPLETE.
  */
 
-import type { SplTransferInput } from "../agent-control/adapters/solana-token-2022.ts";
+import type { NativeSolTransferInput, SplTransferInput } from "../agent-control/adapters/solana-token-2022.ts";
 import {
   type SolanaOwnerPolicy,
   type SolanaPolicyVerdict,
@@ -237,6 +237,150 @@ export function evaluateOwnerPolicy(args: {
           detail: `The mint carries extensions this version has no semantics for (${preflight.unsupportedKinds.join(", ")}); their powers are unknown, not absent.`,
         },
   );
+
+  findings.push(
+    policy.requireHumanApproval
+      ? {
+          rule: "HUMAN_APPROVAL",
+          outcome: "REVIEW_REQUIRED",
+          detail: "The policy requires a human to authorize this transfer before any signature.",
+        }
+      : {
+          rule: "HUMAN_APPROVAL",
+          outcome: "ALLOWED",
+          detail: "The policy does not require a separate human approval for this transfer.",
+        },
+  );
+
+  const outcomes = new Set(findings.map((finding) => finding.outcome));
+  const verdict = outcomes.has("BLOCKED")
+    ? "BLOCKED"
+    : outcomes.has("INCOMPLETE")
+      ? "INCOMPLETE"
+      : outcomes.has("REVIEW_REQUIRED")
+        ? "REVIEW_REQUIRED"
+        : "NO_KNOWN_BLOCKER";
+
+  return SolanaPolicyVerdictSchema.parse({
+    schema: "ryntra.solana.policy-verdict",
+    schemaVersion: "0.1.0",
+    verdict,
+    findings,
+    evaluatedAt: now.toISOString(),
+  });
+}
+
+/**
+ * Native SOL has no mint powers. The token rules are not run and not
+ * reported as ALLOWED — that would be a USDC verdict wearing a SOL coat.
+ */
+export function evaluateNativeSolPolicy(args: {
+  policy: SolanaOwnerPolicy;
+  input: NativeSolTransferInput;
+  preflight: SplTransferPreflight;
+  now?: Date;
+}): SolanaPolicyVerdict {
+  const policy = SolanaOwnerPolicySchema.parse(args.policy);
+  const { input, preflight } = args;
+  const now = args.now ?? new Date();
+  const findings: Finding[] = [];
+
+  findings.push(
+    policy.allowedNetworks.includes(input.network)
+      ? { rule: "NETWORK_ALLOWED", outcome: "ALLOWED", detail: `Network ${input.network} is allowed by the policy.` }
+      : {
+          rule: "NETWORK_ALLOWED",
+          outcome: "BLOCKED",
+          detail: `Network ${input.network} is not among the policy's allowed networks (${policy.allowedNetworks.join(", ")}).`,
+        },
+  );
+
+  findings.push({
+    rule: "MINT_ALLOWED",
+    outcome: "ALLOWED",
+    detail: "Native SOL is not a mint; the mint allowlist does not apply.",
+  });
+
+  findings.push({
+    rule: "TOKEN_PROGRAM_ALLOWED",
+    outcome: "ALLOWED",
+    detail: "Native SOL moves through the System Program, not a token program.",
+  });
+
+  findings.push({
+    rule: "NOT_STRUCTURALLY_DOOMED",
+    outcome: "ALLOWED",
+    detail: "Native SOL has no mint configuration that can freeze, pause or forbid a transfer.",
+  });
+
+  findings.push({
+    rule: "PERMANENT_DELEGATE_ACCEPTED",
+    outcome: "ALLOWED",
+    detail: "Native SOL carries no permanent delegate.",
+  });
+
+  findings.push({
+    rule: "TRANSFER_HOOK_ALLOWLISTED",
+    outcome: "ALLOWED",
+    detail: "Native SOL runs no transfer hook.",
+  });
+
+  findings.push({
+    rule: "FEE_WITHIN_CAP",
+    outcome: "ALLOWED",
+    detail: "Native SOL has no mint fee.",
+  });
+
+  findings.push(
+    policy.recipientAllowlist === "ANY" || policy.recipientAllowlist.includes(input.recipient)
+      ? { rule: "RECIPIENT_ALLOWED", outcome: "ALLOWED", detail: "The recipient is allowed by the policy." }
+      : {
+          rule: "RECIPIENT_ALLOWED",
+          outcome: "BLOCKED",
+          detail: `Recipient ${input.recipient} is not on the policy's allowlist.`,
+        },
+  );
+
+  findings.push(
+    policy.maxAmountRaw === null || BigInt(input.amountRaw) <= BigInt(policy.maxAmountRaw)
+      ? { rule: "AMOUNT_WITHIN_LIMIT", outcome: "ALLOWED", detail: "The amount is within the policy's limit." }
+      : {
+          rule: "AMOUNT_WITHIN_LIMIT",
+          outcome: "BLOCKED",
+          detail: `Amount ${input.amountRaw} lamports exceeds the policy's limit of ${policy.maxAmountRaw}.`,
+        },
+  );
+
+  findings.push({
+    rule: "DEFAULT_FROZEN_ACCEPTED",
+    outcome: "ALLOWED",
+    detail: "Native SOL accounts do not start frozen.",
+  });
+
+  const observed = Date.parse(preflight.observedAt);
+  const ageSeconds = Number.isFinite(observed) ? Math.max(0, Math.round((now.getTime() - observed) / 1000)) : null;
+  findings.push(
+    ageSeconds !== null && ageSeconds <= policy.maxEvidenceAgeSeconds
+      ? {
+          rule: "EVIDENCE_FRESH",
+          outcome: "ALLOWED",
+          detail: `The evidence is ${ageSeconds}s old, within the policy's ${policy.maxEvidenceAgeSeconds}s budget.`,
+        }
+      : {
+          rule: "EVIDENCE_FRESH",
+          outcome: "INCOMPLETE",
+          detail:
+            ageSeconds === null
+              ? "The evidence carries no readable observation time; its freshness cannot be established."
+              : `The evidence is ${ageSeconds}s old, beyond the policy's ${policy.maxEvidenceAgeSeconds}s budget.`,
+        },
+  );
+
+  findings.push({
+    rule: "EXTENSIONS_UNDERSTOOD",
+    outcome: "ALLOWED",
+    detail: "Native SOL has no token extensions.",
+  });
 
   findings.push(
     policy.requireHumanApproval

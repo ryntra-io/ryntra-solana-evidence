@@ -16,8 +16,13 @@
  */
 
 /**
- * Shared evidence states for runtime rendering and static typing.
- * Deriving EvidenceState from this array keeps both vocabularies in sync.
+ * The five states, as a value.
+ *
+ * The type alone cannot be rendered, so every surface that wanted to show the
+ * vocabulary retyped it — and a retyped vocabulary is how a document ends up
+ * naming states the code stopped using — the exact drift this repository had
+ * to repair once. The type is derived from this array rather than the other way
+ * round, so adding a state to one and forgetting the other is a compile error.
  */
 export const EVIDENCE_STATES = ["FRESH", "STALE", "CONFLICTING", "UNKNOWN", "UNAVAILABLE"] as const;
 

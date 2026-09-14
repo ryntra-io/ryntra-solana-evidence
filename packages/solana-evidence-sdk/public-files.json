@@ -38,11 +38,19 @@
       "role": "package_metadata"
     },
     {
+      "path": "lib/agent-control/adapters/jupiter-swap.ts",
+      "role": "source"
+    },
+    {
       "path": "lib/agent-control/adapters/solana-token-2022.ts",
       "role": "source"
     },
     {
       "path": "lib/agent-control/canonical.ts",
+      "role": "source"
+    },
+    {
+      "path": "lib/evidence/envelope.ts",
       "role": "source"
     },
     {
@@ -126,6 +134,10 @@
       "role": "source"
     },
     {
+      "path": "lib/solana/receipt-corrections.ts",
+      "role": "source"
+    },
+    {
       "path": "lib/solana/receipt.ts",
       "role": "source"
     },
@@ -139,10 +151,6 @@
     },
     {
       "path": "lib/solana/types.ts",
-      "role": "source"
-    },
-    {
-      "path": "lib/stellar/evidence.ts",
       "role": "source"
     },
     {
