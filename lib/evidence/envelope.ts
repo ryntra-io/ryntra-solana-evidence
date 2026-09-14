@@ -29,7 +29,7 @@ export const EVIDENCE_STATES = ["FRESH", "STALE", "CONFLICTING", "UNKNOWN", "UNA
 export type EvidenceState = (typeof EVIDENCE_STATES)[number];
 
 export type EvidenceSource = Readonly<{
-  /** Machine reference, e.g. `stellar:mainnet:horizon:/accounts/GA5Z…`. */
+  /** Machine reference, e.g. `solana:mainnet:getAccountInfo:<mint>`. */
   ref: string;
   /** What answered, in words a person reads on a receipt. */
   label: string;

@@ -3,14 +3,14 @@
  *
  * Split out of `canonical.ts` for one reason: `canonical.ts` imports
  * `node:crypto`, and a hash that only exists on a server cannot be recomputed by
- * the person holding the receipt. A Stellar receipt is finalized in a browser,
+ * the person holding the receipt. A receipt may be finalized in a browser,
  * where `createHash` does not exist and Web Crypto does — but Web Crypto is
  * asynchronous, so the two digests are necessarily written twice.
  *
  * **Two hashers over one canonicalizer is safe; two canonicalizers is not.** The
  * digest is SHA-256 either way and cannot drift. What can drift is key order,
  * `undefined` handling, or number rules — so that lives here, once, and both
- * sides import it. `lib/stellar/transactions/lifecycle.test.mjs` asserts the two
+ * sides import it. A test asserts the two hashers
  * produce identical hex for the same value, which is what makes "recompute it
  * yourself" a checkable claim rather than a promise.
  */

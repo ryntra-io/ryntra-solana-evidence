@@ -5,7 +5,7 @@
  * carried the regex, and every surface that collects an address carried
  * nothing — so a value that could never be an address travelled to the network,
  * was read against the chain, and came back as a schema refusal that named no
- * field. The founder hit exactly that: a recipient beginning `claude-` produced
+ * field. The founder hit exactly that: a recipient beginning `wallet-` produced
  * "The transfer proposal or policy was not accepted."
  *
  * So the shape lives here, with no imports, and the schema consumes it. One
@@ -40,7 +40,7 @@ export function parseSolanaAddress(value: string, field = "Solana address"): Par
   }
   /* Order is the useful part. A character base58 never uses at all means this
      was never an address; a 0/O/I/l means it probably is one, misread. Testing
-     the confusables first would answer `claude-opu5xkpx…` with "contains I,
+     the confusables first would answer `wallet-opu5xkpx…` with "contains I,
      which base58 does not use", which reads as a near miss and sends the reader
      hunting one character in a string that is not an address in the first
      place. So the definite failure is reported before the likely typo. */
