@@ -4,7 +4,7 @@ What has shipped in the Ryntra product, newest first. Each entry is one complete
 
 Entries dated before Sep 16, 2026 record earlier shipped work, written down when the public build log was introduced; the dates are the dates the work shipped.
 
-Evidence kit version in this repository: `1.1.0`. Machine-readable status: [`docs/product/status.json`](docs/product/status.json). Product documentation: [`docs/product/README.md`](docs/product/README.md). Repository: https://github.com/ryntra-io/ryntra-solana-evidence.
+Evidence kit version in this repository: `1.2.0`. Machine-readable status: [`docs/product/status.json`](docs/product/status.json). Product documentation: [`docs/product/README.md`](docs/product/README.md). Repository: https://github.com/ryntra-io/ryntra-solana-evidence.
 
 ## Sep 16, 2026 — Pre-IPO stock instruments
 

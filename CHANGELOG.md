@@ -1,5 +1,29 @@
 # Changelog
 
+## [1.2.0] — 2026-09-16
+
+- Add `@ryntra/tokenized-stocks`: the model of a tokenized stock on Solana —
+  instrument class, unit basis and holder rights; the Token-2022 transfer fee
+  from a mint's own config and the current epoch; the issuer lifecycle of a
+  token from a pause, a verified issuer notice or the catalogue; scaled-unit
+  arithmetic with an exact integer ratio; the state of a reference price
+  judged from the source's observation time against the exchange session.
+  Pure functions, network-free tests.
+- Add `@ryntra/trading-plans`: deterministic sizing of a spot-long position
+  from an entry, an invalidation, a budget and a planned risk, with the
+  assumptions the figure stands on; and a reader of decimal input that
+  understands `0,5`, `1 000,50` and refuses what it cannot read without
+  guessing. Pure functions, network-free tests.
+- Add `BUILDLOG.md`, the public record of what shipped in the Ryntra product
+  and when, generated from structured entries; `docs/product` with the
+  product documentation; `docs/product/status.json` with the live address,
+  the public capabilities and the latest public update; `docs/screenshots`
+  with selected screenshots of the live application.
+- README: the *Ryntra product development* section states the boundary
+  between the private production repository and this public projection.
+- `scripts/verify-boundaries.mjs` admits `BUILDLOG.md` at the top level;
+  every other new file is named by the public file list as before.
+
 ## [1.1.0] — 2026-09-14
 
 - Move the shared evidence envelope to `lib/evidence/envelope.ts`; the Solana

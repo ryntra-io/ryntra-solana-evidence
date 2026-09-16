@@ -1,9 +1,9 @@
 {
   "name": "ryntra-solana-evidence",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "private": true,
   "type": "module",
-  "description": "Read-only Solana evidence kit: Token Extensions asset passports, exact transfer preflight against a declared policy, offline Outcome Receipt verification, an MCP server and a CLI.",
+  "description": "Read-only Solana evidence kit: Token Extensions asset passports, exact transfer preflight against a declared policy, offline Outcome Receipt verification, an MCP server and a CLI — with the tokenized-stock model and the trading-plan helpers the Ryntra product runs on.",
   "author": "Dmytro Plavutskyi",
   "license": "Apache-2.0",
   "repository": {
