@@ -22,7 +22,7 @@
  * strings out, so both languages read them.
  */
 
-import { evidenceMetric, type EvidenceConditionMode, type EvidenceMetricDefinition, type EvidenceOperator, type EvidenceUnit, type EvidenceWindow, isEvidenceWindow } from "./metrics.ts";
+import { evidenceMetric, type EvidenceConditionMode, type EvidenceMetricDefinition, type EvidenceOperator, type EvidenceProvider, type EvidenceUnit, type EvidenceWindow, isEvidenceWindow } from "./metrics.ts";
 import { metricOf, snapshotStateAt, type MarketEvidenceRead, type MarketEvidenceSnapshot } from "./snapshot.ts";
 
 export type EvidenceConditionIssue = Readonly<{ path: string; message: string }>;
@@ -75,8 +75,16 @@ export function validateEvidenceConditions(conditions: readonly unknown[]): read
       if (metric.sign === "non-negative" && condition.threshold < 0) {
         issues.push({ path: `${at}.threshold`, message: "This figure is never below zero; the threshold cannot be negative." });
       }
-      if (metric.unit === "wallets" && !Number.isInteger(condition.threshold)) {
+      if ((metric.unit === "wallets" || metric.unit === "count") && !Number.isInteger(condition.threshold)) {
         issues.push({ path: `${at}.threshold`, message: "A count of addresses is a whole number." });
+      }
+      if (metric.unit === "percent" && condition.threshold > 100) {
+        issues.push({ path: `${at}.threshold`, message: "A share of the supply is at most 100 percent." });
+      }
+      /* An authority is present or renounced, nothing in between: the only
+         rules are "renounced" (at most 0) and "present" (at least 1). */
+      if (metric.unit === "flag" && !((condition.operator === "lte" && condition.threshold === 0) || (condition.operator === "gte" && condition.threshold === 1))) {
+        issues.push({ path: `${at}.threshold`, message: "An authority is either present or renounced: the rule is at most 0 (renounced) or at least 1 (present)." });
       }
     }
     if (condition.mode !== "advisory" && condition.mode !== "required") {
@@ -113,6 +121,12 @@ const OPERATOR_SIGN: Readonly<Record<EvidenceOperator, string>> = { gt: ">", gte
 
 export function formatEvidenceValue(value: number, unit: EvidenceUnit): string {
   if (unit === "wallets") return `${Math.round(value).toLocaleString("en-US")} ${Math.round(Math.abs(value)) === 1 ? "address" : "addresses"}`;
+  if (unit === "count") return Math.round(value).toLocaleString("en-US");
+  if (unit === "flag") return value >= 1 ? "present" : "renounced";
+  if (unit === "percent") {
+    const digits = Math.abs(value) >= 10 ? 1 : 2;
+    return `${Number(value.toFixed(digits)).toLocaleString("en-US", { maximumFractionDigits: digits })}%`;
+  }
   const sign = value < 0 ? "−" : "";
   const magnitude = Math.abs(value);
   const digits = magnitude >= 1000 ? 0 : 2;
@@ -123,9 +137,17 @@ export function operatorSign(operator: EvidenceOperator): string {
   return OPERATOR_SIGN[operator];
 }
 
-/** The rule as one figure string: `24h DEX trading volume ≥ $1,000,000`. */
+/**
+ * The rule as one figure string: `24h DEX trading volume ≥ $1,000,000`; a
+ * point-in-time figure carries no window word (`share held by the top 10
+ * holders ≤ 40%`); an authority reads as its state (`mint authority:
+ * renounced`).
+ */
 export function describeEvidenceCondition(condition: EvidenceCondition, metric: EvidenceMetricDefinition, language: "en" | "uk" = "en"): string {
-  return `${condition.window} ${metric.words[language].sentence} ${OPERATOR_SIGN[condition.operator]} ${formatEvidenceValue(condition.threshold, metric.unit)}`;
+  const sentence = metric.words[language].sentence;
+  const prefix = condition.window === "now" ? "" : `${condition.window} `;
+  if (metric.unit === "flag") return `${prefix}${sentence}: ${formatEvidenceValue(condition.threshold, "flag")}`;
+  return `${prefix}${sentence} ${OPERATOR_SIGN[condition.operator]} ${formatEvidenceValue(condition.threshold, metric.unit)}`;
 }
 
 function clock(iso: string): string {
@@ -162,6 +184,7 @@ export function judgeEvidenceCondition(condition: EvidenceCondition, read: Marke
   if (read.state === "UNKNOWN" || !read.snapshot) return unknown(read.reason ?? "The source has no data for this token.", null, "no data");
   const snapshot: MarketEvidenceSnapshot = read.snapshot;
   if (snapshot.window !== condition.window) return unknown(`The observation is for ${snapshot.window}, the rule for ${condition.window}.`, null, null);
+  if (snapshot.provider !== metric.provider) return unknown("The observation is from another source than the one that serves this figure.", null, null);
   const figure = metricOf(snapshot, metric.id);
   if (!figure || figure.value === null) return unknown(figure?.note ?? "The source answered without this figure.", null, "no data");
   const asked = clock(snapshot.fetchedAt);
@@ -170,11 +193,19 @@ export function judgeEvidenceCondition(condition: EvidenceCondition, read: Marke
   }
   const met = compare(figure.value, condition.operator, condition.threshold);
   const actual = `${formatEvidenceValue(figure.value, metric.unit)} · asked ${asked}${figure.coverage === "partial" ? " · partial" : ""}`;
+  const reason =
+    metric.unit === "flag"
+      ? met
+        ? `${formatEvidenceValue(figure.value, "flag")}, as the rule wants`
+        : `${formatEvidenceValue(figure.value, "flag")} — the rule wants ${formatEvidenceValue(condition.threshold, "flag")}`
+      : met
+        ? `${formatEvidenceValue(figure.value, metric.unit)} ${OPERATOR_SIGN[condition.operator]} ${formatEvidenceValue(condition.threshold, metric.unit)}`
+        : `${formatEvidenceValue(figure.value, metric.unit)} is not ${OPERATOR_SIGN[condition.operator]} ${formatEvidenceValue(condition.threshold, metric.unit)}`;
   return {
     outcome: met ? "pass" : "fail",
     value: figure.value,
     unit: metric.unit,
-    reason: met ? `${formatEvidenceValue(figure.value, metric.unit)} ${OPERATOR_SIGN[condition.operator]} ${formatEvidenceValue(condition.threshold, metric.unit)}` : `${formatEvidenceValue(figure.value, metric.unit)} is not ${OPERATOR_SIGN[condition.operator]} ${formatEvidenceValue(condition.threshold, metric.unit)}`,
+    reason,
     expected,
     actual,
   };
@@ -185,4 +216,28 @@ export function windowsOf(conditions: readonly EvidenceCondition[]): readonly Ev
   const seen = new Set<EvidenceWindow>();
   for (const condition of conditions) if (isEvidenceWindow(condition.window)) seen.add(condition.window);
   return [...seen];
+}
+
+/** One read the Review makes: a provider and a window, as a condition's metric names them. */
+export type EvidenceReadKey = Readonly<{ provider: EvidenceProvider; window: EvidenceWindow }>;
+
+/** The provider a condition is judged on — its metric's, from the registry; null when the metric is not served. */
+export function providerOfCondition(condition: Pick<EvidenceCondition, "metric">): EvidenceProvider | null {
+  return evidenceMetric(condition.metric)?.provider ?? null;
+}
+
+/**
+ * Which (provider, window) reads a list of conditions needs, each once, in
+ * first-use order — the reads the Review makes. A condition on a metric the
+ * registry does not serve asks for no read; the judge reports it unknown.
+ */
+export function readsOf(conditions: readonly EvidenceCondition[]): readonly EvidenceReadKey[] {
+  const seen = new Map<string, EvidenceReadKey>();
+  for (const condition of conditions) {
+    const provider = providerOfCondition(condition);
+    if (!provider || !isEvidenceWindow(condition.window)) continue;
+    const key = `${provider}:${condition.window}`;
+    if (!seen.has(key)) seen.set(key, { provider, window: condition.window });
+  }
+  return [...seen.values()];
 }

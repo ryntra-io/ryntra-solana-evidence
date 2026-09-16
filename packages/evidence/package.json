@@ -1,15 +1,17 @@
 {
   "name": "@ryntra/evidence",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "private": true,
   "type": "module",
-  "description": "The market-evidence layer a Trading Plan's conditions stand on: a metric registry, a normalized observation with its provenance and times, a condition validator and judge where an unjudgeable rule is never a pass, a rights map read from the provider's terms, a credit-governor contract, and the Nansen adapter that reserves and settles every call. Pure modules plus one thin HTTP client; no storage, no signing.",
+  "description": "The evidence layer a Trading Plan's conditions stand on: a metric registry over two providers (market activity over rolling windows, the token's structure at a point in time), a normalized observation with its provenance and times, a condition validator and judge where an unjudgeable rule is never a pass, a rights map read from each provider's terms, a credit-governor contract, the Nansen adapter and the DD.xyz adapter that reserve and settle every call, and the address evidence a recipient check reads. Pure modules plus two thin HTTP clients; no storage, no signing.",
   "keywords": [
     "ryntra",
     "solana",
     "onchain-evidence",
     "trading-plan",
     "nansen",
+    "ddxyz",
+    "due-diligence",
     "provenance"
   ],
   "license": "Apache-2.0",

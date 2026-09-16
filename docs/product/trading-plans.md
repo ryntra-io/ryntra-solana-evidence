@@ -86,8 +86,41 @@ money rules.
   stay with that review for a bounded time under the source's terms; the
   verdict stays for good.
 
+## Rules on how the token is built
+
+A second source answers a different question — not what the market did, but
+how the token itself is built.
+
+- **Risk & due diligence** on the asset page reads it when the person asks:
+  how much of the supply the ten largest holders hold together and how many
+  addresses hold the token, whether the mint authority and the freeze
+  authority are present or renounced, whether the token takes a tax on every
+  transfer, and — as the source's own labels on addresses from the token's
+  first moments — what early snipers, bundled buyers and the developer hold
+  now. Each fact says when the source last analysed the token and how far
+  behind it may be. An issuer-backed instrument is read in its own context:
+  a supply held by the issuer's own accounts and a kept freeze right are the
+  design of a tokenized stock, and the card says so beside the figure. There
+  is no score and no verdict — the state in the card's head counts facts and
+  never says *safe*.
+- **Any of these facts can become a rule** of the plan the same way: the
+  top-ten share at most a bound the person writes, the holder count at least
+  a figure, the transfer tax at most a percent, an authority renounced or
+  present. The early-holder shares are the source's classification of
+  addresses and can only warn, never refuse.
+- **At the Review** the server reads the token's structure again and judges
+  every rule beside the price and money checks; a required rule refuses the
+  version when the fact is not what the person wrote, or when the source did
+  not answer, answered too long ago, or cannot analyse the token. A trade
+  outside a plan, and a plan without such a rule, never waits on this source.
+- **Before a transfer**, Send shows a recipient check from the same source —
+  whether the address is on a sanctions list the source keeps and whether the
+  source found anything about it — never a verdict, never a block; a program,
+  a vault or an exchange contract the source cannot analyse is said to be
+  unsupported, not clean.
+
 The registry of what a condition may name, the observation's shape, the
-validator and the judge are open source in
+validator and the judge, the rights maps and both adapters are open source in
 [`@ryntra/evidence`](../../packages/evidence/README.md).
 
 ## What a plan is not

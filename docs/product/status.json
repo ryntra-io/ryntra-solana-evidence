@@ -4,7 +4,7 @@
   "product": "Ryntra",
   "liveUrl": "https://ryntra.io",
   "repository": "https://github.com/ryntra-io/ryntra-solana-evidence",
-  "publicKitVersion": "1.3.0",
+  "publicKitVersion": "1.4.0",
   "lastPublicProductUpdate": "2026-09-16",
   "capabilities": [
     {
@@ -64,11 +64,11 @@
   ],
   "buildLog": {
     "path": "BUILDLOG.md",
-    "entries": 19,
+    "entries": 20,
     "latest": {
-      "id": "2026-09-16-onchain-evidence-in-the-plan",
+      "id": "2026-09-16-risk-and-due-diligence",
       "date": "2026-09-16",
-      "title": "Onchain evidence inside the trading plan",
+      "title": "Risk & due diligence: how the token is built, as a rule of the plan",
       "productArea": "trading-plans"
     }
   }

@@ -38,6 +38,10 @@
       "role": "documentation"
     },
     {
+      "path": "docs/screenshots/send-recipient-check.png",
+      "role": "screenshot"
+    },
+    {
       "path": "docs/screenshots/spot-stock-quote.png",
       "role": "screenshot"
     },
@@ -55,6 +59,10 @@
     },
     {
       "path": "docs/screenshots/stock-pre-ipo-asset.png",
+      "role": "screenshot"
+    },
+    {
+      "path": "docs/screenshots/stock-risk-due-diligence.png",
       "role": "screenshot"
     },
     {
@@ -114,6 +122,10 @@
       "role": "source"
     },
     {
+      "path": "lib/evidence/address.ts",
+      "role": "source"
+    },
+    {
       "path": "lib/evidence/conditions.ts",
       "role": "source"
     },
@@ -122,11 +134,27 @@
       "role": "source"
     },
     {
+      "path": "lib/evidence/flags.ts",
+      "role": "source"
+    },
+    {
       "path": "lib/evidence/governor.ts",
       "role": "source"
     },
     {
       "path": "lib/evidence/metrics.ts",
+      "role": "source"
+    },
+    {
+      "path": "lib/evidence/providers/ddxyz/adapter.server.ts",
+      "role": "source"
+    },
+    {
+      "path": "lib/evidence/providers/ddxyz/client.server.ts",
+      "role": "source"
+    },
+    {
+      "path": "lib/evidence/providers/ddxyz/mapper.ts",
       "role": "source"
     },
     {

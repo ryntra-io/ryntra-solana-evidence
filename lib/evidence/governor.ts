@@ -22,6 +22,8 @@ export type GovernorSettlement = Readonly<{
   creditsRemaining: number | null;
   requestId: string | null;
   retried: boolean;
+  /** Why the call failed, in the client's own kinds (auth, plan, rate, timeout, …); null on success or when the adapter does not say. */
+  failureKind?: string | null;
 }>;
 
 export type CreditGovernor = Readonly<{
@@ -39,11 +41,13 @@ export type MemoryGovernorState = Readonly<{
   retries: number;
   remainingReported: number | null;
   lastRequestId: string | null;
+  /** Failures by the client's kind, so a script can say what went wrong and how often. */
+  failures: Readonly<Record<string, number>>;
 }>;
 
 /** One process, one ceiling: the governor a script or an example runs with. */
 export function createMemoryGovernor(ceiling: number): CreditGovernor & Readonly<{ state(): MemoryGovernorState }> {
-  const state = { ceiling, reservedCredits: 0, usedCredits: 0, requests: 0, succeeded: 0, failed: 0, retries: 0, remainingReported: null as number | null, lastRequestId: null as string | null };
+  const state = { ceiling, reservedCredits: 0, usedCredits: 0, requests: 0, succeeded: 0, failed: 0, retries: 0, remainingReported: null as number | null, lastRequestId: null as string | null, failures: {} as Record<string, number> };
   return {
     async reserve({ expectedCredits }) {
       if (!Number.isInteger(ceiling) || ceiling <= 0) return { ok: false, code: "NO_BUDGET", message: "No credit ceiling was given; no call is made." };
@@ -59,11 +63,15 @@ export function createMemoryGovernor(ceiling: number): CreditGovernor & Readonly
       state.usedCredits += settlement.creditsUsed === null ? expectedCredits : Math.max(0, Math.round(settlement.creditsUsed));
       state.requests += 1;
       if (settlement.succeeded) state.succeeded += 1;
-      else state.failed += 1;
+      else {
+        state.failed += 1;
+        const kind = settlement.failureKind ?? "unknown";
+        state.failures[kind] = (state.failures[kind] ?? 0) + 1;
+      }
       if (settlement.retried) state.retries += 1;
       if (settlement.creditsRemaining !== null) state.remainingReported = settlement.creditsRemaining;
       if (settlement.requestId !== null) state.lastRequestId = settlement.requestId;
     },
-    state: () => ({ ...state }),
+    state: () => ({ ...state, failures: { ...state.failures } }),
   };
 }

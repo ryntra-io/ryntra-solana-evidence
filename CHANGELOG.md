@@ -1,5 +1,29 @@
 # Changelog
 
+## [1.4.0] — 2026-09-16
+
+- `@ryntra/evidence` 0.2.0: a second provider on the same registry — the
+  token's structure as point-in-time figures (`now`): the top-ten holder
+  share, the holder count, the mint and freeze authority (a flag a rule can
+  name: renounced or present), the transfer tax, and the source's sniper,
+  bundler and developer shares as cohort figures that may warn, never
+  refuse; the condition validator and judge extended to percent, count and
+  flag units; `readsOf` — the (provider, window) reads a list of conditions
+  needs; the rights map for DD.xyz (derived aggregates with attribution;
+  address lists never pass; plan-gated and unsupported families named and
+  never called); the address evidence a recipient check reads (sanctions in
+  the source's own words, findings as counts by severity with the source's
+  own figure and band, unsupported for a program-owned account — never
+  clean) with one summary word, none of which is "safe"; the compact
+  structure state with no threshold behind it; the DD.xyz client (one key,
+  `chain=sol` on every call, one request a second, a retry only for a network
+  error or a timeout), mapper (a zero the engine could not have measured is
+  an absence) and adapter (reserve → call → settle on the provider's own
+  `x-webacy-cu` price). Network-free tests over a fake provider.
+- Product documentation: *Rules on how the token is built* under trading
+  plans; screenshots of the Risk & due diligence card and the recipient
+  check in Send.
+
 ## [1.3.0] — 2026-09-16
 
 - Add `@ryntra/evidence`: the market-evidence layer a Trading Plan's

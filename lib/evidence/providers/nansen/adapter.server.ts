@@ -20,7 +20,7 @@
  */
 
 import type { CreditGovernor } from "../../governor.ts";
-import type { EvidenceProvider, EvidenceWindow } from "../../metrics.ts";
+import { type EvidenceProvider, type EvidenceWindow, type MarketWindow, MARKET_WINDOWS } from "../../metrics.ts";
 import { familyRights, NANSEN_RIGHTS } from "../../rights.ts";
 import type { MarketEvidenceSnapshot } from "../../snapshot.ts";
 import type { NansenCall, NansenClient } from "./client.server.ts";
@@ -74,7 +74,7 @@ export function createNansenAdapter(input: { client: NansenClient; governor: Cre
     const call = await client.call(name, body);
     await governor.settle({
       expectedCredits: expected,
-      settlement: { succeeded: call.ok, creditsUsed: call.headers.creditsUsed, creditsRemaining: call.headers.creditsRemaining, requestId: call.headers.requestId, retried: call.retried },
+      settlement: { succeeded: call.ok, creditsUsed: call.headers.creditsUsed, creditsRemaining: call.headers.creditsRemaining, requestId: call.headers.requestId, retried: call.retried, failureKind: call.ok ? null : call.kind },
       nowMs: Date.now(),
     });
     if (!call.ok) {
@@ -87,7 +87,10 @@ export function createNansenAdapter(input: { client: NansenClient; governor: Cre
   return {
     provider: "nansen",
     async read({ mint, window, nowMs }) {
-      const timeframes = NANSEN_TIMEFRAMES[window];
+      /* Nansen's figures are rolling-window activity; a point-in-time window
+         is another provider's and is not asked here. */
+      if (!(MARKET_WINDOWS as readonly EvidenceWindow[]).includes(window)) return { state: "UNKNOWN", reason: "This source has no point-in-time figures; the rolling windows are its own." };
+      const timeframes = NANSEN_TIMEFRAMES[window as MarketWindow];
       /* The screener's address filter also matches a symbol, so the row is
          the one whose address is this exact mint, or none; a symbol is a
          label, never an identity. */

@@ -1,14 +1,19 @@
 # @ryntra/evidence
 
-The market-evidence layer a Trading Plan's conditions stand on at
+The evidence layer a Trading Plan's conditions stand on at
 [ryntra.io/app/strategies](https://ryntra.io/app/strategies). An observation
-about a token — how much was traded, what moved to or from the addresses a
-source labels — arrives with its provenance: the provider, the window, when
+about a token arrives with its provenance: the provider, the window, when
 Ryntra asked, how far behind the source may be, when the figures stop
-counting as current, and the attribution the source's terms require. A person
-writes a rule on one of its figures; before anything is signed the rule is
-judged against a fresh observation, and a rule that cannot be judged is never
-a pass.
+counting as current, and the attribution the source's terms require. Two
+providers answer two questions on one registry — what the market did (DEX
+volume, the movement of labelled groups, over a rolling window) and how the
+token is built (the top-ten holder share, the holder count, the mint and
+freeze authority, the transfer tax, the source's early-holder labels, at a
+point in time). A person writes a rule on one of the figures; before anything
+is signed the rule is judged against a fresh observation, and a rule that
+cannot be judged is never a pass. The same layer reads what a security source
+knows about an address before a transfer — sanctions in the source's own
+words, findings as counts by severity — and never blocks on it.
 
 These are the modules the Ryntra product runs on, imported rather than copied.
 The product's shared cache and shared credit ledger sit above them and are not
@@ -18,12 +23,15 @@ part of this package.
 
 | Module | What it does | Network |
 |---|---|---|
-| `metrics` | The registry: seven figures, their units, the windows they serve, and whether a figure may refuse an order (`whole-market`) or only warn (`cohort` — a labelled group's movement is a transfer, not a trade). Words in English and Ukrainian. | none |
+| `metrics` | The registry: fifteen figures over two providers, their units (`usd` · `wallets` · `percent` · `count` · `flag`), the windows they serve (`24h` · `7d` · `now`), and whether a figure may refuse an order (`whole-market`) or only warn (`cohort` — a labelled group's movement is a transfer, not a trade; a sniper, bundler or developer share is the source's label on addresses, not a fact about a person). Words in English and Ukrainian. | none |
 | `snapshot` | The normalized observation: `fetchedAt` (when we asked), `observedAt` (the source's own statement, or null), `providerLagSeconds` (the source's documented cache), `expiresAt` (our freshness rule), figures with `null` where the source answered none — never a zero in their place. | none |
 | `conditions` | `validateEvidenceConditions` (the registry applied: metric, window, operator, threshold's sign and unit, mode and its unknown-policy) and `judgeEvidenceCondition` (pass · fail · unknown, with figure strings both languages read). | none |
-| `rights` | The rights map read from the provider's redistribution guide and API terms: which families may be shown, which fields the mapper may read, how long a copy may be held, the attribution. Anything restricted or prohibited is not callable. | none |
+| `rights` | The rights maps read from each provider's documents: which families may be shown, which fields the mapper may read, how long a copy may be held, the attribution. Anything restricted, prohibited, plan-gated or unsupported is not callable. | none |
+| `address` | The address evidence a recipient check reads: the sanctions screening in the source's own words (`clean` · `unknown` · `sanctioned`), findings as counts by severity with the source's own 0–100 figure and its documented band, `unsupported` for a kind of address the source does not read — and one summary word, none of which is "safe". | none |
+| `flags` | The compact state of a token's structure: the facts that stand (an authority present, a transfer tax above zero) with no threshold behind any of them, and the figures the source did not answer, so "no flags" is never said of a token the source could not read. | none |
 | `governor` | The credit governor's contract and a one-process implementation for scripts. | none |
 | `providers/nansen` | The client (one key from the environment, one retry on a mendable failure, only the families the rights map allows), the mapper (named fields only), the adapter (reserve → call → settle on the provider's own credit headers). | Nansen API, read-only |
+| `providers/ddxyz` | The client (one key, `chain=sol` named on every call, one request a second, a retry only for a network error or a timeout — never for a 5xx that would buy the same answer twice), the mapper (named fields only; a top-ten share of zero beside millions of holders is *not measured*, never *0 %*; address lists never pass), the adapter (reserve → call → settle on the provider's own `x-webacy-cu` price; a program-owned recipient is *unsupported*, never *clean*). | DD.xyz API, read-only |
 
 ## Judge a rule
 
@@ -67,6 +75,25 @@ const adapter = createNansenAdapter({ client: createNansenClient({ key: process.
 const read = await adapter.read({ mint, window: "24h", nowMs: Date.now() });
 ```
 
+## Read the token's structure, or check a recipient
+
+```ts
+import { createDdxyzAdapter, createDdxyzClient, createMemoryGovernor, judgeEvidenceCondition, summarizeAddressEvidence } from "@ryntra/evidence";
+
+const security = createDdxyzAdapter({ client: createDdxyzClient({ key: process.env.DDXYZ_API_KEY ?? null }), governor: createMemoryGovernor(8) });
+
+const structure = await security.read({ mint, window: "now", nowMs: Date.now() });
+// FRESH with a snapshot of eight figures (4 CU), UNKNOWN for a token the source does not analyse, UNAVAILABLE with the reason
+const rule = { metric: "mint_authority", window: "now", operator: "lte", threshold: 0, mode: "required", onUnknown: "block" };
+judgeEvidenceCondition(rule, { state: structure.state, snapshot: structure.state === "FRESH" ? structure.snapshot : null, reason: null, served: "provider" }, Date.now());
+// expected "mint authority: renounced" · actual "renounced · asked 17:20 UTC" · outcome "pass"
+
+const recipient = await security.readAddress({ address, nowMs: Date.now() });
+// sanctions first (1 CU), then the findings engine (3 CU); a program-owned account reads unsupported
+summarizeAddressEvidence({ state: recipient.state, evidence: recipient.state === "FRESH" ? recipient.evidence : null, reason: null, served: "provider" });
+// "nothing-found" | "evidence-found" | "sanctioned" | "partly-checked" | "unsupported" | "unavailable" — never "safe"
+```
+
 ## Boundaries
 
 - Figures are shown under the provider's redistribution terms with the
@@ -77,6 +104,10 @@ const read = await adapter.read({ mint, window: "24h", nowMs: Date.now() });
   addresses, not people.
 - Nothing here is a price, a quote or advice. A met condition says the rule
   held at that moment; it says nothing about whether a trade is good.
+- A token's structure is read in its context: a supply held by an issuer's
+  own accounts and a kept freeze right are the design of a tokenized stock,
+  not a warning; the figures are shown, the reading is the person's. There
+  is no score and no verdict, and a recipient check never blocks a transfer.
 - No storage, no signing, no order placement. The product's cache, credit
   ledger, review and execution are not in this package.
 

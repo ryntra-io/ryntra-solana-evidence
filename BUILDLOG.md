@@ -4,7 +4,33 @@ What has shipped in the Ryntra product, newest first. Each entry is one complete
 
 Entries dated before Sep 16, 2026 record earlier shipped work, written down when the public build log was introduced; the dates are the dates the work shipped.
 
-Evidence kit version in this repository: `1.3.0`. Machine-readable status: [`docs/product/status.json`](docs/product/status.json). Product documentation: [`docs/product/README.md`](docs/product/README.md). Repository: https://github.com/ryntra-io/ryntra-solana-evidence.
+Evidence kit version in this repository: `1.4.0`. Machine-readable status: [`docs/product/status.json`](docs/product/status.json). Product documentation: [`docs/product/README.md`](docs/product/README.md). Repository: https://github.com/ryntra-io/ryntra-solana-evidence.
+
+## Sep 16, 2026 — Risk & due diligence: how the token is built, as a rule of the plan
+
+**Trading plans** · verified on the live product
+
+A second evidence source answers a different question on the asset page — not what the market did, but how the token itself is built. Risk & due diligence reads it when you ask: the share the ten largest holders hold and how many addresses hold the token, whether the mint and freeze authorities are present or renounced, whether the token taxes every transfer, and what the source's early-holder labels hold now. Any of those facts can become a rule of the plan; at the Review the server reads the structure again and judges the rule beside the money checks. Before a transfer, Send shows what the same source knows about the recipient. No score, no verdict — the vocabulary has no word for safe.
+
+- Four facts with their meaning, not a wall of fields: the top-ten share with the holder count, the mint authority, the freeze authority, the transfer tax; the early-holder labels as one line on a meme token and under Details elsewhere.
+- An issuer-backed instrument is read in its own context: a supply held by the issuer's own accounts and a kept freeze right are the design of a tokenized stock, and the card says so beside the figure instead of dressing them as a warning.
+- The state in the card's head counts facts — an authority present, a tax above zero — with no threshold behind any of them; a figure the source did not measure is a dash, never a zero.
+- A rule on the structure: the top-ten share at most a bound you write, the transfer tax at most a percent, an authority renounced or present — required refuses the version when the fact is not as written or cannot be read.
+- The Review names every source it read — when, how far behind it may be, whose data — and a plan without a structure rule, like every trade outside a plan, never waits on this source.
+- The recipient check in Send: sanctions in the source's own words, findings as counts by severity, unsupported for a program, a vault or an exchange contract the source cannot analyse — never a verdict, never a block.
+- Every call is reserved against a daily and a monthly ceiling and settled on the provider's own price; address lists never leave the adapter; @ryntra/evidence opens the second adapter with network-free tests.
+
+![The Risk & due diligence card after Check on a tokenized stock: the top-ten share with the issuer's context, both authorities renounced, no transfer tax, the source's analysis time and lag, and one press to add a condition.](docs/screenshots/stock-risk-due-diligence.png)
+
+*The Risk & due diligence card after Check on a tokenized stock: the top-ten share with the issuer's context, both authorities renounced, no transfer tax, the source's analysis time and lag, and one press to add a condition.*
+
+![The recipient check in Send: what an external security source found about the address, the sanctions screening in the source's own words, when it was analysed — and the line that the decision stays the person's.](docs/screenshots/send-recipient-check.png)
+
+*The recipient check in Send: what an external security source found about the address, the sanctions screening in the source's own words, when it was analysed — and the line that the decision stays the person's.*
+
+Open source in this repository: [`lib/evidence/metrics.ts`](lib/evidence/metrics.ts), [`lib/evidence/address.ts`](lib/evidence/address.ts), [`lib/evidence/flags.ts`](lib/evidence/flags.ts), [`lib/evidence/rights.ts`](lib/evidence/rights.ts), [`lib/evidence/providers/ddxyz/mapper.ts`](lib/evidence/providers/ddxyz/mapper.ts), [`packages/evidence/src/index.ts`](packages/evidence/src/index.ts).
+
+Live: https://ryntra.io/app/stocks/NVDAx
 
 ## Sep 16, 2026 — Onchain evidence inside the trading plan
 

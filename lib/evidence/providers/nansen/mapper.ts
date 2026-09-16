@@ -19,7 +19,7 @@
  * Pure: rows and a clock in, a snapshot out; no fetch, no key, no store.
  */
 
-import type { EvidenceWindow } from "../../metrics.ts";
+import type { EvidenceWindow, MarketWindow } from "../../metrics.ts";
 import { familyRights, filterFields, NANSEN_RIGHTS } from "../../rights.ts";
 import { EVIDENCE_NETWORK, type EvidenceCoverage, type EvidenceMetricValue, type MarketEvidenceSnapshot } from "../../snapshot.ts";
 
@@ -27,7 +27,7 @@ export const NANSEN_SCREENER_FAMILY = "tgm/token-screener";
 export const NANSEN_FLOWS_FAMILY = "tgm/flow-intelligence";
 
 /** The provider's timeframe words for Ryntra's windows, per family. */
-export const NANSEN_TIMEFRAMES: Readonly<Record<EvidenceWindow, Readonly<{ screener: string; flows: string }>>> = {
+export const NANSEN_TIMEFRAMES: Readonly<Record<MarketWindow, Readonly<{ screener: string; flows: string }>>> = {
   "24h": { screener: "24h", flows: "1d" },
   "7d": { screener: "7d", flows: "7d" },
 };

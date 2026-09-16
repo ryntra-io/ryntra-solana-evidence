@@ -20,6 +20,7 @@
  * not this file. Pure and client-safe: the map is data.
  */
 
+import type { EvidenceProvider, EvidenceWindow } from "./metrics.ts";
 import type { EvidenceAttribution } from "./snapshot.ts";
 
 export type RightsStatus =
@@ -28,7 +29,11 @@ export type RightsStatus =
   /** Approval and significant modification required — not called by the product. */
   | "restricted"
   /** Never redistributed — never called by the product. */
-  | "prohibited";
+  | "prohibited"
+  /** Documented, but the account's plan answers 403 — not called until the plan or a grant opens it. */
+  | "plan-gated"
+  /** Documented for other networks only, or answers by a confirmed hash and not before a signature — not called on Solana. */
+  | "unsupported";
 
 export type FamilyRights = Readonly<{
   /** The provider's family name as the guide lists it (without the `/api/v1/` prefix). */
@@ -38,17 +43,17 @@ export type FamilyRights = Readonly<{
   status: RightsStatus;
   /** The fields the mapper may read; everything else in the answer is dropped unread. */
   fields: readonly string[];
-  /** Seconds a copy may sit in Ryntra's cache — never beyond the provider's own documented cache for the family. */
-  cacheSeconds: Readonly<Record<"24h" | "7d", number>>;
-  /** The provider's documented response cache, seconds, so a card can say how far behind a fresh answer may be. */
-  providerLagSeconds: Readonly<Record<"24h" | "7d", number>>;
-  /** The provider's credit price per call, as its published credit costs state it on the review date. */
+  /** Seconds a copy may sit in Ryntra's cache, per window the family serves — never beyond the provider's own documented cache for the family. */
+  cacheSeconds: Readonly<Partial<Record<EvidenceWindow, number>>>;
+  /** The provider's documented response cache, seconds, per window the family serves, so a card can say how far behind a fresh answer may be. */
+  providerLagSeconds: Readonly<Partial<Record<EvidenceWindow, number>>>;
+  /** The provider's credit price per call, as its published credit costs or its own cost header state it on the review date. */
   creditsPerCall: number;
   note: string;
 }>;
 
 export type ProviderRights = Readonly<{
-  provider: "nansen";
+  provider: EvidenceProvider;
   /** Names the rule set a snapshot was filtered under. */
   policy: string;
   attribution: EvidenceAttribution;
@@ -137,6 +142,120 @@ export const NANSEN_RIGHTS: ProviderRights = {
     readOn: "2026-09-16",
   },
 };
+
+/**
+ * DD.xyz / Webacy — the security and due-diligence provider. Its
+ * documentation, read in full on 2026-09-16,
+ * publishes no redistribution guide, no attribution rule and no display
+ * rule — only "keep your API key secret" and the line *Powered by DD.xyz*;
+ * the account's grant text says the frontend integration may be white-labelled.
+ * The map is therefore conservative until the provider answers the open
+ * rights question: the product shows derived aggregates with
+ * attribution and nothing that names an address — the sniper and bundler
+ * address lists, the developer address, the labels, the tag descriptions and
+ * every `details.*` block never leave the adapter. The prices are the
+ * provider's own `x-webacy-cu` header as observed at the stage-A smoke.
+ */
+export const DDXYZ_RIGHTS: ProviderRights = {
+  provider: "ddxyz",
+  policy: "ddxyz-conservative-2026-09-16",
+  attribution: { text: "Data provided by DD.xyz", href: "https://dd.xyz" },
+  retainJudgedValueSeconds: 7 * DAY,
+  staleHoldSeconds: 30 * 60,
+  families: [
+    {
+      family: "trading-lite",
+      path: "/trading-lite/{mint}",
+      status: "allowed-with-attribution",
+      fields: ["Top10Holders", "TotalHolders", "mintable", "freezable", "buy_sell_taxes", "SniperPercentageHolding", "BundlerPercentageHolding", "DevHoldingPercentage", "analysisTimestamp"],
+      /* The provider caches its analysis five minutes and charges the same
+         4 CU for a cached answer, so Ryntra's own copy is held ten: a token's
+         structure does not move in minutes, and five people opening the same
+         asset cost one call. */
+      cacheSeconds: { now: 600 },
+      providerLagSeconds: { now: 300 },
+      creditsPerCall: 4,
+      note: "The token's structure on Solana: the top-ten share, the holder count, the mint and freeze authority, the transfer tax, and the source's sniper, bundler and developer shares (cohort figures, advisory). Address lists never leave the adapter.",
+    },
+    {
+      family: "addresses",
+      path: "/addresses/{address}",
+      status: "allowed-with-attribution",
+      fields: ["count", "medium", "high", "overallRisk", "isContract", "addressType", "analyzed_at", "expiresAt"],
+      /* The provider's own copy is valid up to 24 hours (`expiresAt`); a
+         sanction or a finding can appear at any time, so Ryntra's copy is an
+         hour. */
+      cacheSeconds: { now: 3600 },
+      providerLagSeconds: { now: 24 * 3600 },
+      creditsPerCall: 3,
+      note: "A plain wallet's findings, as counts by severity and the source's own 0–100 figure with its band; the tags, labels and descriptions stay server-side. Program-owned accounts are unsupported at the source and read UNKNOWN.",
+    },
+    {
+      family: "sanctions",
+      path: "/addresses/sanctioned/{address}",
+      status: "allowed-with-attribution",
+      fields: ["is_sanctioned", "sanctions_status", "is_sanctions_related", "sanctions_related_status"],
+      cacheSeconds: { now: 3600 },
+      providerLagSeconds: { now: 0 },
+      creditsPerCall: 1,
+      note: "Exact-match screening against the lists the source keeps; the status words are shown exactly as the source states them (clean · unknown · sanctioned).",
+    },
+    {
+      family: "holder-analysis",
+      path: "/holder-analysis/{mint}",
+      status: "plan-gated",
+      fields: [],
+      cacheSeconds: {},
+      providerLagSeconds: {},
+      creditsPerCall: 0,
+      note: "403 on the account's plan (2026-09-14 and 2026-09-16); nothing is claimed from it.",
+    },
+    {
+      family: "token-detail",
+      path: "/tokens/{mint}",
+      status: "plan-gated",
+      fields: [],
+      cacheSeconds: {},
+      providerLagSeconds: {},
+      creditsPerCall: 0,
+      note: "403 on the account's plan; the token view of the address engine answers instead but took 22 s cold and is left for a later slice.",
+    },
+    {
+      family: "token-pools",
+      path: "/tokens/{mint}/pools",
+      status: "plan-gated",
+      fields: [],
+      cacheSeconds: {},
+      providerLagSeconds: {},
+      creditsPerCall: 0,
+      note: "403 on the account's plan; liquidity comes from the venue's own quote, never from here.",
+    },
+    {
+      family: "transaction-scan",
+      path: "/scan/{from}/transactions",
+      status: "unsupported",
+      fields: [],
+      cacheSeconds: {},
+      providerLagSeconds: {},
+      creditsPerCall: 0,
+      note: "Pre-sign scanning is documented for EVM chains only; the Solana transaction endpoint analyses a confirmed hash. No pre-sign scanning on Solana is built.",
+    },
+  ],
+  reviewed: {
+    guide: "https://docs.webacy.com/",
+    guideDate: "2026-09-16",
+    terms: "https://developers.webacy.co/",
+    termsDate: "2026-09-16",
+    pricing: "https://docs.webacy.com/pricing",
+    readOn: "2026-09-16",
+  },
+};
+
+export const PROVIDER_RIGHTS: Readonly<Record<EvidenceProvider, ProviderRights>> = { nansen: NANSEN_RIGHTS, ddxyz: DDXYZ_RIGHTS };
+
+export function providerRights(provider: EvidenceProvider): ProviderRights {
+  return PROVIDER_RIGHTS[provider];
+}
 
 export function familyRights(provider: ProviderRights, family: string): FamilyRights | null {
   return provider.families.find((entry) => entry.family === family) ?? null;
