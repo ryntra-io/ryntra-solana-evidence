@@ -154,6 +154,22 @@
       "role": "source"
     },
     {
+      "path": "lib/stocks/instrument.ts",
+      "role": "source"
+    },
+    {
+      "path": "lib/stocks/lifecycle-events.ts",
+      "role": "source"
+    },
+    {
+      "path": "lib/stocks/session.ts",
+      "role": "source"
+    },
+    {
+      "path": "lib/stocks/units.ts",
+      "role": "source"
+    },
+    {
       "path": "packages/solana-evidence-mcp/README.md",
       "role": "documentation"
     },
@@ -199,6 +215,22 @@
     },
     {
       "path": "packages/solana-evidence-sdk/src/index.ts",
+      "role": "source"
+    },
+    {
+      "path": "packages/tokenized-stocks/README.md",
+      "role": "documentation"
+    },
+    {
+      "path": "packages/tokenized-stocks/package.json",
+      "role": "package_metadata"
+    },
+    {
+      "path": "packages/tokenized-stocks/src/index.test.mjs",
+      "role": "network_free_test"
+    },
+    {
+      "path": "packages/tokenized-stocks/src/index.ts",
       "role": "source"
     }
   ]

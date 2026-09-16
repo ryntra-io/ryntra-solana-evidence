@@ -4,16 +4,18 @@
 [![License](https://img.shields.io/badge/license-Apache--2.0-blue.svg)](LICENSE)
 
 Read-only Solana tooling for developers: inspect mints, check proposed transfers
-against a caller-defined policy, and verify supplied receipts offline.
+against a caller-defined policy, and verify supplied receipts offline — plus
+the pure models a venue needs before it shows a price for a tokenized stock.
 
-Part of [Ryntra](https://ryntra.io), a Solana-first product for financial
-actions governed by user-defined rules. This repository contains the evidence
-kit, not the application or its live transaction flows.
+Part of [Ryntra](https://ryntra.io), a Solana-first product for trading with
+rules you write before you sign. This repository contains the evidence kit and
+selected product models, not the application or its live transaction flows.
 
 [Application](https://ryntra.io/app) · [Product documentation](https://ryntra.io/docs) ·
 [SDK](packages/solana-evidence-sdk/README.md) ·
 [MCP server](packages/solana-evidence-mcp/README.md) ·
-[CLI](examples/solana-evidence-cli/README.md)
+[CLI](examples/solana-evidence-cli/README.md) ·
+[Tokenized stocks](packages/tokenized-stocks/README.md)
 
 ## What works
 
@@ -22,11 +24,13 @@ kit, not the application or its live transaction flows.
 | Mint inspection | Asset identity, authorities and SPL / Token-2022 extension data with provenance | Read-only Solana RPC |
 | Transfer preflight | Mint-based fee calculations, structural constraints and a verdict against the declared owner policy | Read-only Solana RPC |
 | Receipt verification | Separate schema, integrity, issuer-signature and Solana-binding results | None |
+| Tokenized-stock model | Instrument class, unit basis and rights; the Token-2022 transfer fee from a mint's config; a token's issuer lifecycle; scaled-unit arithmetic; the state of a reference price against a session | None |
 
-All three are available through the typed SDK, local stdio MCP server and CLI.
-The MCP server also exposes an editable example owner policy.
+The first three are available through the typed SDK, local stdio MCP server and
+CLI. The MCP server also exposes an editable example owner policy.
 [Four JSON Schemas](docs/solana/schemas) describe asset passports, owner policies,
-policy verdicts and transfer preflights.
+policy verdicts and transfer preflights. The model package is a plain TypeScript
+module with tests.
 
 ## Run locally
 
@@ -39,8 +43,8 @@ npm ci
 npm run verify
 ```
 
-Verification runs lint, type checking, network-free SDK/MCP/CLI tests and
-boundary checks. [GitHub Actions](https://github.com/ryntra-io/ryntra-solana-evidence/actions)
+Verification runs lint, type checking, network-free tests of every package
+and the boundary checks. [GitHub Actions](https://github.com/ryntra-io/ryntra-solana-evidence/actions)
 runs the same command for changes to `main` and pull requests.
 
 ### Check a receipt offline
@@ -67,7 +71,8 @@ to configure an operator-controlled provider.
 ## Scope and limits
 
 - No private keys, signing, transaction building, simulation or submission.
-  The only RPC method used by the kit is `getAccountInfo`.
+  The only RPC method used by the kit is `getAccountInfo`; the model package
+  makes no network call at all.
 - Preflight is a structural calculation, not a simulation or a promise of
   execution. Network fees and compute budget remain unknown.
 - `NO_KNOWN_BLOCKER` means no known blocker under the policy supplied by the
@@ -78,6 +83,8 @@ to configure an operator-controlled provider.
 - A valid signature is not issuer trust. Supply `trustedPublicKeys` when your
   integration requires a particular issuer; the verifier reports all four axes
   separately.
+- The tokenized-stock model states what an issuer states and what a mint
+  holds; it does not vouch for an issuer.
 - This is source-distributed software, not a published npm package or hosted
   service. Public kit versions and the application may evolve independently.
 
