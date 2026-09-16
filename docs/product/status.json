@@ -1,0 +1,69 @@
+{
+  "schemaVersion": "1.0.0",
+  "kind": "RYNTRA_PUBLIC_STATUS",
+  "product": "Ryntra",
+  "liveUrl": "https://ryntra.io",
+  "repository": "https://github.com/ryntra-io/ryntra-solana-evidence",
+  "publicKitVersion": "1.1.0",
+  "lastPublicProductUpdate": "2026-09-16",
+  "capabilities": [
+    {
+      "id": "swap",
+      "label": "Swap",
+      "url": "https://ryntra.io/app/swap",
+      "since": "2026-09-07"
+    },
+    {
+      "id": "spot",
+      "label": "Spot terminal",
+      "url": "https://ryntra.io/app/spot",
+      "since": "2026-09-11"
+    },
+    {
+      "id": "tokenized-stocks",
+      "label": "Tokenized stocks",
+      "url": "https://ryntra.io/app/stocks",
+      "since": "2026-09-14"
+    },
+    {
+      "id": "trading-plans",
+      "label": "Trading plans",
+      "url": "https://ryntra.io/app/strategies",
+      "since": "2026-09-15"
+    },
+    {
+      "id": "risk-review",
+      "label": "Pre-signature Review",
+      "url": "https://ryntra.io/app/spot",
+      "since": "2026-08-27"
+    },
+    {
+      "id": "portfolio",
+      "label": "Portfolio",
+      "url": "https://ryntra.io/app/portfolio",
+      "since": "2026-09-03"
+    },
+    {
+      "id": "history",
+      "label": "History and receipts",
+      "url": "https://ryntra.io/app/activity",
+      "since": "2026-08-29"
+    },
+    {
+      "id": "analytics",
+      "label": "Public statistics",
+      "url": "https://ryntra.io/stats",
+      "since": "2026-09-15"
+    }
+  ],
+  "buildLog": {
+    "path": "BUILDLOG.md",
+    "entries": 18,
+    "latest": {
+      "id": "2026-09-16-pre-ipo-instruments",
+      "date": "2026-09-16",
+      "title": "Pre-IPO stock instruments",
+      "productArea": "tokenized-stocks"
+    }
+  }
+}

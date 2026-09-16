@@ -6,6 +6,62 @@
   "note": "The files this package is made of. Generated from the publication allowlist; the boundary test reads this list and scans exactly these files, so a file added without being listed never reaches the public repository.",
   "files": [
     {
+      "path": "BUILDLOG.md",
+      "role": "generated_build_log"
+    },
+    {
+      "path": "docs/product/README.md",
+      "role": "documentation"
+    },
+    {
+      "path": "docs/product/analytics.md",
+      "role": "documentation"
+    },
+    {
+      "path": "docs/product/risk-review.md",
+      "role": "documentation"
+    },
+    {
+      "path": "docs/product/status.json",
+      "role": "generated_status"
+    },
+    {
+      "path": "docs/product/tokenized-stocks.md",
+      "role": "documentation"
+    },
+    {
+      "path": "docs/product/trading-plans.md",
+      "role": "documentation"
+    },
+    {
+      "path": "docs/product/trading.md",
+      "role": "documentation"
+    },
+    {
+      "path": "docs/screenshots/spot-stock-quote.png",
+      "role": "screenshot"
+    },
+    {
+      "path": "docs/screenshots/stats-overview.png",
+      "role": "screenshot"
+    },
+    {
+      "path": "docs/screenshots/stock-listed-asset.png",
+      "role": "screenshot"
+    },
+    {
+      "path": "docs/screenshots/stock-pre-ipo-asset.png",
+      "role": "screenshot"
+    },
+    {
+      "path": "docs/screenshots/stocks-pre-ipo-screener.png",
+      "role": "screenshot"
+    },
+    {
+      "path": "docs/screenshots/trading-plan-builder.png",
+      "role": "screenshot"
+    },
+    {
       "path": "docs/solana/schemas/solana-asset-passport.schema.json",
       "role": "published_schema"
     },

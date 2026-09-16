@@ -12,12 +12,40 @@ Part of [Ryntra](https://ryntra.io), a Solana-first product for trading with
 rules you write before you sign. This repository contains the evidence kit and
 selected product models, not the application or its live transaction flows.
 
-[Application](https://ryntra.io/app) · [Product documentation](https://ryntra.io/docs) ·
+[Application](https://ryntra.io/app) · [Build log](BUILDLOG.md) ·
+[Product documentation](docs/product/README.md) ·
 [SDK](packages/solana-evidence-sdk/README.md) ·
 [MCP server](packages/solana-evidence-mcp/README.md) ·
 [CLI](examples/solana-evidence-cli/README.md) ·
 [Tokenized stocks](packages/tokenized-stocks/README.md) ·
 [Trading plans](packages/trading-plans/README.md)
+
+## Ryntra product development
+
+Ryntra is developed in a private production repository. This public repository
+contains selected open-source components, public technical interfaces and a
+sanitized record of shipped product development:
+
+- **[BUILDLOG.md](BUILDLOG.md)** — what shipped in the product and when, newest
+  first, with screenshots of the live application. Generated from structured
+  entries and published with each meaningful slice of work.
+- **[docs/product](docs/product/README.md)** — how the product works today:
+  [trading](docs/product/trading.md), [tokenized stocks](docs/product/tokenized-stocks.md),
+  [trading plans](docs/product/trading-plans.md), the [pre-signature review](docs/product/risk-review.md)
+  and the [public analytics](docs/product/analytics.md); architecture boundaries,
+  what Ryntra owns, which external infrastructure executes and supplies
+  evidence, and the material limitations.
+- **[docs/product/status.json](docs/product/status.json)** — machine-readable:
+  the live address, the public capabilities, the latest public update.
+- **Open-source modules** — the same code the product runs on, imported rather
+  than copied: the [evidence kit](#what-works) below, the
+  [tokenized-stock model](packages/tokenized-stocks/README.md) and the
+  [trading-plan helpers](packages/trading-plans/README.md), each with
+  network-free tests.
+
+Every file here reaches this repository through an explicit publication list
+and a set of boundary checks on the private side; a file nobody named
+never ships, and `npm run verify` proves the tree stands on its own.
 
 ## What works
 
