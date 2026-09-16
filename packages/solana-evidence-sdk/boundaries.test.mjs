@@ -17,6 +17,21 @@ import test from "node:test";
 
 const root = fileURLToPath(new URL("../../", import.meta.url));
 
+/* This suite scans the tree a reader is holding, so it runs where the listed
+   files are: the published tree, whose root package is the kit itself. The
+   list carries public names, and some of them are authored content that lives
+   elsewhere before publication — so in any other tree the suite says where it
+   applies and skips, and the repository that builds the kit runs it inside the
+   built candidate instead, against exactly the files that ship. */
+const publicTree = (() => {
+  try {
+    return JSON.parse(readFileSync(`${root}package.json`, "utf8")).name === "ryntra-solana-evidence";
+  } catch {
+    return false;
+  }
+})();
+const suite = publicTree ? test : (name, fn) => test(name, { skip: "runs in the published tree; the building repository runs it inside the built candidate" }, fn);
+
 function shippedFiles() {
   /* Resolved relative to this file, not to the tree root, so the same line
      works in both trees and neither knows the other's layout. `public-files.json`
@@ -41,7 +56,7 @@ function withoutComments(source) {
   return source.replaceAll(/\/\*[\s\S]*?\*\//g, "").replaceAll(/\/\/[^\n]*/g, "");
 }
 
-test("the manifest lists a kit, and every file it lists exists", function () {
+suite("the manifest lists a kit, and every file it lists exists", function () {
   assert.ok(SHIPPED.length >= 30, `the manifest lists only ${SHIPPED.length} files`);
   for (const path of SHIPPED) {
     assert.ok(existsSync(`${root}${path}`), `manifest names a missing file: ${path}`);
@@ -50,7 +65,7 @@ test("the manifest lists a kit, and every file it lists exists", function () {
   assert.equal(new Set(SHIPPED).size, SHIPPED.length, "the file list names a file twice");
 });
 
-test("no shipped source can produce a signature or hold key material", function () {
+suite("no shipped source can produce a signature or hold key material", function () {
   /* Verification uses public keys and is the point of the kit; production of
      a signature, in any form, is what must not exist. */
   const forbidden = [
@@ -76,7 +91,7 @@ test("no shipped source can produce a signature or hold key material", function 
   }
 });
 
-test("no shipped source builds or submits a transaction", function () {
+suite("no shipped source builds or submits a transaction", function () {
   const forbidden = [
     [/\bsendTransaction\b/, "transaction submission"],
     [/\bsendAndConfirm\w*/, "transaction submission"],
@@ -94,7 +109,7 @@ test("no shipped source builds or submits a transaction", function () {
   }
 });
 
-test("the only RPC methods the kit calls are reads", function () {
+suite("the only RPC methods the kit calls are reads", function () {
   const allowed = new Set(["getAccountInfo"]);
   const called = new Set();
   for (const path of CODE) {
@@ -133,7 +148,7 @@ const FORBIDDEN_CLAIMS = [
   /\bfirst and only\b/i,
 ];
 
-test("the claim gate catches overclaims and leaves honest limits alone", function () {
+suite("the claim gate catches overclaims and leaves honest limits alone", function () {
   /* A gate that never fires is not a gate, so it is aimed at real sentences
      here on every run rather than proven once by hand. */
   const overclaims = [
@@ -165,7 +180,7 @@ test("the claim gate catches overclaims and leaves honest limits alone", functio
   }
 });
 
-test("no shipped file makes a claim this product may not make", function () {
+suite("no shipped file makes a claim this product may not make", function () {
   /* This file is the one exception, and necessarily so: it holds the forbidden
      shapes and the sentences that prove them, so scanning itself would fail on
      its own definition. The self-test above is what covers it — a scan that
@@ -183,7 +198,7 @@ test("no shipped file makes a claim this product may not make", function () {
   }
 });
 
-test("the verdict vocabulary has no word for safety", function () {
+suite("the verdict vocabulary has no word for safety", function () {
   const contracts = read("lib/solana/contracts.ts");
   const verdicts = contracts.match(/export const POLICY_VERDICTS = \[([\s\S]*?)\] as const;/);
   assert.ok(verdicts, "the verdict vocabulary moved");
@@ -191,14 +206,14 @@ test("the verdict vocabulary has no word for safety", function () {
   assert.match(verdicts[1], /NO_KNOWN_BLOCKER/);
 });
 
-test("the kit ships no environment file, key file or lockfile of somebody else's", function () {
+suite("the kit ships no environment file, key file or lockfile of somebody else's", function () {
   for (const path of SHIPPED) {
     assert.doesNotMatch(path, /(?:^|\/)\.env/, `${path} is an environment file`);
     assert.doesNotMatch(path, /\.(?:pem|key|p12|pfx)$/, `${path} looks like key material`);
   }
 });
 
-test("no shipped source reaches a private module the extraction leaves behind", function () {
+suite("no shipped source reaches a private module the extraction leaves behind", function () {
   const shipped = new Set(SHIPPED);
   for (const path of CODE) {
     const directory = path.slice(0, path.lastIndexOf("/"));
@@ -213,7 +228,7 @@ test("no shipped source reaches a private module the extraction leaves behind", 
   }
 });
 
-test("every signed receipt fixture carries a public key and no secret", function () {
+suite("every signed receipt fixture carries a public key and no secret", function () {
   for (const path of SHIPPED.filter((entry) => entry.includes("fixtures/receipt-"))) {
     const artifact = JSON.parse(read(path));
     assert.equal(artifact.kind, "OUTCOME_RECEIPT");
