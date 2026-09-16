@@ -18,7 +18,8 @@ selected product models, not the application or its live transaction flows.
 [MCP server](packages/solana-evidence-mcp/README.md) ·
 [CLI](examples/solana-evidence-cli/README.md) ·
 [Tokenized stocks](packages/tokenized-stocks/README.md) ·
-[Trading plans](packages/trading-plans/README.md)
+[Trading plans](packages/trading-plans/README.md) ·
+[Evidence](packages/evidence/README.md)
 
 ## Ryntra product development
 
@@ -39,9 +40,10 @@ sanitized record of shipped product development:
   the live address, the public capabilities, the latest public update.
 - **Open-source modules** — the same code the product runs on, imported rather
   than copied: the [evidence kit](#what-works) below, the
-  [tokenized-stock model](packages/tokenized-stocks/README.md) and the
-  [trading-plan helpers](packages/trading-plans/README.md), each with
-  network-free tests.
+  [tokenized-stock model](packages/tokenized-stocks/README.md), the
+  [trading-plan helpers](packages/trading-plans/README.md) and the
+  [evidence layer](packages/evidence/README.md) a plan's conditions stand on,
+  each with network-free tests.
 
 Every file here reaches this repository through an explicit publication list
 and a set of boundary checks on the private side; a file nobody named
@@ -56,6 +58,7 @@ never ships, and `npm run verify` proves the tree stands on its own.
 | Receipt verification | Separate schema, integrity, issuer-signature and Solana-binding results | None |
 | Tokenized-stock model | Instrument class, unit basis and rights; the Token-2022 transfer fee from a mint's config; a token's issuer lifecycle; scaled-unit arithmetic; the state of a reference price against a session | None |
 | Trading-plan helpers | Deterministic position sizing with its assumptions; decimal input read as typed | None |
+| Evidence layer | A metric registry, a normalized onchain observation with its times and attribution, a condition validator and judge where an unjudgeable rule is never a pass, a rights map read from the provider's terms, and the Nansen adapter that reserves and settles every call | Nansen API, read-only, only through the adapter with your own key |
 
 The first three are available through the typed SDK, local stdio MCP server and
 CLI. The MCP server also exposes an editable example owner policy.

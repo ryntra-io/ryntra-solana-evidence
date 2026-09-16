@@ -59,7 +59,8 @@ test("the rules that fail as rules are named by path, before any size is compute
     entry: { pricePerShare: 973.15, maxPricePerShare: 900, validUntil: "2026-09-16T11:00:00.000Z" },
     risk: { invalidationPerShare: 980, plannedRiskUsd: 2000, costBufferBps: 100 },
     exit: { targetPerShare: 900, timeExitAt: "2026-09-16T11:30:00.000Z" },
-    evidenceConditions: [{ metric: "x" }],
+    /* Carried through untouched: a condition on an observation is judged by the evidence layer, not by the size. */
+    evidenceConditions: [{ metric: "dex_volume_usd", window: "24h", operator: "gte", threshold: 1_000_000, mode: "required", onUnknown: "block" }],
   };
   const paths = validatePlanRules(broken, NOW).map((issue) => issue.path);
   assert.deepEqual(paths, [
@@ -69,7 +70,6 @@ test("the rules that fail as rules are named by path, before any size is compute
     "risk.plannedRiskUsd",
     "exit.targetPerShare",
     "exit.timeExitAt",
-    "evidenceConditions",
   ]);
   const result = computePlanSizing(broken, NOW);
   assert.equal(result.ok, false);

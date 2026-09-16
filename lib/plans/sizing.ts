@@ -56,7 +56,7 @@ export type PlanSizingRules = Readonly<{
     targetPerShare: number | null;
     timeExitAt: string | null;
   }>;
-  /** Typed evidence conditions; the size refuses a plan that carries any until they are served. */
+  /** Typed evidence conditions — a person's rules on observations. Carried, not read: the size is arithmetic on money, and the evidence layer validates the conditions on their own registry. */
   evidenceConditions: readonly unknown[];
 }>;
 
@@ -113,9 +113,6 @@ export function validatePlanRules(rules: PlanSizingRules, nowMs: number): readon
   }
   if (entry.validUntil !== null && exit.timeExitAt !== null && Date.parse(exit.timeExitAt) < Date.parse(entry.validUntil)) {
     issues.push({ path: "exit.timeExitAt", message: "The time exit is before the entry stops being valid." });
-  }
-  if (rules.evidenceConditions.length > 0) {
-    issues.push({ path: "evidenceConditions", message: "Evidence conditions are not served yet; leave the list empty." });
   }
   return issues;
 }

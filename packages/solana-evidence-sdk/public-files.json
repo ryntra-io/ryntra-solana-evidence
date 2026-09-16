@@ -50,6 +50,10 @@
       "role": "screenshot"
     },
     {
+      "path": "docs/screenshots/stock-onchain-activity.png",
+      "role": "screenshot"
+    },
+    {
       "path": "docs/screenshots/stock-pre-ipo-asset.png",
       "role": "screenshot"
     },
@@ -59,6 +63,10 @@
     },
     {
       "path": "docs/screenshots/trading-plan-builder.png",
+      "role": "screenshot"
+    },
+    {
+      "path": "docs/screenshots/trading-plan-condition.png",
       "role": "screenshot"
     },
     {
@@ -106,7 +114,39 @@
       "role": "source"
     },
     {
+      "path": "lib/evidence/conditions.ts",
+      "role": "source"
+    },
+    {
       "path": "lib/evidence/envelope.ts",
+      "role": "source"
+    },
+    {
+      "path": "lib/evidence/governor.ts",
+      "role": "source"
+    },
+    {
+      "path": "lib/evidence/metrics.ts",
+      "role": "source"
+    },
+    {
+      "path": "lib/evidence/providers/nansen/adapter.server.ts",
+      "role": "source"
+    },
+    {
+      "path": "lib/evidence/providers/nansen/client.server.ts",
+      "role": "source"
+    },
+    {
+      "path": "lib/evidence/providers/nansen/mapper.ts",
+      "role": "source"
+    },
+    {
+      "path": "lib/evidence/rights.ts",
+      "role": "source"
+    },
+    {
+      "path": "lib/evidence/snapshot.ts",
       "role": "source"
     },
     {
@@ -231,6 +271,26 @@
     },
     {
       "path": "lib/stocks/units.ts",
+      "role": "source"
+    },
+    {
+      "path": "packages/evidence/README.md",
+      "role": "documentation"
+    },
+    {
+      "path": "packages/evidence/package.json",
+      "role": "package_metadata"
+    },
+    {
+      "path": "packages/evidence/src/index.test.mjs",
+      "role": "network_free_test"
+    },
+    {
+      "path": "packages/evidence/src/index.ts",
+      "role": "source"
+    },
+    {
+      "path": "packages/evidence/src/live-read.mjs",
       "role": "source"
     },
     {

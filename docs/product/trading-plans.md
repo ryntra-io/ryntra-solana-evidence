@@ -62,9 +62,39 @@ lost; the assumptions travel with the figure and are shown beside it.
 4. The result — what was executed, at what price, against what was planned —
    is recorded with the plan under *Results*.
 
+## Conditions on what the market did
+
+A plan can carry rules on the token's onchain activity beside its price and
+money rules.
+
+- **Analysis** on the asset page reads a few figures from an external
+  onchain source when the person asks — the day's or the week's DEX trading
+  volume with its buys and sells, the net movement of the token to or from
+  the addresses the source labels as exchanges or as large holders — each
+  with the time Ryntra asked, how far behind the source may be, and the
+  source named beside the figures. A movement is not a trade and a label is
+  not a person; a figure the source does not have is a dash, never a zero.
+- **Add a condition to the plan** turns one figure into a rule: which figure,
+  over which window, at least or at most, a threshold the person writes, and
+  what happens when the rule is not met — warn and leave the decision to the
+  person, or refuse the order. Movements of labelled groups can only warn.
+- **At the Review** the server reads the figure again and judges the rule
+  beside the checks on the money and the deal. A rule that cannot be judged —
+  the source silent, the figure missing, the observation older than its
+  window — is never a pass, so a rule that refuses also refuses then. The
+  Review keeps what it judged; Results shows it beside the fill. The figures
+  stay with that review for a bounded time under the source's terms; the
+  verdict stays for good.
+
+The registry of what a condition may name, the observation's shape, the
+validator and the judge are open source in
+[`@ryntra/evidence`](../../packages/evidence/README.md).
+
 ## What a plan is not
 
 - Not advice. Ryntra checks the person's own rules; it does not write them.
+  An onchain figure is context for a rule, not a price, a quote or a
+  recommendation; a met condition says the rule held at that moment.
 - Not an order. No entry, stop or target order is placed by a plan.
 - Not a promise. The modelled loss is a model; the market decides what is
   lost.

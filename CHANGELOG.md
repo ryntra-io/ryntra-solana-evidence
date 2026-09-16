@@ -1,5 +1,22 @@
 # Changelog
 
+## [1.3.0] — 2026-09-16
+
+- Add `@ryntra/evidence`: the market-evidence layer a Trading Plan's
+  conditions stand on — a metric registry (seven figures; a labelled group's
+  movement may warn, never refuse), a normalized observation with its three
+  times kept apart and `null` where the source answered nothing, a condition
+  validator on the registry and a judge where unmet, stale, unknown and
+  unavailable are never a pass, a rights map read from the provider's
+  redistribution guide and API terms, a credit-governor contract with a
+  one-process governor for scripts, and the Nansen adapter (one key from the
+  environment, one retry on a mendable failure, only the families the rights
+  map allows, every call reserved and settled on the provider's own credit
+  headers). Network-free tests over a fake provider; `live-read.mjs` reads a
+  real observation with your own key under a four-credit ceiling.
+- Product documentation: *Conditions on what the market did* under trading
+  plans.
+
 ## [1.2.0] — 2026-09-16
 
 - Add `@ryntra/tokenized-stocks`: the model of a tokenized stock on Solana —

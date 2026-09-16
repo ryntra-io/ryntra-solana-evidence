@@ -1,9 +1,9 @@
 {
   "name": "ryntra-solana-evidence",
-  "version": "1.2.0",
+  "version": "1.3.0",
   "private": true,
   "type": "module",
-  "description": "Read-only Solana evidence kit: Token Extensions asset passports, exact transfer preflight against a declared policy, offline Outcome Receipt verification, an MCP server and a CLI — with the tokenized-stock model and the trading-plan helpers the Ryntra product runs on.",
+  "description": "Read-only Solana evidence kit: Token Extensions asset passports, exact transfer preflight against a declared policy, offline Outcome Receipt verification, an MCP server and a CLI — with the tokenized-stock model, the trading-plan helpers and the evidence layer the Ryntra product runs on.",
   "author": "Dmytro Plavutskyi",
   "license": "Apache-2.0",
   "repository": {
@@ -22,7 +22,7 @@
     "build": "tsc --noEmit --incremental false",
     "typecheck": "tsc --noEmit --incremental false",
     "lint": "eslint lib packages examples scripts --max-warnings=0",
-    "test": "node --test packages/solana-evidence-sdk/src/index.test.mjs packages/solana-evidence-sdk/boundaries.test.mjs packages/solana-evidence-mcp/server.test.mjs examples/solana-evidence-cli/cli.test.mjs packages/tokenized-stocks/src/index.test.mjs packages/trading-plans/src/index.test.mjs",
+    "test": "node --test packages/solana-evidence-sdk/src/index.test.mjs packages/solana-evidence-sdk/boundaries.test.mjs packages/solana-evidence-mcp/server.test.mjs examples/solana-evidence-cli/cli.test.mjs packages/tokenized-stocks/src/index.test.mjs packages/trading-plans/src/index.test.mjs packages/evidence/src/index.test.mjs",
     "verify:boundaries": "node scripts/verify-boundaries.mjs",
     "verify": "npm run lint && npm run typecheck && npm test && npm run verify:boundaries",
     "cli": "node examples/solana-evidence-cli/cli.ts",

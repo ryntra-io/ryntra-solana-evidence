@@ -4,7 +4,33 @@ What has shipped in the Ryntra product, newest first. Each entry is one complete
 
 Entries dated before Sep 16, 2026 record earlier shipped work, written down when the public build log was introduced; the dates are the dates the work shipped.
 
-Evidence kit version in this repository: `1.2.0`. Machine-readable status: [`docs/product/status.json`](docs/product/status.json). Product documentation: [`docs/product/README.md`](docs/product/README.md). Repository: https://github.com/ryntra-io/ryntra-solana-evidence.
+Evidence kit version in this repository: `1.3.0`. Machine-readable status: [`docs/product/status.json`](docs/product/status.json). Product documentation: [`docs/product/README.md`](docs/product/README.md). Repository: https://github.com/ryntra-io/ryntra-solana-evidence.
+
+## Sep 16, 2026 — Onchain evidence inside the trading plan
+
+**Trading plans** · verified on the live product
+
+A plan can now carry rules on what the market did, beside its price and money rules. On the asset page, Analysis reads a few figures from an external onchain source when you ask — the day's or the week's DEX trading volume with its buys and sells, the net movement of the token to or from the addresses the source labels as exchanges or as large holders — each with the time Ryntra asked, how far behind the source may be, and the source named. One press turns a figure into a condition of the plan; at the Review the server reads the figure again and judges the rule beside the checks on the money and the deal, keeps what it judged, and Results shows it beside the fill.
+
+- Analysis on the asset page and in Spot: three facts on request, never on every row — the source is asked only when you ask, and a second reader within the window costs nothing.
+- Every figure with its provenance: when Ryntra asked, how far behind the source may be, when the figures stop counting as current; a figure the source does not have is a dash, never a zero.
+- Conditions in the plan builder, prefilled from the card with the figure as it stands; a labelled group's movement can warn but never refuse — a movement is not a trade and a label is not a person.
+- The Review judges each condition on a fresh read before the signature; unmet, stale, unknown or unavailable is never a pass, so a rule that refuses also refuses when it cannot be judged.
+- The plan page shows each condition against the figure now; Results shows what the Review knew before the signature, with the source's attribution beside it.
+- Only the provider families its redistribution terms allow are called, with attribution; nothing restricted or prohibited is; every call is reserved against a credit ceiling and settled on the provider's own headers.
+- The evidence layer is open source as @ryntra/evidence: the registry, the observation, the validator and the judge, the rights map, the governor contract and the adapter, with a live example under your own key.
+
+![The Onchain activity card after Analysis: the day's DEX trading volume with buys and sells, the movement to or from exchanges and by large holders, the time asked, the source's lag and attribution, and one press to add a condition.](docs/screenshots/stock-onchain-activity.png)
+
+*The Onchain activity card after Analysis: the day's DEX trading volume with buys and sells, the movement to or from exchanges and by large holders, the time asked, the source's lag and attribution, and one press to add a condition.*
+
+![A condition in the plan builder: the figure, the window, at least or at most, the threshold beside the figure as it stands now, and whether an unmet or unjudgeable rule warns or refuses the order.](docs/screenshots/trading-plan-condition.png)
+
+*A condition in the plan builder: the figure, the window, at least or at most, the threshold beside the figure as it stands now, and whether an unmet or unjudgeable rule warns or refuses the order.*
+
+Open source in this repository: [`lib/evidence/metrics.ts`](lib/evidence/metrics.ts), [`lib/evidence/conditions.ts`](lib/evidence/conditions.ts), [`lib/evidence/rights.ts`](lib/evidence/rights.ts), [`packages/evidence/src/index.ts`](packages/evidence/src/index.ts).
+
+Live: https://ryntra.io/app/stocks/NVDAx
 
 ## Sep 16, 2026 — Pre-IPO stock instruments
 
