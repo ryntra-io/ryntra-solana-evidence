@@ -22,7 +22,7 @@
     "build": "tsc --noEmit --incremental false",
     "typecheck": "tsc --noEmit --incremental false",
     "lint": "eslint lib packages examples scripts --max-warnings=0",
-    "test": "node --test packages/solana-evidence-sdk/src/index.test.mjs packages/solana-evidence-sdk/boundaries.test.mjs packages/solana-evidence-mcp/server.test.mjs examples/solana-evidence-cli/cli.test.mjs packages/tokenized-stocks/src/index.test.mjs",
+    "test": "node --test packages/solana-evidence-sdk/src/index.test.mjs packages/solana-evidence-sdk/boundaries.test.mjs packages/solana-evidence-mcp/server.test.mjs examples/solana-evidence-cli/cli.test.mjs packages/tokenized-stocks/src/index.test.mjs packages/trading-plans/src/index.test.mjs",
     "verify:boundaries": "node scripts/verify-boundaries.mjs",
     "verify": "npm run lint && npm run typecheck && npm test && npm run verify:boundaries",
     "cli": "node examples/solana-evidence-cli/cli.ts",

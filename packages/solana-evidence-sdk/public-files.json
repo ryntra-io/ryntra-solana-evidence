@@ -58,6 +58,14 @@
       "role": "source"
     },
     {
+      "path": "lib/plans/decimal-input.ts",
+      "role": "source"
+    },
+    {
+      "path": "lib/plans/sizing.ts",
+      "role": "source"
+    },
+    {
       "path": "lib/solana/address.ts",
       "role": "source"
     },
@@ -231,6 +239,22 @@
     },
     {
       "path": "packages/tokenized-stocks/src/index.ts",
+      "role": "source"
+    },
+    {
+      "path": "packages/trading-plans/README.md",
+      "role": "documentation"
+    },
+    {
+      "path": "packages/trading-plans/package.json",
+      "role": "package_metadata"
+    },
+    {
+      "path": "packages/trading-plans/src/index.test.mjs",
+      "role": "network_free_test"
+    },
+    {
+      "path": "packages/trading-plans/src/index.ts",
       "role": "source"
     }
   ]
