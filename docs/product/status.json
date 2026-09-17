@@ -5,7 +5,7 @@
   "liveUrl": "https://ryntra.io",
   "repository": "https://github.com/ryntra-io/ryntra-solana-evidence",
   "publicKitVersion": "1.4.0",
-  "lastPublicProductUpdate": "2026-09-16",
+  "lastPublicProductUpdate": "2026-09-17",
   "capabilities": [
     {
       "id": "swap",
@@ -30,6 +30,12 @@
       "label": "Trading plans",
       "url": "https://ryntra.io/app/strategies",
       "since": "2026-09-15"
+    },
+    {
+      "id": "predictions",
+      "label": "Predictions (paper trading)",
+      "url": "https://ryntra.io/app/predictions",
+      "since": "2026-09-17"
     },
     {
       "id": "onchain-evidence",
@@ -64,12 +70,12 @@
   ],
   "buildLog": {
     "path": "BUILDLOG.md",
-    "entries": 20,
+    "entries": 21,
     "latest": {
-      "id": "2026-09-16-risk-and-due-diligence",
-      "date": "2026-09-16",
-      "title": "Risk & due diligence: how the token is built, as a rule of the plan",
-      "productArea": "trading-plans"
+      "id": "2026-09-17-predictions-in-paper-mode",
+      "date": "2026-09-17",
+      "title": "Predictions: markets on outcomes, with a plan, a Review and paper trading",
+      "productArea": "predictions"
     }
   }
 }

@@ -6,6 +6,32 @@ Entries dated before Sep 16, 2026 record earlier shipped work, written down when
 
 Evidence kit version in this repository: `1.4.0`. Machine-readable status: [`docs/product/status.json`](docs/product/status.json). Product documentation: [`docs/product/README.md`](docs/product/README.md). Repository: https://github.com/ryntra-io/ryntra-solana-evidence.
 
+## Sep 17, 2026 — Predictions: markets on outcomes, with a plan, a Review and paper trading
+
+**Predictions** · verified on the live product
+
+A prediction market is a market on an outcome: a share of Yes pays $1 if it happens and $0 if not, so its price is the market's probability. Predictions lists these markets across the venues that trade them — the same question priced side by side — with search, trending, ending soon, the venues' own categories and a watchlist. A market opens into its outcomes and live probabilities, the day's change, the volume, the time to resolution, and one tap deeper into Research and Market depth. A Prediction Plan is written in three steps, a Review states what an order pays if right and loses if wrong, and the order goes to a paper account: simulated funds, no real money, the word paper everywhere.
+
+- Discovery across venues: the question, the leading outcomes with their probabilities, the volume, the venues that trade it and the time to the end on every card; what moved since you watched it, and what needs attention.
+- Research that keeps everything the aggregator gives and names its sources: each venue's live price, the price history, related markets, generated signals with the model named, the ripple effect, news, and each venue's own resolution rules.
+- Market depth for those who want it: the aggregated order book with each level's venue breakdown, the books by venue, live trades, venue prices and the cross-venue return where one is computed.
+- A Prediction Plan native to outcomes — thesis, outcome, amount, entry probability, an optional bound, invalidation, the resolution deadline, monitoring conditions — sized on the plain fact that the whole amount is the most you can lose.
+- A Review before every paper order: the outcome, the amount, what it pays if right, what you lose if wrong, the fees, the quote's age, the venues, the settlement summary, the plan's conditions and every check; one action — Place paper order.
+- Paper throughout: a paper balance, paper orders and paper positions on the account, shown apart from the real portfolio and tagged in History; live prediction trading is a separate decision that has not been taken.
+- One account: enabling paper trading takes one signature with your wallet; the provider's session is held by the server behind your account and never reaches your browser.
+
+![The Predictions hub: search, trending, ending soon, the venues' own categories with their counts, and the cards — the question, the leading outcomes with their probabilities, the volume, the venues and the time to the end.](docs/screenshots/predictions-hub.png)
+
+*The Predictions hub: search, trending, ending soon, the venues' own categories with their counts, and the cards — the question, the leading outcomes with their probabilities, the volume, the venues and the time to the end.*
+
+![A market: the outcome's live probability, the day's change, the volume, the paper position, the chart, the outcomes per market and the paper order ticket beside them — paper trading, said as such.](docs/screenshots/predictions-market.png)
+
+*A market: the outcome's live probability, the day's change, the volume, the paper position, the chart, the outcomes per market and the paper order ticket beside them — paper trading, said as such.*
+
+Open source in this repository: [`lib/predictions/plan-model.ts`](lib/predictions/plan-model.ts), [`lib/predictions/failure.ts`](lib/predictions/failure.ts).
+
+Live: https://ryntra.io/app/predictions
+
 ## Sep 16, 2026 — Risk & due diligence: how the token is built, as a rule of the plan
 
 **Trading plans** · verified on the live product

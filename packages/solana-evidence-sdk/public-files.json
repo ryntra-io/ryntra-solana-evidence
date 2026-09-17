@@ -38,6 +38,14 @@
       "role": "documentation"
     },
     {
+      "path": "docs/screenshots/predictions-hub.png",
+      "role": "screenshot"
+    },
+    {
+      "path": "docs/screenshots/predictions-market.png",
+      "role": "screenshot"
+    },
+    {
       "path": "docs/screenshots/send-recipient-check.png",
       "role": "screenshot"
     },
@@ -187,6 +195,14 @@
     },
     {
       "path": "lib/plans/sizing.ts",
+      "role": "source"
+    },
+    {
+      "path": "lib/predictions/failure.ts",
+      "role": "source"
+    },
+    {
+      "path": "lib/predictions/plan-model.ts",
       "role": "source"
     },
     {
