@@ -75,7 +75,7 @@ export function createNansenAdapter(input: { client: NansenClient; governor: Cre
     await governor.settle({
       expectedCredits: expected,
       settlement: { succeeded: call.ok, creditsUsed: call.headers.creditsUsed, creditsRemaining: call.headers.creditsRemaining, requestId: call.headers.requestId, retried: call.retried, failureKind: call.ok ? null : call.kind },
-      nowMs: Date.now(),
+      nowMs,
     });
     if (!call.ok) {
       console.warn(`evidence nansen ${name}: ${call.kind} ${call.status} ${call.code ?? ""} in ${call.ms} ms${call.retried ? " (retried)" : ""}`);

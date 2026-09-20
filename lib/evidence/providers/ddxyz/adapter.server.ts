@@ -84,7 +84,7 @@ export function createDdxyzAdapter(input: { client: DdxyzClient; governor: Credi
     await governor.settle({
       expectedCredits: expected,
       settlement: { succeeded: call.ok, creditsUsed: call.headers.computeUnits, creditsRemaining: null, requestId: call.headers.requestId, retried: call.retried, failureKind: call.ok ? null : call.kind },
-      nowMs: Date.now(),
+      nowMs,
     });
     if (!call.ok) {
       console.warn(`evidence ddxyz ${name}: ${call.kind} ${call.status} in ${call.ms} ms${call.retried ? " (retried)" : ""}`);
