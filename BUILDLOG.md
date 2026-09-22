@@ -6,6 +6,23 @@ Entries dated before Sep 16, 2026 record earlier shipped work, written down when
 
 Evidence kit version in this repository: `1.4.0`. Machine-readable status: [`docs/product/status.json`](docs/product/status.json). Product documentation: [`docs/product/README.md`](docs/product/README.md). Repository: https://github.com/ryntra-io/ryntra-solana-evidence.
 
+## Sep 22, 2026 — Results — what actually happened, against what you planned
+
+**Platform** · verified on the live product
+
+A plan used to end at the signature. Now the page it returns to answers what a careful person actually asks: what happened against what I intended. An operation is read as an entry or an exit — from the side the signed record itself carries, never guessed afterwards — and the gap between the price you planned and the one you paid is broken into parts that are never added together: the market before the review, execution after it, and the fee the settled record measured. An exit is judged only against the rules that existed before it. An open position says so rather than showing a zero. And a plan that never traded is a result too: it names the rule that refused it.
+
+- Entry and exit are different events. The side comes off the signed record, so a sale is a sale rather than a purchase read backwards from which leg happened to be the stablecoin.
+- The difference is three parts, never one number: the market before the review, execution after it, and the fee — each saying whether it was measured, modelled, or not established at all.
+- What the review modelled before the signature stays labelled as modelled. A quoted fee is never called a paid one.
+- An exit is judged against the version of the plan in force when it settled — and only that version. A target written the week after is reported as not applied, not as a rule the exit broke.
+- A realised figure appears only when the position is closed, both sides are valued and every leg states a fee, and it names the method it was computed by. Otherwise the page says exactly what is missing.
+- No trade is a first-class outcome. A maximum price that refused every review, a liquidity floor never cleared, a window that closed, a plan cancelled — each with the rule and the figures, and none of them called a failure.
+- Strategy memory: facts about your own plans, reviews and operations, each citing the record it stands on. Nothing is stored as prose, so nothing can drift from what it describes, and no model can write to it.
+- A holding in the portfolio now carries the plan it came from, so a position opens as the decision it started as.
+
+Live: https://ryntra.io/app/results
+
 ## Sep 22, 2026 — Ryn, the product agent — it researches and prepares, and it never executes
 
 **Platform** · verified on the live product

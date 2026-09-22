@@ -76,11 +76,11 @@
   ],
   "buildLog": {
     "path": "BUILDLOG.md",
-    "entries": 23,
+    "entries": 24,
     "latest": {
-      "id": "2026-09-22-ryn-the-agent",
+      "id": "2026-09-22-results-what-actually-happened",
       "date": "2026-09-22",
-      "title": "Ryn, the product agent — it researches and prepares, and it never executes",
+      "title": "Results — what actually happened, against what you planned",
       "productArea": "platform"
     }
   }
