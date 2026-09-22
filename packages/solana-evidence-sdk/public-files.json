@@ -86,6 +86,14 @@
       "role": "screenshot"
     },
     {
+      "path": "docs/screenshots/trading-plan-token-builder.png",
+      "role": "screenshot"
+    },
+    {
+      "path": "docs/screenshots/trading-plan-token-picker.png",
+      "role": "screenshot"
+    },
+    {
       "path": "docs/solana/schemas/solana-asset-passport.schema.json",
       "role": "published_schema"
     },

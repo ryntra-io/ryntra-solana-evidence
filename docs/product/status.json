@@ -5,7 +5,7 @@
   "liveUrl": "https://ryntra.io",
   "repository": "https://github.com/ryntra-io/ryntra-solana-evidence",
   "publicKitVersion": "1.4.0",
-  "lastPublicProductUpdate": "2026-09-17",
+  "lastPublicProductUpdate": "2026-09-22",
   "capabilities": [
     {
       "id": "swap",
@@ -70,12 +70,12 @@
   ],
   "buildLog": {
     "path": "BUILDLOG.md",
-    "entries": 21,
+    "entries": 22,
     "latest": {
-      "id": "2026-09-17-predictions-in-paper-mode",
-      "date": "2026-09-17",
-      "title": "Predictions: markets on outcomes, with a plan, a Review and paper trading",
-      "productArea": "predictions"
+      "id": "2026-09-22-plans-on-crypto-and-memes",
+      "date": "2026-09-22",
+      "title": "Trading Plans on SOL, crypto and memes — the same engine, the planning price with its time",
+      "productArea": "trading-plans"
     }
   }
 }

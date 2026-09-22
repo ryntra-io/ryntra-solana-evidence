@@ -16,13 +16,35 @@ operation is done.
 
 | Step | Rules | Notes |
 |---|---|---|
-| Why this stock | the thesis in the person's words; optionally why now, the horizon, sources and assumptions | the thesis is kept with every version |
+| Why this asset | the thesis in the person's words; optionally why now, the horizon, sources and assumptions | the thesis is kept with every version |
 | Money | the budget; the planned risk — the most the person plans to lose if the price falls to the invalidation | a reserve for costs is kept back from the budget |
 | Prices | the entry; the price where the thesis is wrong (the invalidation); an optional maximum entry price above which the Review refuses | per underlying share, or per token for a pre-IPO instrument |
 | More rules | the entry's validity, the modelled cost buffer, an optional target and time exit, the slippage bound, the maximum quote age, the maximum reference deviation, whether a reference is required, a minimum liquidity | each with a default that holds |
 
 The invalidation is a rule the person acts on, not an exit order: the plan
 places no order at that price, and the page says so.
+
+## A plan on a token
+
+Since 22 September 2026 the same plan reaches SOL, any crypto and any meme
+on Jupiter's verified list, beside the tokenized stocks. The builder's one
+field searches both. A token plan is priced per token; the entry is prefilled
+with the market price Jupiter stated, shown with its time as **planning
+context** — never the price the person will get, which is the fresh executable
+quote the Review takes — and, when no indication is available, left for the
+person's own figure: nothing is invented. Every version keeps the planning
+price it was written against, with its source and time. A token has no issuer
+reference, so no deviation bound and no reference rule are offered on it; the
+Review says *not applicable* for those two checks and judges the rest as it
+judges a stock — the entry bound, the money, the slippage, the quote's age,
+the pool's liquidity from the catalogue. A contradiction between two prices is
+said with the person's figures and the next action as soon as both are
+written: *your planned entry is $974.00 per token, but your maximum price is
+$900.00 — change the planned entry or the maximum price.*
+
+![The plan builder on SOL: the asset strip with the market indication as planning context and its time, the three steps, the per-token prices, the estimate](../screenshots/trading-plan-token-builder.png)
+
+*A plan on SOL: the indication with its time as planning context, the prices per token, the estimate computed beside the form.*
 
 ## The size
 
@@ -54,9 +76,12 @@ lost; the assumptions travel with the figure and are shown beside it.
 2. The Review's **Strategy block** judges the exact order against the plan:
    the executable price against the entry bound, the amount against the budget
    net of the reserve, the modelled loss against the planned risk, the quote's
-   deviation against the plan's reference rule, the quote's age and slippage
-   against the plan's execution limits. A rule that fails refuses the order and
-   is named.
+   deviation against the plan's reference rule (a stock; a token has none),
+   the quote's age and slippage against the plan's execution limits. A rule that
+   fails refuses the order and is named — once, in one sentence with the
+   figures and the next action, above the checks; and the Review answers four
+   questions first: what leaves the wallet, what arrives at least, all costs,
+   whether the order fits the plan.
 3. The wallet signs; the execution is bound to the plan version it was judged
    against.
 4. The result — what was executed, at what price, against what was planned —

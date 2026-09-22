@@ -6,6 +6,32 @@ Entries dated before Sep 16, 2026 record earlier shipped work, written down when
 
 Evidence kit version in this repository: `1.4.0`. Machine-readable status: [`docs/product/status.json`](docs/product/status.json). Product documentation: [`docs/product/README.md`](docs/product/README.md). Repository: https://github.com/ryntra-io/ryntra-solana-evidence.
 
+## Sep 22, 2026 — Trading Plans on SOL, crypto and memes — the same engine, the planning price with its time
+
+**Trading plans** · verified on the live product
+
+The Trading Plan that judged a tokenized stock now judges SOL, any crypto and any meme on Jupiter's verified list, on the same engine. One field searches stocks and tokens together; a token plan is priced per token, its entry prefilled with the market price Jupiter stated and shown with its time as planning context — never the price the person will get, which is the fresh executable quote the Review takes — or left for the person's own figure when nothing is available. A token has no issuer reference, so the two reference rules are not offered. A contradiction between two prices is said with the person's figures and the next action. Every version keeps its planning price.
+
+- One picker over every asset a plan may name: the confirmed tokenized stocks and the catalogue's verified crypto and memes; an unverified copy is never offered, and the server refuses it with the reason.
+- The planning price as context, never as a quote: the figure Jupiter stated at the write, with its source and time, kept on every version; null when nothing was available — nothing is invented.
+- Per-token everywhere on a token plan: the words, the size, the Review's figures — a meme priced in fractions of a cent reads as its digits, never as $0.00.
+- A contradiction said in the person's words: your planned entry is $974.00 per token, but your maximum price is $900.00 — change the planned entry or the maximum price; every refused rule carries a stable code beside its sentence.
+- The Review answers four questions first — what leaves the wallet, what arrives at least, all costs, whether the order fits the plan — and a refusal is one sentence with the figures and the next action above the checks.
+- Monitoring watches a token plan through the catalogue; every note names the exact plan, holds both languages and the figures behind its sentence.
+- Published here: the sizing with the token context and the stable issue codes (@ryntra/trading-plans); the contract's asset read and planning price are documented in the API's OpenAPI document.
+
+![The builder on SOL: the asset strip names the kind and the verification, the market indication with its time as planning context, the per-token prices and the estimate beside the form.](docs/screenshots/trading-plan-token-builder.png)
+
+*The builder on SOL: the asset strip names the kind and the verification, the market indication with its time as planning context, the per-token prices and the estimate beside the form.*
+
+![One field over every asset a plan may name: the verified crypto and memes of the catalogue beside the tokenized stocks, each with its price.](docs/screenshots/trading-plan-token-picker.png)
+
+*One field over every asset a plan may name: the verified crypto and memes of the catalogue beside the tokenized stocks, each with its price.*
+
+Open source in this repository: [`lib/plans/sizing.ts`](lib/plans/sizing.ts), [`packages/trading-plans/src/index.ts`](packages/trading-plans/src/index.ts).
+
+Live: https://ryntra.io/app/strategies/new?mint=So11111111111111111111111111111111111111112
+
 ## Sep 17, 2026 — Predictions: markets on outcomes, with a plan, a Review and paper trading
 
 **Predictions** · verified on the live product
