@@ -6,6 +6,23 @@ Entries dated before Sep 16, 2026 record earlier shipped work, written down when
 
 Evidence kit version in this repository: `1.4.0`. Machine-readable status: [`docs/product/status.json`](docs/product/status.json). Product documentation: [`docs/product/README.md`](docs/product/README.md). Repository: https://github.com/ryntra-io/ryntra-solana-evidence.
 
+## Sep 22, 2026 — Ryn, the product agent — it researches and prepares, and it never executes
+
+**Platform** · verified on the live product
+
+A person can now ask Ryntra in their own words — why an asset is moving, what a plan would look like at a stated maximum risk, what a note means — and get one answer over the product's own reads: markets, evidence with its provenance, holdings, plans, history and monitoring. Every figure carries its source, its time and its state, and data that is missing is called missing instead of being smoothed over. The agent has reading tools and preparing tools and no executing tool at all: a request to buy is refused and turned into a draft that opens the existing ticket, where a fresh quote, the Review, the person's confirmation and their own wallet signature decide.
+
+- One conversation per wallet, kept on the server, reachable from any asset, plan, the portfolio or a monitoring note — and it knows where it was opened from.
+- Ten reading tools over the services the product already uses and four preparing tools that return drafts in the product's own shapes; there is no execute tool to call, in any language.
+- Every answer in six parts: what is known now, what it means, what could make that reading wrong, what is missing or stale, what to check, and neutral next steps — never an instruction to buy or sell.
+- Every figure is printed as the read printed it, with the source and the time beside it; a figure the tools did not read, or a citation that does not exist, is removed from the answer before a person sees it.
+- Asked to prepare a plan at a maximum risk of $50, it returns a draft — entry, invalidation, refusal price, the size that risk allows — and opens it in the builder a person would have filled by hand. Nothing is saved.
+- Asked to buy, it answers that it does not execute, prepares a draft with no quote and no amount, and points at the ticket and the Review.
+- A model composes the words only where a model helps, under a budget the deployment meters: a ceiling per wallet per day and per month, one call at a time, a receipt for every call, and a refusal that says which ceiling was reached.
+- Proven on the live site on the day it shipped: three real questions answered by the model over real reads, 5,252 tokens in total — the architecture, not the model, is what keeps the figures honest.
+
+Live: https://ryntra.io/app/ryn
+
 ## Sep 22, 2026 — Trading Plans on SOL, crypto and memes — the same engine, the planning price with its time
 
 **Trading plans** · verified on the live product

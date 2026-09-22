@@ -44,6 +44,12 @@
       "since": "2026-09-16"
     },
     {
+      "id": "agent",
+      "label": "Ryn, the product agent",
+      "url": "https://ryntra.io/app/ryn",
+      "since": "2026-09-22"
+    },
+    {
       "id": "risk-review",
       "label": "Pre-signature Review",
       "url": "https://ryntra.io/app/spot",
@@ -70,12 +76,12 @@
   ],
   "buildLog": {
     "path": "BUILDLOG.md",
-    "entries": 22,
+    "entries": 23,
     "latest": {
-      "id": "2026-09-22-plans-on-crypto-and-memes",
+      "id": "2026-09-22-ryn-the-agent",
       "date": "2026-09-22",
-      "title": "Trading Plans on SOL, crypto and memes — the same engine, the planning price with its time",
-      "productArea": "trading-plans"
+      "title": "Ryn, the product agent — it researches and prepares, and it never executes",
+      "productArea": "platform"
     }
   }
 }
