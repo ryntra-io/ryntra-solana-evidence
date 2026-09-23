@@ -6,6 +6,25 @@ Entries dated before Sep 16, 2026 record earlier shipped work, written down when
 
 Evidence kit version in this repository: `1.4.0`. Machine-readable status: [`docs/product/status.json`](docs/product/status.json). Product documentation: [`docs/product/README.md`](docs/product/README.md). Repository: https://github.com/ryntra-io/ryntra-solana-evidence.
 
+## Sep 23, 2026 — Buy a tokenized stock with a loss limit you set
+
+**Tokenized stocks** · shipped
+
+A stock page now starts where a first purchase starts: with Buy. Pick an amount and, if you want one, a loss limit — Careful at −5% or Balanced at −10% — and Ryntra prepares the purchase from your own figures as one card: what you can lose at that limit, where the limit and the target sit, how you will be warned, and that nothing is bought yet. Accepting writes the plan and opens the same Review every trade passes, with the same amount, and your wallet signs. After the purchase settles, the plan keeps watching the position against its limit until the position is closed. A limit is a rule of your plan, not an order: you can still lose everything.
+
+- Buy comes first, with $10, $20, $50 and $100 one tap away and any amount still typed by hand; each screen has one orange action, and the header's Buy steps back while the purchase card's own action is on screen.
+- Careful puts the limit at −5% and the target at +10%; Balanced at −10% and +20%. The card states what you can lose at the limit, including the price cushion the Review allows before it refuses.
+- The path is drawn on the card — intent, limits, permission, execution, proof, oversight — with the step you are on marked. Nothing moves past permission without your wallet's signature.
+- Accept and sign writes an active plan and opens Spot's Review bound to it: a fresh executable quote, the plan's price ceiling and loss limit checked, then the signature. A price that ran too far is refused, not chased.
+- After the fill the position stays watched against its limit until it is closed. Reaching the limit brings one note — on the page, and on Telegram if you connected it. Ryntra never sells for you: a sale is yours to open and sign.
+- What you are buying, in one label under the symbol — Backed tracker, or Economic exposure · private — with a ? in the issuer's words; for xStocks, the dividends already in your amount through the multiplier.
+- Where it trades: the Meteora card leads with the primary pool, the one paired with a stablecoin or SOL, in a single line until you open it.
+- An issuer catalogue that fails to answer no longer hides a stock: the last complete copy is served, marked by its age, and a ticker it cannot confirm is reported as not known right now rather than not found.
+
+Open source in this repository: [`lib/stocks/units.ts`](lib/stocks/units.ts).
+
+Live: https://ryntra.io/app/stocks/SPYx
+
 ## Sep 22, 2026 — Results — what actually happened, against what you planned
 
 **Platform** · verified on the live product
@@ -23,11 +42,11 @@ A plan used to end at the signature. Now the page it returns to answers what a c
 
 Live: https://ryntra.io/app/results
 
-## Sep 22, 2026 — Ryn, the product agent — it researches and prepares, and it never executes
+## Sep 22, 2026 — Ryntra, the AI assistant — it researches and prepares, and it never executes
 
 **Platform** · verified on the live product
 
-A person can now ask Ryntra in their own words — why an asset is moving, what a plan would look like at a stated maximum risk, what a note means — and get one answer over the product's own reads: markets, evidence with its provenance, holdings, plans, history and monitoring. Every figure carries its source, its time and its state, and data that is missing is called missing instead of being smoothed over. The agent has reading tools and preparing tools and no executing tool at all: a request to buy is refused and turned into a draft that opens the existing ticket, where a fresh quote, the Review, the person's confirmation and their own wallet signature decide.
+A person can now ask Ryntra in their own words — why an asset is moving, what a plan would look like at a stated maximum risk, what a note means — and get one answer over the product's own reads: markets, evidence with its provenance, holdings, plans, history and monitoring. Every figure carries its source, its time and its state, and data that is missing is called missing instead of being smoothed over. The assistant has reading tools and preparing tools and no executing tool at all: a request to buy is refused and turned into a draft that opens the existing ticket, where a fresh quote, the Review, the person's confirmation and their own wallet signature decide.
 
 - One conversation per wallet, kept on the server, reachable from any asset, plan, the portfolio or a monitoring note — and it knows where it was opened from.
 - Ten reading tools over the services the product already uses and four preparing tools that return drafts in the product's own shapes; there is no execute tool to call, in any language.
@@ -37,6 +56,8 @@ A person can now ask Ryntra in their own words — why an asset is moving, what 
 - Asked to buy, it answers that it does not execute, prepares a draft with no quote and no amount, and points at the ticket and the Review.
 - A model composes the words only where a model helps, under a budget the deployment meters: a ceiling per wallet per day and per month, one call at a time, a receipt for every call, and a refusal that says which ceiling was reached.
 - Proven on the live site on the day it shipped: three real questions answered by the model over real reads, 5,252 tokens in total — the architecture, not the model, is what keeps the figures honest.
+
+*Since Sep 23, 2026 the assistant carries the product's own name, Ryntra; this entry first called it by a separate one.*
 
 Live: https://ryntra.io/app/ryn
 

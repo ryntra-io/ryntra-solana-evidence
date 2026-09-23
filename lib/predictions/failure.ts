@@ -77,6 +77,28 @@ export function failure(code: PredictionFailureCode, message: string, extra: Par
   return { ok: false, code, message, ...extra };
 }
 
+/** At most this many refused fields travel in an error, each bounded — the v1 routes' own cap (contract 1.11.0). */
+export const FAILURE_ISSUE_LIMIT = 32;
+const FAILURE_MESSAGE_LIMIT = 1_000;
+const ISSUE_PATH_LIMIT = 256;
+const ISSUE_MESSAGE_LIMIT = 512;
+
+/**
+ * The error body a prediction route answers — `{ error: { code, message, issues? } }`.
+ *
+ * Bounded (contract 1.11.0): until then the list was
+ * every issue the validator raised, whole, so a refused 32 KB plan body drew
+ * tens of thousands of issues (43,672 measured) and a message could quote a
+ * 32 KB key; the answer to a malformed request weighed more than the request.
+ * The first thirty-two refused fields name what to fix; the rest add nothing.
+ */
+export function failureBody(f: PredictionFailure): Readonly<{ error: Readonly<{ code: PredictionFailureCode; message: string; issues?: readonly Readonly<{ path: string; message: string }>[] }> }> {
+  const issues = f.issues && f.issues.length > 0
+    ? f.issues.slice(0, FAILURE_ISSUE_LIMIT).map((issue) => ({ path: issue.path.slice(0, ISSUE_PATH_LIMIT), message: issue.message.slice(0, ISSUE_MESSAGE_LIMIT) || "Refused." }))
+    : null;
+  return { error: { code: f.code, message: f.message.slice(0, FAILURE_MESSAGE_LIMIT) || f.code, ...(issues ? { issues } : {}) } };
+}
+
 export function isPredictionFailure(value: unknown): value is PredictionFailure {
   return typeof value === "object" && value !== null && (value as { ok?: unknown }).ok === false && typeof (value as { code?: unknown }).code === "string";
 }

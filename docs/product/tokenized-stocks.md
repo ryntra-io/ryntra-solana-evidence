@@ -28,7 +28,9 @@ issuer-set multiplier changes what the balance means. Ryntra reads the
 multiplier from the chain, converts raw amounts to the units a holder
 economically owns with integer arithmetic, and puts a token price and a
 per-share reference on one basis before comparing them. The multiplier is
-applied once, and the page says which unit every figure is in.
+applied once, and the page says which unit every figure is in. For xStocks
+the issuer reinvests dividends by raising the multiplier, so the page says
+they are already in your amount — not a payout to an account.
 
 A pre-IPO token is priced **per token** — the only unit its issuer has stated
 in a way that can be checked — and the plan built on it says so.
@@ -93,6 +95,28 @@ rights and its own unit.
 ![The asset page of a listed-equity token: the reference price, the deviation and the session in the header; the buy estimate with the per-share price and the units; the confirmed tokens of the same underlying compared for the same amount](../screenshots/stock-listed-asset.png)
 
 *A listed-equity asset page: the reference and the session, the estimate per share through the token's multiplier, and the token alternatives of the same company quoted for the same amount.*
+
+## Buying with a loss limit
+
+The asset page starts with **Buy**. Choose an amount — $10, $20, $50 or $100,
+or type one — and, if you want one, a loss limit: **Careful** (limit −5%,
+target +10%) or **Balanced** (limit −10%, target +20%). Ryntra prepares the
+purchase from those figures as one card: what you can lose at the limit,
+including the price cushion the Review allows; where the limit and the target
+sit per unit; how you will be warned; and that nothing is bought yet. The card
+draws the path every action takes — intent, limits, permission, execution,
+proof, oversight — and marks the step you are on.
+
+**Accept and sign** writes the plan and opens the same Review every trade
+passes, with the same amount: a fresh executable quote, the plan's price
+ceiling and loss limit checked, then your wallet's signature. After the
+purchase settles, the plan keeps watching the position against its limit
+until the position is closed; reaching it produces one note — on the page,
+and on Telegram if you connected it. Ryntra never sells for you: a sale is
+yours to open and sign.
+
+A loss limit is a rule of your plan, not an order. The market can move past
+it before you act, and you can lose everything you put in.
 
 ## Open source in this repository
 

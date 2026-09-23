@@ -29,8 +29,11 @@ export type Multiplier = Readonly<{
   effectiveAt: string | null;
 }>;
 
-/** Example amounts for orientation; the Review always quotes the real amount. */
-export const STOCK_QUOTE_PRESETS_USD = [100, 1000, 10000] as const;
+/**
+ * Example amounts for orientation; the Review always quotes the real amount.
+ * They are the sums a first purchase is made of — $10, $20, $50 and $100.
+ */
+export const STOCK_QUOTE_PRESETS_USD = [10, 20, 50, 100] as const;
 
 /** Fifteen minutes either side of an activation is the issuer's own advice for venues to pause. */
 export const ACTIVATION_WINDOW_MS = 15 * 60 * 1000;
