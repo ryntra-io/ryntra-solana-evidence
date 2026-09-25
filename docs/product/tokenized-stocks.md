@@ -11,14 +11,20 @@ supports the token.
 
 A token is a stock here only when the issuer's own catalogue lists its mint.
 Ryntra reads the catalogues of **xStocks (Backed Finance)**, **Backpack**,
-**Ondo** for listed equities and ETFs, and **PreStocks** and **Tessera** for
-pre-IPO exposure. A token an issuer does not list is not shown as a stock,
-whatever a pool quotes. The issuer, the underlying and the exchange are stated
-on the asset page, with a link to the issuer's own page.
+**Ondo** for listed equities and ETFs, and **PreStocks** for private
+companies — the one issuer of pre-IPO tokens Ryntra shows. A token an issuer
+does not list is not shown as a stock, whatever a pool quotes. The issuer, the
+underlying and the exchange are stated on the asset page, with a link to the
+issuer's own page.
 
-![The screener filtered to Pre-IPO only: issuer tabs, the issuer's mark beside each token's price, the exchange session and the traded volume](../screenshots/stocks-pre-ipo-screener.png)
+Tokens of another pre-IPO issuer are no longer supported: no list, search,
+plan or order offers them, and a person who holds one, or wrote a plan or
+bought one before, reads it as history — *no longer supported*, to be sold in
+their own wallet.
 
-*The screener on Pre-IPO only: each row names its issuer; the column that would hold a market reference holds the issuer's own mark, labelled as such.*
+![The screener on Pre-IPO only: the eight PreStocks companies, the issuer's mark beside each token's price, and the token against that valuation in the column a deviation would hold](../screenshots/stocks-private-screener.png)
+
+*The screener on Pre-IPO only: PreStocks' eight companies; the column that would hold a market reference holds the issuer's own mark, and the column that would hold a deviation holds the token against the issuer's valuation — each labelled as such.*
 
 ## Units
 
@@ -53,22 +59,27 @@ reference at this time, not a signal.
 
 For a pre-IPO token the issuer's own figure is shown as **the issuer's mark**.
 It has no observation time, it is the issuer's derivation, and no plan rule
-reads it as a reference.
+reads it as a reference. The one number a private company's card and page
+carry beside its price is the token against that valuation — *30% above
+PreStocks' valuation* — with the time the valuation was read, and no tone of
+good or bad.
 
-![The asset page of a pre-IPO token: price per token, the issuer's mark and the premium to it, the transfer fee the mint withholds, the rights in the issuer's words, and the buy estimate](../screenshots/stock-pre-ipo-asset.png)
+![A private company's page: what the token is not, the issuer's fee on every transfer and its power over the token before any figure, the company's own dated statement, the price with the token against PreStocks' valuation](../screenshots/stock-private-company.png)
 
-*A pre-IPO asset page: the price per token, the issuer's mark named as the issuer's mark, the mint's own transfer fee inside the estimate, the rights the issuer states, and the token's status with the issuer.*
+*A private company's page: the truth before any figure — not a share, the issuer's fee on every transfer, the issuer can freeze or take the token — the company's own dated statement about tokens like it, and the price with its one number.*
 
 ## Rights
 
 What a holder has is stated in the issuer's own terms, never as a legal
 opinion: the listed-equity issuers' terms; **price exposure, not a share**
 for PreStocks tokens (economic exposure through a holding entity, no ownership,
-voting, dividend or information rights); **a loan participation, not a share**
-for Tessera tokens (a right to a share of the proceeds of a liquidity event
-under an unsecured loan to a dedicated issuer entity). Availability by
-jurisdiction is the issuer's, and the issuer's page is linked beside the
-statement.
+voting, dividend or information rights). A PreStocks mint withholds the
+issuer's fee on every transfer — 1 % today, read from the chain — and its own
+settings let the issuer freeze the token, pause transfers, and move or burn it
+from any wallet; the page says so before any figure. Where a company has
+spoken about tokens like it, that dated statement stands beside the truth, its
+sources one press deeper. Availability by jurisdiction is the issuer's, and
+the issuer's page is linked beside the statement.
 
 ## Lifecycle
 
@@ -88,9 +99,9 @@ When one underlying has several confirmed tokens, the asset page quotes them
 together — the same amount, the same settlement asset, the same side — and
 shows the per-share price of each through its own multiplier, its costs and
 its liquidity. A cheaper token is not the same rights or less risk; the page
-says so. A pre-IPO token of the same company from another issuer is shown
-beside the one open but not compared: a different instrument with different
-rights and its own unit.
+says so. A pre-IPO token and a listed token of the same company — SpaceX after
+its listing — are shown side by side but never compared: different
+instruments with different rights and their own units.
 
 ![The asset page of a listed-equity token: the reference price, the deviation and the session in the header; the buy estimate with the per-share price and the units; the confirmed tokens of the same underlying compared for the same amount](../screenshots/stock-listed-asset.png)
 
@@ -117,6 +128,11 @@ yours to open and sign.
 
 A loss limit is a rule of your plan, not an order. The market can move past
 it before you act, and you can lose everything you put in.
+
+For a PreStocks token the Review names the issuer's fee on its own line
+under all costs — *of which the issuer's fee 1% ≈ $0.10* — and what arrives
+is the venue's quote through the token's multiplier, already after that fee,
+never reduced by it a second time.
 
 ## Open source in this repository
 

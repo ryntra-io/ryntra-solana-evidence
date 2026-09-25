@@ -4,9 +4,9 @@
  * is written down, with the notice, the read time, the issuer's own cut-off
  * and the date it is due for another look.
  *
- * Neither issuer publishes these states in an API today (PreStocks
- * `/api/prestocks` and Tessera `/v1/public/token-details` list mints and
- * marks, nothing about a window), so the registry is kept by hand and
+ * The issuer publishes no such state in an API today (PreStocks
+ * `/api/prestocks` lists mints and marks, nothing about a window), so the
+ * registry is kept by hand and
  * versioned: an entry is added from the issuer's own notice, never from a
  * pool's quote or a symbol's presence. An empty registry means no event has
  * been verified — it never means every token is fine; the catalogue and the
@@ -45,13 +45,9 @@ export const LIFECYCLE_EVENTS_VERSION = "2026-09-16.2";
  *   purchase of the mint is refused on the Spot routes too, whatever a pool
  *   still quotes.
  *
- * Tessera — the docs (`features/redemption`): redemption follows a Liquidity
- * Event (an IPO or a change of control) after any lock-up, during a formally
- * announced Redemption Period; *T-Tokens may continue to trade on secondary
- * markets unless and until redemption occurs.* SpaceX's listing is such an
- * event for T-SpaceX, but no Redemption Period notice for it was found on
- * the docs, the terms or the site on the read date, so no state is recorded
- * for it; the notice is due to be re-read by 2026-10-16.
+ * Private companies come through PreStocks only since canon v5.2 (В25–В26);
+ * the disconnected issuer's tokens are not events here but retired tokens
+ * (`retired.ts`).
  */
 export const LIFECYCLE_EVENTS: readonly LifecycleEvent[] = [
   {

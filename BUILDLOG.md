@@ -6,6 +6,32 @@ Entries dated before Sep 16, 2026 record earlier shipped work, written down when
 
 Evidence kit version in this repository: `1.4.0`. Machine-readable status: [`docs/product/status.json`](docs/product/status.json). Product documentation: [`docs/product/README.md`](docs/product/README.md). Repository: https://github.com/ryntra-io/ryntra-solana-evidence.
 
+## Sep 25, 2026 — Private companies through PreStocks only — Tessera disconnected
+
+**Tokenized stocks** · shipped
+
+Private companies now come to Ryntra through PreStocks alone, and Tessera is disconnected: its tokens are no longer listed, quoted or offered anywhere, and a token bought earlier reads as history — its page, Spot and the Portfolio say it is no longer supported in Ryntra and that it can be sold in the holder's own wallet. Each of PreStocks' eight companies carries one number before a purchase: the token against PreStocks' own valuation, with the time that valuation was read.
+
+- Private companies lists PreStocks' eight companies, each with its price in dollars and one number — such as 29% above PreStocks' valuation — and the time of that valuation on the reader's own clock.
+- Before any figure, a private company's page says the token is not a share, carries a 1% issuer fee on every transfer and can be frozen or taken by the issuer; a company's own dated warning about tokens like it stands below, with sources.
+- The chart of a PreStocks company opens on a month, since a day of a thin market draws a saw; the day, week and year stay one tap away.
+- The Review of a PreStocks purchase names the issuer's 1% fee on its own line under All costs, and You get is the venue's quote after the fee, with the token's multiplier applied.
+- The screener's deviation column holds the token against the issuer's valuation for pre-IPO rows, labelled as exactly that; a filter chosen while the page is still loading is applied once it is ready.
+- Tessera's tokens are refused on either side of a quote and an order, left out of search and Spot's lists, refused for new plans and Autoinvest, and paused in monitoring; an old plan or receipt still opens and reads as history.
+- The API contract grows additively to 1.14.0: slim stock rows carry markPremium and markAt, and values recorded before the disconnection stay readable.
+
+![A private company's page: what the token is not, the issuer's fee on every transfer and its power over the token before any figure, the company's own dated statement, and the price with its one number.](docs/screenshots/stock-private-company.png)
+
+*A private company's page: what the token is not, the issuer's fee on every transfer and its power over the token before any figure, the company's own dated statement, and the price with its one number.*
+
+![The screener on Pre-IPO only: PreStocks' eight companies, the issuer's mark where a market reference would stand, and the token against the issuer's valuation where a deviation would stand.](docs/screenshots/stocks-private-screener.png)
+
+*The screener on Pre-IPO only: PreStocks' eight companies, the issuer's mark where a market reference would stand, and the token against the issuer's valuation where a deviation would stand.*
+
+Open source in this repository: [`lib/stocks/instrument.ts`](lib/stocks/instrument.ts), [`lib/stocks/lifecycle-events.ts`](lib/stocks/lifecycle-events.ts).
+
+Live: https://ryntra.io/app/markets?tab=private
+
 ## Sep 23, 2026 — Buy a tokenized stock with a loss limit you set
 
 **Tokenized stocks** · shipped

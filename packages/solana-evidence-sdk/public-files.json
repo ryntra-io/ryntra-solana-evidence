@@ -70,11 +70,19 @@
       "role": "screenshot"
     },
     {
+      "path": "docs/screenshots/stock-private-company.png",
+      "role": "screenshot"
+    },
+    {
       "path": "docs/screenshots/stock-risk-due-diligence.png",
       "role": "screenshot"
     },
     {
       "path": "docs/screenshots/stocks-pre-ipo-screener.png",
+      "role": "screenshot"
+    },
+    {
+      "path": "docs/screenshots/stocks-private-screener.png",
       "role": "screenshot"
     },
     {

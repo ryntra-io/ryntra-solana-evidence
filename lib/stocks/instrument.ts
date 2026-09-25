@@ -35,11 +35,10 @@ export type UnitBasis = "share" | "token";
  * for every jurisdiction. `issuer-terms`: the issuer's terms state the rights
  * (the listed-equity issuers). `economic-exposure`: PreStocks — price
  * exposure to a private company through a holding entity, no ownership,
- * voting, dividend or information rights. `loan-participation`: Tessera — a
- * contractual right to a share of the proceeds of a liquidity event under an
- * unsecured loan to a dedicated issuer entity; not a share of the company.
+ * voting, dividend or information rights. (The contract keeps one more value
+ * for records written before canon v5.2 В26; no answer carries it now.)
  */
-export type RightsKind = "issuer-terms" | "economic-exposure" | "loan-participation";
+export type RightsKind = "issuer-terms" | "economic-exposure";
 
 export type Instrument = Readonly<{ class: InstrumentClass; unitBasis: UnitBasis; rights: RightsKind }>;
 
@@ -188,7 +187,7 @@ export function lifecycleOf(input: Readonly<{ paused: boolean | null; event: Lif
  * as *the issuer's mark*, dated by Ryntra's fetch, never as a fair price.
  */
 export type IssuerMark = Readonly<{
-  source: Readonly<{ id: "issuer-prestocks" | "issuer-tessera"; label: string }>;
+  source: Readonly<{ id: "issuer-prestocks"; label: string }>;
   /** The issuer's mark of one token, USD. */
   perUnit: number | null;
   /** The issuer's mark of the company's valuation, USD. */
@@ -197,7 +196,7 @@ export type IssuerMark = Readonly<{
   impliedValuationUsd: number | null;
   /** Tokens in circulation as the issuer counts them (PreStocks: scaled units). */
   supply: number | null;
-  /** Holders as the issuer counts them (Tessera). */
+  /** Holders as the issuer counts them; PreStocks publishes no count, so null — the field stays for the contract's readers. */
   holders: number | null;
   /** The issuer states no observation time; only the fetch is dated. */
   observedAt: null;
@@ -243,13 +242,6 @@ export const RIGHTS_WORDS: Readonly<Record<RightsKind, Readonly<{ title: Bi; bod
     body: {
       en: "The issuer states the token gives economic exposure to the private company through a holding entity — no ownership, voting, dividend or information rights; not available to U.S. persons.",
       uk: "Емітент зазначає: токен дає економічну прив'язку до приватної компанії через холдингову структуру — без прав власності, голосу, дивідендів чи інформації; недоступно особам США.",
-    },
-  },
-  "loan-participation": {
-    title: { en: "A loan participation, not a share", uk: "Участь у позиці, не акція" },
-    body: {
-      en: "By the issuer's terms the token is a right to a share of the proceeds of a liquidity event under an unsecured loan to a dedicated issuer entity — not equity, no ownership or voting rights, no place on the company's cap table.",
-      uk: "За умовами емітента токен — право на частку виручки від події ліквідності за незабезпеченою позикою окремій компанії-емітенту; це не акція, без прав власності чи голосу, без місця в реєстрі акціонерів.",
     },
   },
 };
