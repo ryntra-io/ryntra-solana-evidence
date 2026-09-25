@@ -6,6 +6,32 @@ Entries dated before Sep 16, 2026 record earlier shipped work, written down when
 
 Evidence kit version in this repository: `1.4.0`. Machine-readable status: [`docs/product/status.json`](docs/product/status.json). Product documentation: [`docs/product/README.md`](docs/product/README.md). Repository: https://github.com/ryntra-io/ryntra-solana-evidence.
 
+## Sep 25, 2026 — The IPO and conversion watch — a pre-IPO token never left to expire
+
+**Tokenized stocks** · shipped
+
+When a private company goes public or is bought, its PreStocks token has a deadline: it must be swapped before the issuer's cut-off, or it expires worthless. Ryntra now says so on the token's page before any figure and before a purchase, tells a holder in the portfolio and in their notes, offers one action — swap into the listed token — and a quieter one — sell for USDC — and reminds them on the day it first sees the token in their wallet and 90, 30, 7 and 1 days before the deadline. SpaceX is the first: its window into SPCXx is open until 23:59 UTC on 12 March 2027.
+
+- The event stands under what the token is, before the price, for everyone; a holder reads «Swap SPACEX by March 12, 2027 — after the deadline the token expires worthless.» with the swap as the page's one action and the sale beside it.
+- The swap is an ordinary trade at the live quote, as the issuer describes the conversion; its Review shows all costs with the issuer's 1% fee on its own line and the rate against the exchange price. No ratio is promised.
+- Route, the issuer's minute in UTC, what the listed token is and the issuer's own notice are one press deeper, under Details.
+- Reminders come on the day a token is first seen in the wallet and 90, 30, 7 and 1 days before the deadline, at most once a day and never caught up; the balance is read from the chain, never taken from the page.
+- A purchase of a token with a deadline says it before any sum; once the issuer's cut-off passes, no purchase is quoted, whatever the registry still says.
+- The issuer's product pages are read against the registry of events every day; a new or changed notice is recorded for a person to verify before anyone is told.
+- The portfolio counts and values a token in the unit the wallet shows — the raw balance through the multiplier in force — so a token with a five-for-one split no longer reads as a fifth of its value.
+
+![A private company that has gone public: what the token is, and under it the issuer's swap deadline — before the price, for everyone.](docs/screenshots/stock-private-conversion.png)
+
+*A private company that has gone public: what the token is, and under it the issuer's swap deadline — before the price, for everyone.*
+
+![Buying a token with a swap deadline: the deadline stands under what the token is, before any sum.](docs/screenshots/stock-private-buy-warning.png)
+
+*Buying a token with a swap deadline: the deadline stands under what the token is, before any sum.*
+
+Open source in this repository: [`lib/stocks/instrument.ts`](lib/stocks/instrument.ts), [`lib/stocks/lifecycle-events.ts`](lib/stocks/lifecycle-events.ts).
+
+Live: https://ryntra.io/app/stocks/SPACEX
+
 ## Sep 25, 2026 — Private companies through PreStocks only — Tessera disconnected
 
 **Tokenized stocks** · shipped

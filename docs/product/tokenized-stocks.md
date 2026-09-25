@@ -36,7 +36,10 @@ economically owns with integer arithmetic, and puts a token price and a
 per-share reference on one basis before comparing them. The multiplier is
 applied once, and the page says which unit every figure is in. For xStocks
 the issuer reinvests dividends by raising the multiplier, so the page says
-they are already in your amount — not a payout to an account.
+they are already in your amount — not a payout to an account. A holding in
+the portfolio is counted and valued in the same unit the wallet shows — the
+raw balance through the multiplier in force — so a token with a five-for-one
+split reads as the wallet reads it, not as a fifth of it.
 
 A pre-IPO token is priced **per token** — the only unit its issuer has stated
 in a way that can be checked — and the plan built on it says so.
@@ -92,6 +95,36 @@ moment the clock passes the issuer's cut-off. A paused, redeem-only or expired
 token is not offered for purchase, whatever a pool still quotes; holdings and
 history stay visible, and selling a token one holds is the person's own
 decision.
+
+### When a private company goes public or is bought
+
+A pre-IPO token can have a deadline. When the company goes public or is
+acquired, its issuer opens a window to swap the token — into the listed
+company's token or any other — and after the issuer's cut-off the token
+expires worthless. SpaceX's PreStocks token is one today: the issuer's window
+into xStocks' SPCXx, or any other token, is open until 23:59 UTC on 12 March
+2027. Ryntra says so on the token's page before any figure, and again before a
+purchase: a token bought now must be swapped by that date.
+
+![A private company that has gone public: the issuer's swap deadline stands under what the token is, before the price](../screenshots/stock-private-conversion.png)
+
+*A private company that has gone public: what the token is, and under it the issuer's swap deadline — before the price, for everyone.*
+
+A holder reads it on the page, in the portfolio and in their notes, with one
+action — swap into the listed token — and a quieter one, sell for USDC. The
+swap is an ordinary trade at the live quote, as the issuer itself describes
+the conversion; its Review shows what leaves the wallet, what arrives at
+least, all costs with the issuer's 1% fee on its own line, and the rate
+against the company's price on the exchange. No ratio is promised. A holder
+is reminded on the day Ryntra first sees the token in their wallet and 90,
+30, 7 and 1 days before the deadline — never more than once a day, a missed
+reminder never caught up — in the app and on Telegram if they connected it.
+The issuer's product pages are read against Ryntra's registry of events every
+day; a change is verified by a person before anyone is told.
+
+![Buying a token with a swap deadline: the deadline stands under what the token is, before any sum](../screenshots/stock-private-buy-warning.png)
+
+*The purchase of a token with a swap deadline says it before any sum: the token bought now must be swapped by the issuer's date.*
 
 ## Comparing tokens of one company
 

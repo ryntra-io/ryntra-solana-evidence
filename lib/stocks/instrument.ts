@@ -142,7 +142,41 @@ export type LifecycleEvent = Readonly<{
   /** The issuer's own cut-off for the window, ISO, when the notice states one. */
   deadline: string | null;
   note: string;
+  /**
+   * What a holder reads and does about the event (the IPO and conversion
+   * watch, `conversion-watch.ts`): the token's symbol as the issuer names it —
+   * said even once the issuer's catalogue no longer lists the token — the
+   * company, why the window opened, and the token the issuer points the swap
+   * to. Absent on an event the watch does not speak about.
+   */
+  watch?: ConversionWatch;
 }>;
+
+/** The words and the one action of a conversion event (canon v5.2 В27, §7, §11). */
+export type ConversionWatch = Readonly<{
+  /** The token's symbol, as the issuer names it («SPACEX»). */
+  symbol: string;
+  /** The company, as a person names it («SpaceX»). */
+  company: string;
+  /** Why the window opened: the company went public, or another company bought it. */
+  cause: Readonly<{ kind: "ipo" }> | Readonly<{ kind: "acquisition"; acquirer: string }>;
+  /** The token the issuer points the swap to — the one action's target; null when the issuer names none Ryntra offers. */
+  into: Readonly<{ mint: string; symbol: string; company: string }> | null;
+  /** The issuer's own word on how the swap works, when it published one — read by Ryntra, dated. */
+  mechanics: Readonly<{ url: string; publishedAt: string; readAt: string }> | null;
+}>;
+
+/**
+ * A registered event's state at a moment: a window the issuer stated a
+ * cut-off for is over once the clock passes it, whatever the registry still
+ * says. Without a clock the registry's word stands. The universe, the swap
+ * routes and the watch read the event through this one door, so a purchase
+ * the page no longer offers is not quoted either.
+ */
+export function eventStateAt(event: LifecycleEvent, nowMs?: number): LifecycleEvent["state"] {
+  const past = event.deadline !== null && nowMs !== undefined && Date.parse(event.deadline) <= nowMs;
+  return past && event.state === "conversion-open" ? "expired" : event.state;
+}
 
 /**
  * The lifecycle of a mint from three facts, in order of strength: a chain
@@ -157,9 +191,7 @@ export function lifecycleOf(input: Readonly<{ paused: boolean | null; event: Lif
     return { state: "paused", tradable: false, source: "chain", observedAt: input.chainObservedAt, url: null, recheckBy: null, deadline: null, note: "The issuer has paused every transfer of this token." };
   }
   if (input.event) {
-    /* A window the issuer stated a cut-off for is over once the clock passes it, whatever the registry still says. */
-    const past = input.event.deadline !== null && input.nowMs !== undefined && Date.parse(input.event.deadline) <= input.nowMs;
-    const state: LifecycleState = past && input.event.state === "conversion-open" ? "expired" : input.event.state;
+    const state = eventStateAt(input.event, input.nowMs);
     return {
       state,
       tradable: state === "conversion-open",

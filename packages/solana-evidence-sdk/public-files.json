@@ -70,7 +70,15 @@
       "role": "screenshot"
     },
     {
+      "path": "docs/screenshots/stock-private-buy-warning.png",
+      "role": "screenshot"
+    },
+    {
       "path": "docs/screenshots/stock-private-company.png",
+      "role": "screenshot"
+    },
+    {
+      "path": "docs/screenshots/stock-private-conversion.png",
       "role": "screenshot"
     },
     {
