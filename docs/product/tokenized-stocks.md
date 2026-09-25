@@ -7,6 +7,47 @@ alone does not: who issues it and what kind of instrument it is, what one unit
 means, whether the reference price is current, and whether the issuer still
 supports the token.
 
+## The company page
+
+Each company's page says first what the company is, then what the token is.
+Under the name stand its ticker, its exchange and its industry. At rest the
+page shows, each figure with its source and date:
+
+- **Key statistics** — market value, price to earnings, revenue and net
+  income over the last twelve months and the dividend, from the company's own
+  periodic filings with the SEC (read into the product with the filing's date
+  and a link to it; the page itself does not call the SEC), and the token's
+  price over the year.
+- **About the company** — what it does in one line, its industry,
+  headquarters, exchange and ticker, fiscal year and latest report.
+- **What you buy** — the issuer's label for the instrument, the backing from
+  the issuer's proof of reserves where the issuer publishes one, what happens
+  to dividends, and whether the issuer takes a fee on a transfer.
+- **Trading on Solana** — the day's volume, liquidity, holders, traders,
+  trades and the share of buys.
+
+A fund has no revenue or earnings of its own and shows none. A foreign issuer
+reports in its own currency and per ordinary share, so nothing of its filings
+is set against the token's price. A company new to the filings shows its
+latest report's months rather than a year. A figure no source states is not
+drawn.
+
+### The company's path
+
+Under the company's name one strip draws where the company stands, in four
+steps — private (the PreStocks token), the IPO, the exchange and the token on
+Solana — each passed, current or not announced yet, with its date and its
+sources one press deeper. SpaceX has a token at two of those steps: the
+PreStocks token from before its listing and xStocks' SPCXx after it. Both
+pages draw the same strip; each marks the step of its own token, says what
+that token is — not a share, with the issuer's 1% fee on every transfer, or
+backed 1:1 with no vote — and opens the other in one press. Under the strip
+stands the day the PreStocks token must be swapped, with the issuer's minute
+in UTC. The IPO's price and first day of trading are read from the company's
+own filings with the SEC. A private company that has announced nothing stands
+at the first step, with the issuer's rule: after an IPO, up to nine months to
+swap the token.
+
 ## Issuers and confirmation
 
 A token is a stock here only when the issuer's own catalogue lists its mint.
@@ -142,8 +183,9 @@ instruments with different rights and their own units.
 
 ## Buying with a loss limit
 
-The asset page starts with **Buy**. Choose an amount — $10, $20, $50 or $100,
-or type one — and, if you want one, a loss limit: **Careful** (limit −5%,
+The asset page starts with **Buy**. Type any amount from one dollar — the
+sheet opens on $10 — or take 25%, 50%, 75% or 100% of your USDC in one tap;
+and, if you want one, a loss limit: **Careful** (limit −5%,
 target +10%) or **Balanced** (limit −10%, target +20%). Ryntra prepares the
 purchase from those figures as one card: what you can lose at the limit,
 including the price cushion the Review allows; where the limit and the target
@@ -166,6 +208,14 @@ For a PreStocks token the Review names the issuer's fee on its own line
 under all costs — *of which the issuer's fee 1% ≈ $0.10* — and what arrives
 is the venue's quote through the token's multiplier, already after that fee,
 never reduced by it a second time.
+
+The first purchase of a token opens its account in your wallet, and the
+network keeps a small reserve of SOL there — *≈ $0.19 in SOL, once — it stays
+in your wallet, on the token's account*. The Review states it on a line of
+its own under all costs, because it is not a cost; if it is ever more than
+the purchase itself, the Review says so first. Where the live quote finds no
+route for the sum typed, the sheet asks the same quote for larger sums and
+states the company's own minimum, with one action to use it.
 
 ## Open source in this repository
 

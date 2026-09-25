@@ -6,6 +6,54 @@ Entries dated before Sep 16, 2026 record earlier shipped work, written down when
 
 Evidence kit version in this repository: `1.4.0`. Machine-readable status: [`docs/product/status.json`](docs/product/status.json). Product documentation: [`docs/product/README.md`](docs/product/README.md). Repository: https://github.com/ryntra-io/ryntra-solana-evidence.
 
+## Sep 25, 2026 — The company's path — from a private company to its token on Solana
+
+**Tokenized stocks** · verified on the live product
+
+Under a company's name its page now draws one strip of four steps — private, the IPO, the exchange, the token on Solana — each passed, current or not announced yet, with its date. SpaceX has a token at two of those steps: the PreStocks token from before its listing and xStocks' SPCXx after it. Both pages draw the same strip, each marks the step of its own token and opens the other in one press, and under the strip stands the day the PreStocks token must be swapped. A private company that has announced nothing stands at the first step, with the issuer's own rule for what follows an IPO.
+
+- Four steps under the company's name — Private · PreStocks, IPO, Exchange, Solana — each passed, current or not announced yet, with its date; the sources are one press deeper.
+- SpaceX's IPO is read from the company's own filings with the SEC: the price per share from the final prospectus, the first day of trading from the pricing term sheet.
+- SPACEX and SPCXx are one company at two steps: each page says what its token is — not a share and a 1% issuer fee on every transfer for the private one, backed 1:1 with no vote for the listed one — and opens the other in one press.
+- Under the steps the PreStocks token's swap deadline is written with the issuer's minute in UTC; on that token's own page a holder's swap stands inside the strip.
+- A private company that has announced nothing stands at the first step, with the issuer's rule: after an IPO, up to nine months to swap the token.
+- The API contract adds the path to a stock's row in 1.17.0; nothing that exists changes shape.
+
+Open source in this repository: [`lib/stocks/lifecycle-events.ts`](lib/stocks/lifecycle-events.ts).
+
+Live: https://ryntra.io/app/stocks/SPACEX
+
+## Sep 25, 2026 — A company page that says what the company is
+
+**Tokenized stocks** · verified on the live product
+
+The page of every company now carries the company's facts at rest, as figures with their source and date: its size and results from its own filings with the SEC, what it does, where it is and where it lists, what exactly the token is and what backs it, and how the token trades on Solana. On a wide screen the company fills the main column and its purchase stays in view beside it; on a phone the same blocks read top to bottom, with the purchase on the first screen.
+
+- Key statistics: market value, price to earnings, revenue and net income over twelve months and the dividend, from the company's own filings with the SEC, dated and linked; the price over the year from the token's own line.
+- About the company: what it does in one line, its industry, headquarters, exchange and ticker, fiscal year and latest report.
+- What you buy: the issuer's label, the backing from the issuer's proof of reserves, what happens to dividends and whether the issuer takes a fee on a transfer.
+- Trading on Solana over the day: volume, liquidity, holders, traders, trades, and buying against selling.
+- A fund, a foreign issuer and a private company show the facts they have; nothing a source does not state is drawn, never a zero.
+- The day's line is drawn without a pool's one-trade spikes: each point is the median of itself and its neighbours, always a price the pool printed.
+
+Live: https://ryntra.io/app/stocks/NVDAx
+
+## Sep 25, 2026 — Buy a piece of a company from one dollar
+
+**Tokenized stocks** · shipped
+
+A purchase, a recurring buying rule and the month's budget now start at one dollar instead of ten. Every sum from a dollar is the person's own choice on their own budget; the purchase sheet opens on $10 as a plain default, any sum can be typed, and 25%, 50%, 75% or 100% of the wallet's USDC is one tap away. Before the change the live quote of one dollar was read for the twelve most traded companies and the eight private ones: every one of them has a route.
+
+- The least a purchase, a rule's purchase and a month's ceiling can be is $1; any sum can be typed, and a purchase takes 25%, 50%, 75% or 100% of the wallet's USDC in one tap.
+- A new buying rule opens on $10 every week as a default, the sum typed — every day, every week or every month, from a dollar, is the person's own choice.
+- Where the live quote finds no route for the sum typed, the sheet asks the same quote for larger sums and states the company's own minimum, with one action to use it; nothing is claimed when the venue does not answer.
+- The first purchase of a token opens its account in the wallet: the Review states that reserve on a line of its own under all costs — in SOL, once, it stays in the wallet — and says it first if it is ever more than the purchase.
+- The API contract relaxes the minimums in 1.16.0: a rule's sum and a month's budget from one dollar, published by the capabilities; no shape changes.
+
+Open source in this repository: [`lib/stocks/units.ts`](lib/stocks/units.ts).
+
+Live: https://ryntra.io/app/stocks/NVDAx
+
 ## Sep 25, 2026 — The IPO and conversion watch — a pre-IPO token never left to expire
 
 **Tokenized stocks** · shipped

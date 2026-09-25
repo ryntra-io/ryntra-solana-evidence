@@ -31,9 +31,10 @@ export type Multiplier = Readonly<{
 
 /**
  * Example amounts for orientation; the Review always quotes the real amount.
- * They are the sums a first purchase is made of — $10, $20, $50 and $100.
+ * They are the sums a first purchase is made of — $1, $5, $10 and $25 (canon
+ * v5.5 В35: a purchase from a dollar).
  */
-export const STOCK_QUOTE_PRESETS_USD = [10, 20, 50, 100] as const;
+export const STOCK_QUOTE_PRESETS_USD = [1, 5, 10, 25] as const;
 
 /** Fifteen minutes either side of an activation is the issuer's own advice for venues to pause. */
 export const ACTIVATION_WINDOW_MS = 15 * 60 * 1000;
