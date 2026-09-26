@@ -1,5 +1,23 @@
 # Changelog
 
+## [1.5.0] — 2026-09-26
+
+- `examples/stock-flows`: who is on the other side of a tokenized-stock
+  trade. Reads Nansen's flow intelligence for the most traded tokenized
+  stocks on Solana (the list from Ryntra's public universe, or the saved
+  snapshot beside it) through the evidence kit's own Nansen client and
+  credit governor — one call per stock per window, a hard ceiling per run,
+  the key never printed — and splits each week between the best traders,
+  smart traders, whales, public figures, exchanges and new wallets. A board
+  ranked by what the best and smart traders did, with one verdict per stock
+  (smart exit, smart money selling or buying, moving to exchanges, whales
+  accumulating, mixed, quiet) against a threshold scaled to the token's
+  daily volume; a guard that answers BUY or WAIT before a purchase from both
+  windows, or from a rule written over any group, where an unknown is never
+  a pass, with the decision as its exit code; the board as terminal text,
+  JSON or one self-contained HTML page, and redrawn offline from saved JSON.
+  Pure rules with network-free tests; no dependency beyond Node.
+
 ## [1.4.0] — 2026-09-16
 
 - `@ryntra/evidence` 0.2.0: a second provider on the same registry — the

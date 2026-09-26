@@ -58,6 +58,10 @@
       "role": "screenshot"
     },
     {
+      "path": "docs/screenshots/stock-flows-board.png",
+      "role": "screenshot"
+    },
+    {
       "path": "docs/screenshots/stock-listed-asset.png",
       "role": "screenshot"
     },
@@ -140,6 +144,30 @@
     {
       "path": "examples/solana-evidence-cli/package.json",
       "role": "package_metadata"
+    },
+    {
+      "path": "examples/stock-flows/README.md",
+      "role": "documentation"
+    },
+    {
+      "path": "examples/stock-flows/flows.test.mjs",
+      "role": "network_free_test"
+    },
+    {
+      "path": "examples/stock-flows/flows.ts",
+      "role": "source"
+    },
+    {
+      "path": "examples/stock-flows/radar.ts",
+      "role": "source"
+    },
+    {
+      "path": "examples/stock-flows/report.ts",
+      "role": "source"
+    },
+    {
+      "path": "examples/stock-flows/universe.snapshot.json",
+      "role": "public_fixture"
     },
     {
       "path": "lib/agent-control/adapters/jupiter-swap.ts",

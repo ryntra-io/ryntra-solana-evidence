@@ -19,7 +19,25 @@ selected product models, not the application or its live transaction flows.
 [CLI](examples/solana-evidence-cli/README.md) ·
 [Tokenized stocks](packages/tokenized-stocks/README.md) ·
 [Trading plans](packages/trading-plans/README.md) ·
-[Evidence](packages/evidence/README.md)
+[Evidence](packages/evidence/README.md) ·
+[Stock flows](examples/stock-flows/README.md)
+
+## Who is on the other side — tokenized stocks, read through Nansen
+
+Before you buy a tokenized stock on Solana, see who is selling it to you.
+[`examples/stock-flows`](examples/stock-flows/README.md) reads Nansen's flow
+intelligence for the most traded tokenized stocks — xStocks, PreStocks, Ondo and
+Backpack tokens — ranks them by what the best and smart traders are doing, and
+answers **BUY or WAIT** before a purchase, with its reason and an exit code a
+script can act on.
+
+```bash
+export NANSEN_API_KEY=<your key>
+node examples/stock-flows/radar.ts                  # the board, 20 credits
+node examples/stock-flows/radar.ts guard NVDAx      # BUY or WAIT, 2 credits
+```
+
+![The board: tokenized stocks ranked by what the best and smart traders did over 7 days](docs/screenshots/stock-flows-board.png)
 
 ## Ryntra product development
 
@@ -59,6 +77,7 @@ never ships, and `npm run verify` proves the tree stands on its own.
 | Tokenized-stock model | Instrument class, unit basis and rights; the Token-2022 transfer fee from a mint's config; a token's issuer lifecycle; scaled-unit arithmetic; the state of a reference price against a session | None |
 | Trading-plan helpers | Deterministic position sizing with its assumptions; decimal input read as typed | None |
 | Evidence layer | A metric registry, a normalized onchain observation with its times and attribution, a condition validator and judge where an unjudgeable rule is never a pass, a rights map read from the provider's terms, and the Nansen adapter that reserves and settles every call | Nansen API, read-only, only through the adapter with your own key |
+| Stock flows | Who moved each tokenized stock over 7 days or 24 hours, by Nansen's wallet groups; a verdict per stock; BUY or WAIT before a purchase | Nansen API with your own key; Ryntra's public universe without a key |
 
 The first three are available through the typed SDK, local stdio MCP server and
 CLI. The MCP server also exposes an editable example owner policy.

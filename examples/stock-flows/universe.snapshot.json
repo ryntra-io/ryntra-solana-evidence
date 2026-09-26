@@ -1,0 +1,646 @@
+{
+  "note": "A saved copy of Ryntra's public universe (GET https://ryntra.io/api/stocks/universe?shape=slim): the most traded tokenized stocks by 24-hour volume when it was saved. The radar reads the live list first and uses this only when the live list does not answer. Volumes and prices are as of savedAt; the live list is the complete one.",
+  "savedAt": "2026-09-25T23:54:39.514Z",
+  "rows": [
+    {
+      "symbol": "NVDAx",
+      "name": "NVIDIA",
+      "mint": "Xsc9qvGR1efVDFGLrVsmkzv3qi45LTBjeUKSPmx9qEh",
+      "issuer": "xstocks",
+      "volume": 22652197,
+      "price": 225.011
+    },
+    {
+      "symbol": "SPYx",
+      "name": "SP500",
+      "mint": "XsoCS1TfEyfFhfvj8EtZ528L3CaKBDBRqRapnBbDF2W",
+      "issuer": "xstocks",
+      "volume": 18048083,
+      "price": 770.101
+    },
+    {
+      "symbol": "DJT",
+      "name": "Trump Media & Technology Group Corp. Common Stock",
+      "mint": "DJTu7vi8norVzdVAffgvb39VP7wjKeTsgaMBJrzfxvoF",
+      "issuer": "backpack",
+      "volume": 14453214,
+      "price": 9.11971
+    },
+    {
+      "symbol": "SPCXx",
+      "name": "SpaceX",
+      "mint": "Xs3oZwbHvqis4NYcf4YKWmEia2eC84wSiVrcYcTqpH8",
+      "issuer": "xstocks",
+      "volume": 11318599,
+      "price": 149.534
+    },
+    {
+      "symbol": "GLDx",
+      "name": "Gold",
+      "mint": "Xsv9hRk1z5ystj9MhnA7Lq4vjSsLwzL2nxrwmwtD3re",
+      "issuer": "xstocks",
+      "volume": 9214382,
+      "price": 393.131
+    },
+    {
+      "symbol": "HIMS",
+      "name": "Hims & Hers Health",
+      "mint": "HiMSSzzwkZkrXJ4PGVJRdtfLaANeAztjjcgk5Dxe7Lwx",
+      "issuer": "backpack",
+      "volume": 8961093,
+      "price": 29.4028
+    },
+    {
+      "symbol": "METAx",
+      "name": "Meta",
+      "mint": "Xsa62P5mvPszXL1krVUnU5ar38bBSVcWAB6fmPCo5Zu",
+      "issuer": "xstocks",
+      "volume": 8430287,
+      "price": 750.87
+    },
+    {
+      "symbol": "SPCX",
+      "name": "SpaceX",
+      "mint": "SPCXxcqXj6e5dJDVNovHN8744zkbhM2bYudU45BimGb",
+      "issuer": "backpack",
+      "volume": 7958742,
+      "price": 148.82
+    },
+    {
+      "symbol": "CRCLx",
+      "name": "Circle",
+      "mint": "XsueG8BtpquVJX9LVLLEGuViXUungE6WmK5YZ3p3bd1",
+      "issuer": "xstocks",
+      "volume": 5776576,
+      "price": 87.4981
+    },
+    {
+      "symbol": "TSLAx",
+      "name": "Tesla",
+      "mint": "XsDoVfqeBukxuZHWhdvWHBhgEHjGNst4MLodqsJHzoB",
+      "issuer": "xstocks",
+      "volume": 4711252,
+      "price": 372.59
+    },
+    {
+      "symbol": "MU",
+      "name": "Micron Technology",
+      "mint": "MUxEsUKSMACyw5fZf68wxf5FLnZVhtU9CwH8uNNGay1",
+      "issuer": "backpack",
+      "volume": 4021087,
+      "price": 1084.34
+    },
+    {
+      "symbol": "SNDK",
+      "name": "Sandisk",
+      "mint": "SNDKbwMUQvZhnLnxLduradgLHG5KrPuKwpnrkkGRhfH",
+      "issuer": "backpack",
+      "volume": 3688989,
+      "price": 1771.68
+    },
+    {
+      "symbol": "MSFTx",
+      "name": "Microsoft",
+      "mint": "XspzcW1PRtgf6Wj92HCiZdjzKCyFekVD8P5Ueh3dRMX",
+      "issuer": "xstocks",
+      "volume": 3683574,
+      "price": 516.725
+    },
+    {
+      "symbol": "SKHY",
+      "name": "SK Hynix",
+      "mint": "SKHYhSjuRWHgikq8eRKbtBbpABgJSkd7ytQV14i9EQ3",
+      "issuer": "backpack",
+      "volume": 2863691,
+      "price": 190.997
+    },
+    {
+      "symbol": "MSTRx",
+      "name": "MicroStrategy",
+      "mint": "XsP7xzNPvEHS1m6qfanPUGjNmdnmsLKEoNAnHjdxxyZ",
+      "issuer": "xstocks",
+      "volume": 2288413,
+      "price": 158.988
+    },
+    {
+      "symbol": "GMEx",
+      "name": "Gamestop",
+      "mint": "Xsf9mBktVB9BSU5kf4nHxPq5hCBJ2j2ui3ecFGxPRGc",
+      "issuer": "xstocks",
+      "volume": 2116552,
+      "price": 23.3584
+    },
+    {
+      "symbol": "QQQx",
+      "name": "Nasdaq",
+      "mint": "Xs8S1uUs1zvS2p7iwtsG3b6fkhpvmwz4GYU3gWAmWHZ",
+      "issuer": "xstocks",
+      "volume": 1822506,
+      "price": 745.057
+    },
+    {
+      "symbol": "DRAM",
+      "name": "Roundhill Memory ETF",
+      "mint": "DRAMjSWR7HRfJKjRkvQWYL2bcaejaVhuxEcjf4pAY4Cw",
+      "issuer": "backpack",
+      "volume": 1814514,
+      "price": 61.9617
+    },
+    {
+      "symbol": "TTWO",
+      "name": "Take-Two Interactive Software",
+      "mint": "TTWofwAge91oFhZs7kpQdyrVRkmevgM88xijGvQFbKo",
+      "issuer": "backpack",
+      "volume": 1605833,
+      "price": 200.9
+    },
+    {
+      "symbol": "AAPLx",
+      "name": "Apple",
+      "mint": "XsbEhLAtcf6HdfpFZ5xEMdqW8nfAvcsP5bdudRLJzJp",
+      "issuer": "xstocks",
+      "volume": 1491089,
+      "price": 340.507
+    },
+    {
+      "symbol": "MCDx",
+      "name": "McDonald's",
+      "mint": "XsqE9cRRpzxcGKDXj1BJ7Xmg4GRhZoyY1KpmGSxAWT2",
+      "issuer": "xstocks",
+      "volume": 1420700,
+      "price": 236.818
+    },
+    {
+      "symbol": "DKNG",
+      "name": "DraftKings",
+      "mint": "DKNGQFNGQmoBdXSRGKJ8tTu7uPDasw5JDcfMmWniNfow",
+      "issuer": "backpack",
+      "volume": 1252991,
+      "price": 22.0026
+    },
+    {
+      "symbol": "COINx",
+      "name": "Coinbase",
+      "mint": "Xs7ZdzSHLU9ftNJsii5fCeJhoRWSC32SQGzGQtePxNu",
+      "issuer": "xstocks",
+      "volume": 1208215,
+      "price": 194.481
+    },
+    {
+      "symbol": "GOOGLx",
+      "name": "Alphabet",
+      "mint": "XsCPL9dNWBMvFtTmwcCA5v3xWPSMEBCszbQdiLLq6aN",
+      "issuer": "xstocks",
+      "volume": 1184711,
+      "price": 343.381
+    },
+    {
+      "symbol": "OPENAI",
+      "name": "OpenAI",
+      "mint": "PreweJYECqtQwBtpxHL171nL2K6umo692gTm7Q3rpgF",
+      "issuer": "prestocks",
+      "volume": 1029172,
+      "price": 1315.75
+    },
+    {
+      "symbol": "STRCx",
+      "name": "Strategy PP Variable",
+      "mint": "Xs78JED6PFZxWc2wCEPspZW9kL3Se5J7L5TChKgsidH",
+      "issuer": "xstocks",
+      "volume": 1014825,
+      "price": 98.6332
+    },
+    {
+      "symbol": "HOODx",
+      "name": "Robinhood",
+      "mint": "XsvNBAYkrDRNhA7wPHQfX3ZUXZyZLdnCQDfHZ56bzpg",
+      "issuer": "xstocks",
+      "volume": 960508,
+      "price": 118.785
+    },
+    {
+      "symbol": "NKE",
+      "name": "Nike",
+      "mint": "NKEda5nHhNGgjrE9nDdMvaEmkmJ96qqxzBVZEcKmjSg",
+      "issuer": "backpack",
+      "volume": 798376,
+      "price": 35.6975
+    },
+    {
+      "symbol": "RBLX",
+      "name": "Roblox",
+      "mint": "RBLXDGRD64AtRamHMFVcjqne3Ar7NLWtFtYNtsrf1cE",
+      "issuer": "backpack",
+      "volume": 688582,
+      "price": 46.3924
+    },
+    {
+      "symbol": "SNAP",
+      "name": "Snap",
+      "mint": "SNAPcESrvnH8yUdgeMF6xm1hym9b6hW6s8YeqeHdZFz",
+      "issuer": "backpack",
+      "volume": 664266,
+      "price": 5.43186
+    },
+    {
+      "symbol": "BOT",
+      "name": "RoboStrategy",
+      "mint": "BoTx8y9ynfdxf5ZjWtCoBVkff52qKA82ysaLU8ZM6d8T",
+      "issuer": "backpack",
+      "volume": 650358,
+      "price": 28.8115
+    },
+    {
+      "symbol": "BABA",
+      "name": "Alibaba Group Holding",
+      "mint": "BABANGA4JE7Kkam4nTrALAwAVgsNJUuFJnnkF7S16BZp",
+      "issuer": "backpack",
+      "volume": 545706,
+      "price": 109.479
+    },
+    {
+      "symbol": "IREN",
+      "name": "IREN",
+      "mint": "RENzhrJQgmAnfcLhU1U5XwAMc6TC15UA6jCbPBaasnj",
+      "issuer": "backpack",
+      "volume": 541754,
+      "price": 44.2121
+    },
+    {
+      "symbol": "PLTRx",
+      "name": "Palantir",
+      "mint": "XsoBhf2ufR8fTyNSjqfU71DYGaE6Z3SUGAidpzriAA4",
+      "issuer": "xstocks",
+      "volume": 523000,
+      "price": 189.594
+    },
+    {
+      "symbol": "AMD",
+      "name": "Advanced Micro Devices",
+      "mint": "AMD8XwJXgQ9WV45Wyj9yFLejxzf2J6VM1PJY8bJEjeES",
+      "issuer": "backpack",
+      "volume": 515340,
+      "price": 630.221
+    },
+    {
+      "symbol": "COPX",
+      "name": "Global X Copper Miners ETF",
+      "mint": "CzLTZppPdZtTjyq3WGpHLstoc3GLhu7zH5Zg6xUa6Gv5",
+      "issuer": "backpack",
+      "volume": 435462,
+      "price": 86.6395
+    },
+    {
+      "symbol": "IONQ",
+      "name": "IonQ",
+      "mint": "NQ5hSuXQZrbnrwcDVk2qN73njjd3E3v3badYHnj5thF",
+      "issuer": "backpack",
+      "volume": 427680,
+      "price": 45.4554
+    },
+    {
+      "symbol": "MSTR",
+      "name": "Strategy",
+      "mint": "MSTRdWXMeZxdE8osAQy3fA4rvTY5rgummDSMEx6U7Nz",
+      "issuer": "backpack",
+      "volume": 403455,
+      "price": 158.703
+    },
+    {
+      "symbol": "FLWS",
+      "name": "1-800-FLOWERS.COM",
+      "mint": "FLWSojG1gB5VStYR3Sb4nQFRt43UBYkqih1j2CpVLqgd",
+      "issuer": "backpack",
+      "volume": 385427,
+      "price": 2.59319
+    },
+    {
+      "symbol": "AMZNx",
+      "name": "Amazon.com",
+      "mint": "Xs3eBt7uRfJX8QUs4suhyU8p2M6DoUDrJyWBa8LLZsg",
+      "issuer": "xstocks",
+      "volume": 345129,
+      "price": 249.739
+    },
+    {
+      "symbol": "VIDAx",
+      "name": "Vida Global",
+      "mint": "XsfCC9VL4DamVGNgdJpfLXB3sBVa158Gbx8sh7NzmTk",
+      "issuer": "xstocks",
+      "volume": 306253,
+      "price": 1.72297
+    },
+    {
+      "symbol": "SPHR",
+      "name": "Sphere Entertainment Co.",
+      "mint": "SPHRp8cZaSQBTp1KMNP4V1X821SXhXWt4Q2yLdyHzju",
+      "issuer": "backpack",
+      "volume": 284425,
+      "price": 141.208
+    },
+    {
+      "symbol": "LULU",
+      "name": "lululemon athletica inc.",
+      "mint": "LULUmT9VMttkfAJE236LXJcYJ2tTP7nunrSWR5G1BdS",
+      "issuer": "backpack",
+      "volume": 246267,
+      "price": 100.52
+    },
+    {
+      "symbol": "RDDT",
+      "name": "Reddit",
+      "mint": "RDDTGbhHwVXfyCvQMXzzowKjf5qrYBZAnehoXW83ooh",
+      "issuer": "backpack",
+      "volume": 245242,
+      "price": 149.314
+    },
+    {
+      "symbol": "COST",
+      "name": "Costco Wholesale",
+      "mint": "CZEB3WNZuF2Yz1z2H81RcCk8T7fsw82KB33zqamASVsg",
+      "issuer": "backpack",
+      "volume": 242918,
+      "price": 915.366
+    },
+    {
+      "symbol": "INTCx",
+      "name": "Intel",
+      "mint": "XshPgPdXFRWB8tP1j82rebb2Q9rPgGX37RuqzohmArM",
+      "issuer": "xstocks",
+      "volume": 236242,
+      "price": 122.675
+    },
+    {
+      "symbol": "POLYMARKET",
+      "name": "Polymarket",
+      "mint": "Pre8AREmFPtoJFT8mQSXQLh56cwJmM7CFDRuoGBZiUP",
+      "issuer": "prestocks",
+      "volume": 235555,
+      "price": 149.836
+    },
+    {
+      "symbol": "GRND",
+      "name": "Grindr",
+      "mint": "GRNDYDpqwpCm6jVxpbh4xT5AM4r3p391qYsKTHqgaET2",
+      "issuer": "backpack",
+      "volume": 202075,
+      "price": 15.9328
+    },
+    {
+      "symbol": "URA",
+      "name": "Global X Uranium ETF",
+      "mint": "URARfsinxCRw4JpvQhuT4CxavdZXZEMjv9ZwWmWpwag",
+      "issuer": "backpack",
+      "volume": 191846,
+      "price": 41.0699
+    },
+    {
+      "symbol": "KOx",
+      "name": "Coca-Cola",
+      "mint": "XsaBXg8dU5cPM6ehmVctMkVqoiRG2ZjMo1cyBJ3AykQ",
+      "issuer": "xstocks",
+      "volume": 179723,
+      "price": 87.696
+    },
+    {
+      "symbol": "UPS",
+      "name": "United Parcel Service",
+      "mint": "UPSqUeMHcWbkdg784XuBUEF9DtySSnW9ur5LAVdcuB9",
+      "issuer": "backpack",
+      "volume": 176231,
+      "price": 93.3781
+    },
+    {
+      "symbol": "ANDURIL",
+      "name": "Anduril",
+      "mint": "PresTj4Yc2bAR197Er7wz4UUKSfqt6FryBEdAriBoQB",
+      "issuer": "prestocks",
+      "volume": 164828,
+      "price": 164.513
+    },
+    {
+      "symbol": "QUBT",
+      "name": "Quantum Computing",
+      "mint": "QUBTAD8C9bMU9LvmMNgKPhrmBGbHvxpu6vfWQtThxxw",
+      "issuer": "backpack",
+      "volume": 157011,
+      "price": 8.95144
+    },
+    {
+      "symbol": "INTC",
+      "name": "Intel",
+      "mint": "iNTCy1qTsUEZQe3DSocLz1ZXXai34Gdw8THQh5rxFaF",
+      "issuer": "backpack",
+      "volume": 139365,
+      "price": 122.893
+    },
+    {
+      "symbol": "LMT",
+      "name": "Lockheed Martin",
+      "mint": "LMT3i1BHgixFqPUgcyteJhnEz2dpy9i3cYy4pi9BoeV",
+      "issuer": "backpack",
+      "volume": 137761,
+      "price": 519.598
+    },
+    {
+      "symbol": "AMC",
+      "name": "AMC Entertainment",
+      "mint": "AMC1qwR9KhiyrQBRPrxnfo4JfMeMZqEBvt5tgTytNNoc",
+      "issuer": "backpack",
+      "volume": 133996,
+      "price": 2.92511
+    },
+    {
+      "symbol": "HOOD",
+      "name": "Robinhood Markets",
+      "mint": "HooDYv5RewLRiMLnEVq3VJqdqxhuE6c5eYvqejMC3e9A",
+      "issuer": "backpack",
+      "volume": 121943,
+      "price": 119.054
+    },
+    {
+      "symbol": "JNJ",
+      "name": "Johnson & Johnson",
+      "mint": "JNJg1znKdF712Phe7L7z52AATAvEjEytBdN2w8Lnh1Y",
+      "issuer": "backpack",
+      "volume": 104831,
+      "price": 270.277
+    },
+    {
+      "symbol": "BB",
+      "name": "BlackBerry",
+      "mint": "BBosJLw8ZzoATiEyywiifx7AgmrD2Cm3XjFWbhbRhChy",
+      "issuer": "backpack",
+      "volume": 103984,
+      "price": 8.07837
+    },
+    {
+      "symbol": "PTN",
+      "name": "Palatin Technologies, Inc.",
+      "mint": "PTNzAfFAB4LvoUQEUUGrFMyUoRLExMYjH6CcfyQfsVP",
+      "issuer": "backpack",
+      "volume": 94548,
+      "price": 9.80206
+    },
+    {
+      "symbol": "DFDVx",
+      "name": "DFDV",
+      "mint": "Xs2yquAgsHByNzx68WJC55WHjHBvG9JsMB7CWjTLyPy",
+      "issuer": "xstocks",
+      "volume": 88861,
+      "price": 6.12975
+    },
+    {
+      "symbol": "IBM",
+      "name": "International Business Machines",
+      "mint": "BMKdM4yUxX12moFqVk195k7coMbaybd4RUKCUdm7D1Sk",
+      "issuer": "backpack",
+      "volume": 84453,
+      "price": 224.018
+    },
+    {
+      "symbol": "FWDI",
+      "name": "Forward Industries, Inc.",
+      "mint": "FWDtiB5fXHdVAewPqvHPL2dh4aBC1C6GacQbePoQXKjz",
+      "issuer": "backpack",
+      "volume": 80254,
+      "price": 8.58513
+    },
+    {
+      "symbol": "SHOP",
+      "name": "Shopify",
+      "mint": "SH55hfaipFAbwT42nQYhRoM5o5t61QpkmJ6p62vXB3m",
+      "issuer": "backpack",
+      "volume": 75076,
+      "price": 142.107
+    },
+    {
+      "symbol": "DNUT",
+      "name": "Krispy Kreme, Inc. Common Stock",
+      "mint": "DNUTsCvKbKwu2RM72cUuW3TD9YpzArzACcqYQssjPLSk",
+      "issuer": "backpack",
+      "volume": 71113,
+      "price": 2.80893
+    },
+    {
+      "symbol": "CRWV",
+      "name": "CoreWeave",
+      "mint": "CRWVJeR2yEZuDUKYfGuKCHvLz8ywn4LGvovHfy5WiFmi",
+      "issuer": "backpack",
+      "volume": 62285,
+      "price": 87.4739
+    },
+    {
+      "symbol": "NBIS",
+      "name": "Nebius Group N.V.",
+      "mint": "NBiSF3UaVUFtRzHwAfxyHsBCAZWGEKnMpewAE4oh7BG",
+      "issuer": "backpack",
+      "volume": 60558,
+      "price": 238.488
+    },
+    {
+      "symbol": "TLTon",
+      "name": "iShares 20+ Year Treasury Bond ETF",
+      "mint": "KaSLSWByKy6b9FrCYXPEJoHmLpuFZtTCJk1F1Z9ondo",
+      "issuer": "ondo",
+      "volume": 50423,
+      "price": 79.207
+    },
+    {
+      "symbol": "WEN",
+      "name": "The Wendy's Company",
+      "mint": "WENAZ2WyPbmgvUcKfQ8hyMDfBQP9bZ65hsZ5KTFrRGZ",
+      "issuer": "backpack",
+      "volume": 46343,
+      "price": 6.5729
+    },
+    {
+      "symbol": "GPRO",
+      "name": "GoPro",
+      "mint": "GPRR2u6NS5yBQHWGauoJ9HXgjrTH8dDsrBfTV5zAYvDH",
+      "issuer": "backpack",
+      "volume": 43269,
+      "price": 1.27966
+    },
+    {
+      "symbol": "NEURALINK",
+      "name": "Neuralink",
+      "mint": "PrekqLJvJ3qVdXmBGDiexvwUTF4rLFDa6HWS4HJbw9S",
+      "issuer": "prestocks",
+      "volume": 40770,
+      "price": 435.154
+    },
+    {
+      "symbol": "BROS",
+      "name": "Dutch Bros",
+      "mint": "BRVaZKg6J9iF2BEsdpsxJ9NyvN9PPxPZuoQUX2v8qqkk",
+      "issuer": "backpack",
+      "volume": 39631,
+      "price": 38.1378
+    },
+    {
+      "symbol": "LLY",
+      "name": "Eli Lilly and Company",
+      "mint": "LLYuwZ33keFihgwoxXsBawy31AiRFLFSva32TYq5TvD",
+      "issuer": "backpack",
+      "volume": 35981,
+      "price": 1176.74
+    },
+    {
+      "symbol": "BEon",
+      "name": "Bloom Energy",
+      "mint": "bBMTGF7atoCizHMT3KCeqJzqR2gXFSUXr53AEDgondo",
+      "issuer": "ondo",
+      "volume": 31388,
+      "price": 293.794
+    },
+    {
+      "symbol": "MRVL",
+      "name": "Marvell Technology",
+      "mint": "MRVLSjkR2ceUBukujaD3xCyHP1H3B2SzpsNTZF546jo",
+      "issuer": "backpack",
+      "volume": 29344,
+      "price": 262.164
+    },
+    {
+      "symbol": "BNOon",
+      "name": "US Brent Oil Fund",
+      "mint": "BAU83kqEqhyiexfAMQhZZE5KnGogSqh17fJc44Sondo",
+      "issuer": "ondo",
+      "volume": 28193,
+      "price": 60.769
+    },
+    {
+      "symbol": "BA",
+      "name": "The Boeing Company",
+      "mint": "BArimz1PcKZr8PcPh3tcZ2dg4S7FJLk3cw6R5F8GsHKg",
+      "issuer": "backpack",
+      "volume": 28003,
+      "price": 198.397
+    },
+    {
+      "symbol": "RIVN",
+      "name": "Rivian Automotive",
+      "mint": "RcZmt84VMJv9bDhKqmw1uWDahYrUT468VwAChTnfD8p",
+      "issuer": "backpack",
+      "volume": 26929,
+      "price": 15.3534
+    },
+    {
+      "symbol": "BULL",
+      "name": "Webull Corporation",
+      "mint": "BULL151gUXcFV5wXEUqu9Am2L7Qt4bTJRLRuAUjkcspC",
+      "issuer": "backpack",
+      "volume": 25715,
+      "price": 7.21084
+    },
+    {
+      "symbol": "MRNA",
+      "name": "Moderna",
+      "mint": "MRNAzXzhNcaEXJPibHEn8cd4vyekCDiivTyEwswLUCT",
+      "issuer": "backpack",
+      "volume": 25600,
+      "price": 197.294
+    }
+  ]
+}

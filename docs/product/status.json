@@ -4,7 +4,7 @@
   "product": "Ryntra",
   "liveUrl": "https://ryntra.io",
   "repository": "https://github.com/ryntra-io/ryntra-solana-evidence",
-  "publicKitVersion": "1.4.0",
+  "publicKitVersion": "1.5.0",
   "lastPublicProductUpdate": "2026-09-25",
   "capabilities": [
     {
