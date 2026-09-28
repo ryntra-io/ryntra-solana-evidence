@@ -4,7 +4,71 @@ What has shipped in the Ryntra product, newest first. Each entry is one complete
 
 Entries dated before Sep 16, 2026 record earlier shipped work, written down when the public build log was introduced; the dates are the dates the work shipped.
 
-Evidence kit version in this repository: `1.5.0`. Machine-readable status: [`docs/product/status.json`](docs/product/status.json). Product documentation: [`docs/product/README.md`](docs/product/README.md). Repository: https://github.com/ryntra-io/ryntra-solana-evidence.
+Evidence kit version in this repository: `1.6.0`. Machine-readable status: [`docs/product/status.json`](docs/product/status.json). Product documentation: [`docs/product/README.md`](docs/product/README.md). Repository: https://github.com/ryntra-io/ryntra-solana-evidence.
+
+## Sep 28, 2026 — Ryntra will warn you: every position watched
+
+**Portfolio & history** · verified on the live product
+
+Every company a wallet holds now reads one state with one action: On track, Attention, Action needed — the loss limit or the target reached, with the sale one press away — or Paused by the issuer. A position bought without an exit says so in one amber line, «Attention: bought — no exit set», and one press turns on «Ryntra will warn you» with a loss limit and a target set from the price now.
+
+- Two presets set the exit from the price now — Careful and Balanced — and the warning arrives in Telegram with the sale one press away.
+- In Portfolio the state is a line of the position itself: its word, a small range from the loss limit through the price to the target, and one action.
+- On the company's page and in Monitoring a panel draws where the price stands between the loss limit and the target.
+- Ryntra only watches and warns; every sale is the person's own signature.
+
+Live: https://ryntra.io/app/portfolio
+
+## Sep 28, 2026 — Buy and sell a company in under a minute
+
+**Tokenized stocks** · verified on the live product
+
+The path from a company's page to a signed purchase was measured on the live product and cut from eight presses to five. A $1 purchase of Apple took 18 seconds from the page to the signature, and the sale of the whole position 28 seconds, one transaction each.
+
+- The sum takes a new figure in one press: the sheet opens on $10 selected and the next key replaces it, so $1 is a press and a key.
+- On a phone the sheet rises above the keyboard, so the action is never hidden under it.
+- When the venue refuses a quote or an order only for its request rate, Ryntra asks once more after the venue's own short pause instead of failing the purchase; a submitted transaction is never sent twice.
+
+Live: https://ryntra.io/app/stocks/AAPLx
+
+## Sep 27, 2026 — Sell from your position
+
+**Tokenized stocks** · verified on the live product
+
+A company you hold now sells where you see it: Sell beside Your position on the company's page, and Sell on the position in Portfolio. Type a sum in dollars or take a share of the position in one press — 100% is exactly what you hold; the sheet says at once how many dollars the sale brings and what it costs. The Review is four lines, the wallet signs, and the receipt says Sold with the sum.
+
+- The dollars arrive as USDC in the person's own wallet, and the sale is in History with its receipt.
+- A PreStocks token may not sell — the issuer promises no liquidity — and the sheet says so before the signature.
+- A PreStocks sale pays the issuer's fee on the transfer, read from the chain, on its own line under All costs.
+- The four lines of the Review and the account's one-time reserve are counted by the server on the quote and the order, the same for the web and the phone.
+
+Live: https://ryntra.io/app/portfolio
+
+## Sep 26, 2026 — Autoinvest from every payment
+
+**Tokenized stocks** · shipped
+
+A third kind of Autoinvest rule sets money aside for a company from the wallet's own USDC on Solana: round every payment up to the next $1 or $5, put a fixed sum aside from every payment, or a per cent of every USDC that comes in. A $3.40 payment rounded up to $1 sets $0.60 aside for NVIDIA. The sum gathers until it reaches the purchase minimum; then Ryntra reminds, the Review is fresh, and the wallet signs one purchase.
+
+- Swaps, Ryntra's own purchases and transfers between the person's own accounts never count, and each payment counts once.
+- Ryntra reads the payments, which are public on the chain, and never moves them; the rule plans reminders and is not a permission to spend.
+- Each purchase passes the rule's price condition and counts against the month's budget like every other rule.
+- The API contract carries the new rule for native clients.
+
+Live: https://ryntra.io/app/autoinvest
+
+## Sep 26, 2026 — A price condition on every Autoinvest rule
+
+**Tokenized stocks** · shipped
+
+An Autoinvest rule can now refuse to buy too dear. On a company with a reference price — PreStocks' valuation for a private company, the issuer's reference per share for a listed one — a rule carries a condition: don't buy if it costs more than a chosen per cent above the reference, 5% unless the person picks another, or no condition at all. When the price is past it, or the reference is too old to judge, the purchase waits and says why.
+
+- The condition is chosen on the rule's own sheet, which shows how the price stands against the reference right now.
+- A purchase the condition stops reads «Purchase deferred» with the reason, the figure and the time of the data it was judged on, and the rule checks again.
+- The Review before the signature carries the condition's line, and the notifications say when a purchase waited.
+- Data too old to judge waits as well: an unknown is never read as a pass.
+
+Live: https://ryntra.io/app/autoinvest
 
 ## Sep 25, 2026 — The company's path — from a private company to its token on Solana
 

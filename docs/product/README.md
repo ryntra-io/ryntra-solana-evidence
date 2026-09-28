@@ -1,11 +1,12 @@
 # Ryntra — product documentation
 
-Ryntra is a Solana-first application for trading with rules you write before
-you sign: swaps, a spot terminal, tokenized stocks, trading plans, a
+Ryntra is an app to invest in tokenized stocks from $1, in your own wallet, on
+Solana: buy a piece of a company in dollars, or set Autoinvest by your own
+rule; Ryntra prepares each purchase and shows it before you sign, and your
+wallet signs it. Around it: swaps and a spot terminal, trading plans, a
 pre-signature review of every operation, a portfolio and a history with
 receipts, and public statistics of what was executed. It runs at
-[ryntra.io](https://ryntra.io) in English and Ukrainian, dark and light, on
-desktop and phone.
+[ryntra.io](https://ryntra.io) on desktop and phone.
 
 This documentation describes the product that exists today. The application
 is developed in a private repository; this public repository carries selected

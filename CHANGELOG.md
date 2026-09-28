@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.6.0] — 2026-09-28
+
+- The README opens with what the kit is and who it is for, and with a
+  keyless first run: clone, install and read NVIDIA's xStock (NVDAx) from
+  Solana mainnet through a public RPC — the mint's authorities, its eight
+  Token-2022 extensions and the powers that can change a transfer — with a
+  picture of the result and the whole passport as text. The Nansen example,
+  which needs a key, moves below; the repository's description and topics
+  name tokenized stocks.
+- The product documentation describes Ryntra as it is today: an app to
+  invest in tokenized stocks from $1, in your own wallet, on Solana.
+
 ## [1.5.0] — 2026-09-26
 
 - `examples/stock-flows`: who is on the other side of a tokenized-stock

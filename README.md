@@ -3,69 +3,114 @@
 [![verify](https://github.com/ryntra-io/ryntra-solana-evidence/actions/workflows/ci.yml/badge.svg)](https://github.com/ryntra-io/ryntra-solana-evidence/actions/workflows/ci.yml)
 [![License](https://img.shields.io/badge/license-Apache--2.0-blue.svg)](LICENSE)
 
-Read-only Solana tooling for developers: inspect mints, check proposed transfers
-against a caller-defined policy, and verify supplied receipts offline — plus
-the pure models a venue needs before it shows a price for a tokenized stock or
-sizes a trading plan.
+Read-only TypeScript tools for developers building on tokenized stocks and
+other Token-2022 assets on Solana: see what a mint lets its issuer do, check a
+transfer against your own policy and verify a receipt offline — with no wallet
+and no key.
 
-Part of [Ryntra](https://ryntra.io), a Solana-first product for trading with
-rules you write before you sign. This repository contains the evidence kit and
-selected product models, not the application or its live transaction flows.
+**Used in production by [Ryntra](https://ryntra.io/app)** — invest in tokenized
+stocks from $1, in your own wallet, on Solana.
 
-[Application](https://ryntra.io/app) · [Build log](BUILDLOG.md) ·
-[Product documentation](docs/product/README.md) ·
 [SDK](packages/solana-evidence-sdk/README.md) ·
 [MCP server](packages/solana-evidence-mcp/README.md) ·
 [CLI](examples/solana-evidence-cli/README.md) ·
 [Tokenized stocks](packages/tokenized-stocks/README.md) ·
-[Trading plans](packages/trading-plans/README.md) ·
-[Evidence](packages/evidence/README.md) ·
-[Stock flows](examples/stock-flows/README.md)
+[Build log](BUILDLOG.md)
 
-## Who is on the other side — tokenized stocks, read through Nansen
+## Try it in 30 seconds
 
-Before you buy a tokenized stock on Solana, see who is selling it to you.
-[`examples/stock-flows`](examples/stock-flows/README.md) reads Nansen's flow
-intelligence for the most traded tokenized stocks — xStocks, PreStocks, Ondo and
-Backpack tokens — ranks them by what the best and smart traders are doing, and
-answers **BUY or WAIT** before a purchase, with its reason and an exit code a
-script can act on.
+Node.js 24, no wallet and no API key. Read NVIDIA's xStock (NVDAx) straight
+from Solana mainnet through a public RPC:
 
 ```bash
-export NANSEN_API_KEY=<your key>
-node examples/stock-flows/radar.ts                  # the board, 20 credits
-node examples/stock-flows/radar.ts guard NVDAx      # BUY or WAIT, 2 credits
+git clone https://github.com/ryntra-io/ryntra-solana-evidence.git
+cd ryntra-solana-evidence
+npm ci
+npm run cli -- inspect Xsc9qvGR1efVDFGLrVsmkzv3qi45LTBjeUKSPmx9qEh
 ```
 
-![The board: tokenized stocks ranked by what the best and smart traders did over 7 days](docs/screenshots/stock-flows-board.png)
+![What the CLI prints for NVDAx: a Token-2022 mint with eight extensions, among them a permanent delegate, frozen new accounts and a scaled display amount](docs/screenshots/try-it-nvdax.png)
 
-## Ryntra product development
+Every `!` is a power that can change the outcome of a transfer. For this token
+the issuer's delegate can move or burn any holder's tokens, new accounts can
+start frozen, the whole token can be paused, and the balance a wallet shows is
+the raw amount times a multiplier the issuer sets. Add `--json` for the
+machine-readable passport, or inspect Apple's xStock,
+`XsbEhLAtcf6HdfpFZ5xEMdqW8nfAvcsP5bdudRLJzJp`. A public RPC can be slow or
+rate-limited; the [connection options](packages/solana-evidence-sdk/README.md#connection)
+point the kit at your own provider.
 
-Ryntra is developed in a private production repository. This public repository
-contains selected open-source components, public technical interfaces and a
-sanitized record of shipped product development:
+<details>
+<summary>The whole passport as text</summary>
 
-- **[BUILDLOG.md](BUILDLOG.md)** — what shipped in the product and when, newest
-  first, with screenshots of the live application. Generated from structured
-  entries and published with each meaningful slice of work.
-- **[docs/product](docs/product/README.md)** — how the product works today:
-  [trading](docs/product/trading.md), [tokenized stocks](docs/product/tokenized-stocks.md),
-  [trading plans](docs/product/trading-plans.md), the [pre-signature review](docs/product/risk-review.md)
-  and the [public analytics](docs/product/analytics.md); architecture boundaries,
-  what Ryntra owns, which external infrastructure executes and supplies
-  evidence, and the material limitations.
-- **[docs/product/status.json](docs/product/status.json)** — machine-readable:
-  the live address, the public capabilities, the latest public update.
-- **Open-source modules** — the same code the product runs on, imported rather
-  than copied: the [evidence kit](#what-works) below, the
-  [tokenized-stock model](packages/tokenized-stocks/README.md), the
-  [trading-plan helpers](packages/trading-plans/README.md) and the
-  [evidence layer](packages/evidence/README.md) a plan's conditions stand on,
-  each with network-free tests.
+```text
+────────────────────────────────────────────────────────────────────────
+ASSET PASSPORT  Xsc9qvGR1efVDFGLrVsmkzv3qi45LTBjeUKSPmx9qEh
+────────────────────────────────────────────────────────────────────────
+  token program   TOKEN_2022 (TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb)
+  decimals        8
+  supply          32127203051887 base units
+  mint authority  7pt9tkctJPK7PPNQJ77GKg8ZffSF6QxoMiCFYHxrtaCj — This authority can mint new tokens and change the supply.
+  freeze auth.    JDq14BWvqCRFNu1krb12bcRpbGtJZ1FLEakMw6FdxJNs — This authority can freeze any holder's token account.
 
-Every file here reaches this repository through an explicit publication list
-and a set of boundary checks on the private side; a file nobody named
-never ships, and `npm run verify` proves the tree stands on its own.
+  8 token extension(s):
+
+   · MetadataPointer  [ONCHAIN_VERIFIED]
+     Points at the account that holds this token's metadata — identity comes from wherever this points.
+       authority: 5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq
+       metadataAddress: Xsc9qvGR1efVDFGLrVsmkzv3qi45LTBjeUKSPmx9qEh
+
+   ! PermanentDelegate  [ONCHAIN_VERIFIED]
+     The issuer's delegate can move or burn tokens from any holder's account without the holder's approval — custody is shared with the issuer by construction.
+       delegate: 5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq
+
+   ! DefaultAccountState  [ONCHAIN_VERIFIED]
+     New token accounts can start frozen: receiving the token does not yet mean being able to move it until the issuer thaws the account.
+       state: 1
+
+   · ScaledUiAmountConfig  [ONCHAIN_VERIFIED]
+     Displayed balances are multiplied by an issuer-set factor that can change; the raw amount and the shown amount are different numbers.
+       authority: S7vYFFWH6BjJyEsdrPQpqpYTqLTrPRK6KW3VwsJuRaS
+       multiplier: 1.0009180758490996
+       newMultiplierEffectiveTimestamp: 1789000200
+       newMultiplier: 1.001701196801074
+
+   ! PausableConfig  [ONCHAIN_VERIFIED]
+     The issuer can pause the whole token: while paused, transfers stop for every holder at once.
+       authority: JDq14BWvqCRFNu1krb12bcRpbGtJZ1FLEakMw6FdxJNs
+       paused: false
+
+   ! ConfidentialTransferMint  [ONCHAIN_VERIFIED]
+     Confidential transfers are configured: amounts can move encrypted, under the issuer's auditor settings.
+       authority: 5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq
+       autoApproveNewAccounts: false
+       auditorElgamalPubkey: null
+
+   ! TransferHook  [ONCHAIN_VERIFIED]
+     No transfer-hook program is set, so nothing extra runs on a transfer today; the hook authority can install one, and it would then run on every transfer.
+       authority: 5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq
+       programId: 11111111111111111111111111111111
+
+   · TokenMetadata  [ONCHAIN_VERIFIED]
+     Name, symbol and URI are stored on the mint itself and controlled by the metadata update authority.
+       updateAuthority: 5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq
+       mint: Xsc9qvGR1efVDFGLrVsmkzv3qi45LTBjeUKSPmx9qEh
+       name: NVIDIA xStock
+       symbol: NVDAx
+       uri: https://xstocks-metadata.backed.fi/tokens/Solana/NVDAx/metadata.json
+
+   ! marks an extension that can change the outcome of a transfer.
+
+  read 2026-09-28T17:25:28.257Z from Solana mainnet JSON-RPC (solana-rpc.publicnode.com)
+
+────────────────────────────────────────────────────────────────────────
+  READ-ONLY EVIDENCE — NOT A WALLET AND NOT AN EXECUTOR
+  No key is held, no transaction is built or signed, and no state-changing RPC method is called.
+  A policy verdict reports the absence of known blockers under a declared policy. It is not a safety judgement and endorses nothing.
+────────────────────────────────────────────────────────────────────────
+```
+
+</details>
 
 ## What works
 
@@ -85,20 +130,7 @@ CLI. The MCP server also exposes an editable example owner policy.
 policy verdicts and transfer preflights. The two model packages are plain
 TypeScript modules with tests.
 
-## Run locally
-
-Use Node.js 24 and npm. No wallet or API key is needed for the offline checks.
-
-```bash
-git clone https://github.com/ryntra-io/ryntra-solana-evidence.git
-cd ryntra-solana-evidence
-npm ci
-npm run verify
-```
-
-Verification runs lint, type checking, network-free tests of every package
-and the boundary checks. [GitHub Actions](https://github.com/ryntra-io/ryntra-solana-evidence/actions)
-runs the same command for changes to `main` and pull requests.
+## More to try
 
 ### Check a receipt offline
 
@@ -110,16 +142,60 @@ The sample is a test fixture, not evidence of a customer's transaction.
 Try `receipt-solana-tampered.json` in the same directory to see integrity
 verification fail with exit code `2`.
 
-### Inspect a mint
+### Who is on the other side — with a Nansen key
+
+Before you buy a tokenized stock on Solana, see who is selling it to you.
+[`examples/stock-flows`](examples/stock-flows/README.md) reads Nansen's flow
+intelligence for the most traded tokenized stocks — xStocks, PreStocks, Ondo and
+Backpack tokens — ranks them by what the best and smart traders are doing, and
+answers **BUY or WAIT** before a purchase, with its reason and an exit code a
+script can act on. It needs your own Nansen API key.
 
 ```bash
-npm run cli -- inspect 2b1kV6DkPAnxd5ixfnxCpjxmKwqjjaYmCZfHsFu24GXo --json
+export NANSEN_API_KEY=<your key>
+node examples/stock-flows/radar.ts                  # the board, 20 credits
+node examples/stock-flows/radar.ts guard NVDAx      # BUY or WAIT, 2 credits
 ```
 
-This example reads PayPal USD on Solana mainnet. Results reflect the account
-data returned by the selected RPC endpoint; public endpoints can be unavailable
-or rate-limited. See the [connection options](packages/solana-evidence-sdk/README.md#connection)
-to configure an operator-controlled provider.
+![The board: tokenized stocks ranked by what the best and smart traders did over 7 days](docs/screenshots/stock-flows-board.png)
+
+## Verify the kit
+
+```bash
+npm run verify
+```
+
+Verification runs lint, type checking, network-free tests of every package
+and the boundary checks. [GitHub Actions](https://github.com/ryntra-io/ryntra-solana-evidence/actions)
+runs the same command for changes to `main` and pull requests.
+
+## Ryntra product development
+
+Ryntra is developed in a private production repository. This public repository
+contains selected open-source components, public technical interfaces and a
+sanitized record of shipped product development:
+
+- **[BUILDLOG.md](BUILDLOG.md)** — what shipped in the product and when, newest
+  first, with screenshots of the live application. Generated from structured
+  entries and published with each meaningful slice of work.
+- **[docs/product](docs/product/README.md)** — how the product works today:
+  [trading](docs/product/trading.md), [tokenized stocks](docs/product/tokenized-stocks.md),
+  [trading plans](docs/product/trading-plans.md), the [pre-signature review](docs/product/risk-review.md)
+  and the [public analytics](docs/product/analytics.md); architecture boundaries,
+  what Ryntra owns, which external infrastructure executes and supplies
+  evidence, and the material limitations.
+- **[docs/product/status.json](docs/product/status.json)** — machine-readable:
+  the live address, the public capabilities, the latest public update.
+- **Open-source modules** — the same code the product runs on, imported rather
+  than copied: the [evidence kit](#what-works) above, the
+  [tokenized-stock model](packages/tokenized-stocks/README.md), the
+  [trading-plan helpers](packages/trading-plans/README.md) and the
+  [evidence layer](packages/evidence/README.md) a plan's conditions stand on,
+  each with network-free tests.
+
+Every file here reaches this repository through an explicit publication list
+and a set of boundary checks on the private side; a file nobody named
+never ships, and `npm run verify` proves the tree stands on its own.
 
 ## Scope and limits
 

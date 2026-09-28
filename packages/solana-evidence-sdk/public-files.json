@@ -114,6 +114,10 @@
       "role": "screenshot"
     },
     {
+      "path": "docs/screenshots/try-it-nvdax.png",
+      "role": "screenshot"
+    },
+    {
       "path": "docs/solana/schemas/solana-asset-passport.schema.json",
       "role": "published_schema"
     },
