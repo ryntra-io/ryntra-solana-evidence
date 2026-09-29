@@ -6,6 +6,19 @@ Entries dated before Sep 16, 2026 record earlier shipped work, written down when
 
 Evidence kit version in this repository: `1.6.0`. Machine-readable status: [`docs/product/status.json`](docs/product/status.json). Product documentation: [`docs/product/README.md`](docs/product/README.md). Repository: https://github.com/ryntra-io/ryntra-solana-evidence.
 
+## Sep 29, 2026 — Help and privacy for the Android app
+
+**Platform** · verified on the live product
+
+Ryntra has a support page in English and Ukrainian: the guides that answer most questions, History with every receipt, the Android app's own facts, and one inbox sorted by what the letter is about. The privacy policy has a section on the Android app in both languages — what stays on the phone, that the app sends Ryntra only the public address of the wallet you connect, and that a push token reaches Ryntra only once you turn phone notifications on. ryntra.io also publishes the app's release certificate, the statement a wallet reads to verify the app when it connects.
+
+- The support page puts answers first: what to do when something did not work, what each status means, History with receipts, common questions.
+- The privacy policy names what the phone keeps — the session in secure storage, the watchlist, the last Home screen, preferences — and what signing out deletes.
+- A push token is sent to Ryntra only after phone notifications are turned on; turning them off removes the phone's registration.
+- The Digital Asset Links on ryntra.io name the Android app's release certificate, so a wallet can verify the app at connect.
+
+Live: https://ryntra.io/support
+
 ## Sep 28, 2026 — Ryntra will warn you: every position watched
 
 **Portfolio & history** · verified on the live product
