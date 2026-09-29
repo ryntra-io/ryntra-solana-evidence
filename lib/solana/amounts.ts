@@ -29,6 +29,15 @@ export function displayAmount(rawAmount: string, decimals: number): string {
   return trimmed.length > 0 ? `${whole}.${trimmed}` : whole;
 }
 
+/**
+ * The same exact amount, ungrouped: digits and one point, for a machine to
+ * read. `1,000.5` on a screen is `1000.5` here — a client that parses the
+ * figure must never meet a separator it has to guess at (contract 1.22.0).
+ */
+export function exactDecimal(rawAmount: string, decimals: number): string {
+  return displayAmount(rawAmount, decimals).replaceAll(",", "");
+}
+
 export type ParsedAmount = Readonly<{ ok: true; raw: string }> | Readonly<{ ok: false; reason: string }>;
 
 /**

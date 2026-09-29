@@ -19,6 +19,23 @@ export const BASE58_PUBKEY = /^[1-9A-HJ-NP-Za-km-z]{32,44}$/;
 
 export type ParsedAddress = Readonly<{ ok: true; address: string }> | Readonly<{ ok: false; reason: string }>;
 
+/** The three mistakes of `parseSolanaAddress`, as codes a client says in its own words (contract 1.22.0). */
+export const ADDRESS_PROBLEMS = ["EMPTY", "NOT_AN_ADDRESS", "MISREAD_CHARACTER", "WRONG_LENGTH"] as const;
+export type AddressProblem = (typeof ADDRESS_PROBLEMS)[number];
+
+/**
+ * The same verdict as {@link parseSolanaAddress}, in the same order, as a code:
+ * null for an address. Kept beside the sentences so the two cannot drift.
+ */
+export function addressProblem(value: string): AddressProblem | null {
+  const trimmed = value.trim();
+  if (trimmed === "") return "EMPTY";
+  if (BASE58_PUBKEY.test(trimmed)) return null;
+  if (/[^1-9A-HJ-NP-Za-km-z0OIl]/.test(trimmed)) return "NOT_AN_ADDRESS";
+  if (/[0OIl]/.test(trimmed)) return "MISREAD_CHARACTER";
+  return "WRONG_LENGTH";
+}
+
 /**
  * A typed string → an address, or a sentence saying why it is not one.
  *
