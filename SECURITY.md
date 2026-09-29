@@ -2,12 +2,13 @@
 
 ## Supported release
 
-Security fixes are accepted for the latest tagged source release. This v0.1
+Security fixes are accepted for the latest tagged source release. This
 repository is a read-only source distribution and is not an npm package.
 
 ## Reporting
 
-Please use the repository's private GitHub Security Advisory flow. Do not open a
+Please [report a vulnerability privately](https://github.com/ryntra-io/ryntra-solana-evidence/security/advisories/new)
+through GitHub Security Advisories. Do not open a
 public issue containing an exploit, credential, private endpoint, user data,
 wallet material or provider secret.
 

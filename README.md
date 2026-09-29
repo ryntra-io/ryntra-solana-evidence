@@ -17,7 +17,9 @@ stocks from $1, in your own wallet, on Solana.
 [Tokenized stocks](packages/tokenized-stocks/README.md) ·
 [Build log](BUILDLOG.md)
 
-## Try it in 30 seconds
+<a name="try-it-in-30-seconds"></a>
+
+## Quick start
 
 Node.js 24, no wallet and no API key. Read NVIDIA's xStock (NVDAx) straight
 from Solana mainnet through a public RPC:
