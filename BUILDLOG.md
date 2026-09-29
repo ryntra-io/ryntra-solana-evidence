@@ -6,6 +6,18 @@ Entries dated before Sep 16, 2026 record earlier shipped work, written down when
 
 Evidence kit version in this repository: `1.6.0`. Machine-readable status: [`docs/product/status.json`](docs/product/status.json). Product documentation: [`docs/product/README.md`](docs/product/README.md). Repository: https://github.com/ryntra-io/ryntra-solana-evidence.
 
+## Sep 29, 2026 — Lighter Home and Portfolio
+
+**Portfolio & history** · verified on the live product
+
+Home and Portfolio load a smaller initial interface bundle. Receipt verification starts only when there is a receipt to check, while existing balance refresh and transaction checks remain in place.
+
+- Network identifiers for receipt links use a small shared module without an RPC dependency.
+- Receipts still need valid integrity and issuer signatures before resolving a pending history entry.
+- A failed verification load or a wallet change leaves unverified entries pending.
+
+Live: https://ryntra.io/app/home
+
 ## Sep 29, 2026 — Portfolio risk on Home
 
 **Portfolio & history** · verified on the live product
