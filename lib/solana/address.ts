@@ -57,7 +57,7 @@ export function parseSolanaAddress(value: string, field = "Solana address"): Par
   }
   /* Order is the useful part. A character base58 never uses at all means this
      was never an address; a 0/O/I/l means it probably is one, misread. Testing
-     the confusables first would answer `wallet-opu5xkpx…` with "contains I,
+     the confusables first would answer `wallet-opuATvsQx…` with "contains I,
      which base58 does not use", which reads as a near miss and sends the reader
      hunting one character in a string that is not an address in the first
      place. So the definite failure is reported before the likely typo. */
