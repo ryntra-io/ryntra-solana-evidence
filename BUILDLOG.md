@@ -6,6 +6,19 @@ Entries dated before Sep 16, 2026 record earlier shipped work, written down when
 
 Evidence kit version in this repository: `1.6.0`. Machine-readable status: [`docs/product/status.json`](docs/product/status.json). Product documentation: [`docs/product/README.md`](docs/product/README.md). Repository: https://github.com/ryntra-io/ryntra-solana-evidence.
 
+## Sep 29, 2026 — Portfolio risk on Home
+
+**Portfolio & history** · verified on the live product
+
+Home now says one word for the whole wallet, by Ryntra's published rules: Normal; Attention, with the reason and one action; or Could not check, with what could not be read — never Normal on incomplete data. The verdict is decided on the server from the wallet itself, so every client that asks gets the same one.
+
+- Normal: no position has reached its loss limit or target, no asset is above 25% of the wallet, private companies together are at most 10%, and no listed company goes into the weekend without a loss limit.
+- Attention names every rule that is broken, the most urgent first, each with one action: open the sale, set up a warning, or take a look.
+- Could not check says what was not read — the wallet's tokens, the market, a position's limit or a price; a token Ryntra cannot vouch for is left out of the count.
+- The 25% cap applies from a wallet of $500, the 10% cap at any size; dollars count in the total and have no cap.
+
+Live: https://ryntra.io/app/home
+
 ## Sep 29, 2026 — Help and privacy for the Android app
 
 **Platform** · verified on the live product

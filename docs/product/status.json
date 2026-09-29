@@ -76,12 +76,12 @@
   ],
   "buildLog": {
     "path": "BUILDLOG.md",
-    "entries": 36,
+    "entries": 37,
     "latest": {
-      "id": "2026-09-29-help-and-privacy-for-the-android-app",
+      "id": "2026-09-29-portfolio-risk-on-home",
       "date": "2026-09-29",
-      "title": "Help and privacy for the Android app",
-      "productArea": "platform"
+      "title": "Portfolio risk on Home",
+      "productArea": "portfolio"
     }
   }
 }

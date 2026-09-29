@@ -204,6 +204,15 @@ yours to open and sign.
 A loss limit is a rule of your plan, not an order. The market can move past
 it before you act, and you can lose everything you put in.
 
+Home names the whole wallet's risk in one word, by the same published rules.
+**Normal** means no position has reached its limit or target, no asset is
+above 25% of the wallet, private companies together are at most 10%, and no
+listed company goes into the weekend without a loss limit. **Attention** names
+each broken rule with one action; **Could not check** says what could not be
+read — never *Normal* on incomplete data. The 25% cap applies from a wallet of
+$500 and the 10% cap at any size; dollars count in the total and have no cap.
+The server decides the verdict, so every client shows the same one.
+
 For a PreStocks token the Review names the issuer's fee on its own line
 under all costs — *of which the issuer's fee 1% ≈ $0.10* — and what arrives
 is the venue's quote through the token's multiplier, already after that fee,
