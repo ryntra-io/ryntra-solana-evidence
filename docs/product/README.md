@@ -1,7 +1,7 @@
 # Ryntra — product documentation
 
 Ryntra is an app to invest in tokenized stocks from $1, in your own wallet, on
-Solana: buy a piece of a company in dollars, or set Autoinvest by your own
+Solana. Choose a dollar amount to invest, or set Autoinvest by your own
 rule; Ryntra prepares each purchase and shows it before you sign, and your
 wallet signs it. Around it: swaps and a spot terminal, trading plans, a
 pre-signature review of every operation, a portfolio and a history with
