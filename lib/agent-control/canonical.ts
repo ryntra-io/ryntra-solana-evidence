@@ -24,7 +24,7 @@ export const AGENT_HASH_DOMAINS = {
  * The freeze exists because Release B adds an issuer signature. A signature is
  * a claim about exact bytes; if the bytes a verifier reconstructs can move, the
  * signature says nothing. The v1 domains above stay exported and unchanged so
- * artifacts written before this packet keep verifying.
+ * artifacts written before the v2 domains keep verifying.
  */
 export const AGENT_HASH_DOMAINS_V2 = {
   intent: "ryntra.agent-control.intent.v2",
