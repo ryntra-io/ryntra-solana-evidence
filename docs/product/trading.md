@@ -48,11 +48,29 @@ Fast are shown against each other with both fees before the signature.
 
 ## Fees
 
-Ryntra charges a service fee of **0.50 %** on swaps, collected through each
-provider's own fee mechanism and already included in the quote shown — never
-added on top afterwards. A token's own transfer fee (a Token-2022 mint's
-withholding) is read from the chain and shown separately, inside the route's
-figures, and is not Ryntra's fee. Network fees are the network's.
+Ryntra's service fee depends on what is traded, and the Review states it with
+its amount before the signature; the receipt states the amount the chain shows.
+
+| What is traded | Ryntra's fee |
+|---|---:|
+| New and meme tokens — younger than seven days, or not verified by Jupiter | 1.00 % |
+| Verified tokens | 0.50 % |
+| Major coins — SOL, BTC, ETH, JUP, staked SOL | 0.10 % |
+| Dollar to dollar — USDC, USDT and other dollars | none |
+| Tokenized stocks by xStocks | 0.25 % |
+| Tokenized stocks by Ondo | 0.50 % |
+| Pre-IPO tokens by PreStocks | 0.50 % |
+| A bridge through Relay | 0.25 % |
+
+On most trades the swap is built from Jupiter's router instructions and the fee
+is paid, whole, into Ryntra's own public fee wallet inside the same transaction
+— Jupiter takes no share of it. Where Jupiter's full aggregator gives the
+person a better price, even after Jupiter's share of a referral fee, the swap
+goes through it instead, and Ondo stocks always do. The fee is part of the
+quote shown, never added on top afterwards. A token's own transfer fee (a
+Token-2022 mint's withholding) is read from the chain and shown separately,
+inside the route's figures, and is not Ryntra's fee. Network fees are the
+network's.
 
 ## From a quote to a confirmed operation
 

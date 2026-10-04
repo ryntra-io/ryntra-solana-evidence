@@ -76,12 +76,12 @@
   ],
   "buildLog": {
     "path": "BUILDLOG.md",
-    "entries": 39,
+    "entries": 40,
     "latest": {
-      "id": "2026-10-04-stats-by-product-and-public-addresses",
+      "id": "2026-10-04-ryntra-fee-by-what-you-trade",
       "date": "2026-10-04",
-      "title": "Stats by product and the public fee addresses",
-      "productArea": "analytics"
+      "title": "The Ryntra fee by what you trade, shown as an amount before you sign",
+      "productArea": "trading"
     }
   }
 }

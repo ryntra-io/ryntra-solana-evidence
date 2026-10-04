@@ -17,7 +17,7 @@ confirms; nothing is estimated.
   fill, recorded at settlement.
 - **The on-chain attributable subset** — the operations that can be proven to
   be Ryntra's from public chain data alone, by one rule: the provider-native
-  identity Ryntra holds (its referral account and its product fee wallets,
+  identity Ryntra holds (its referral account and its fee wallet,
   listed under *Public identities*) received a fee in the transaction. This
   subset is smaller than the total by construction — a swap routed without a
   fee leg leaves no attributable mark — and the two
@@ -41,8 +41,10 @@ Every address on which anyone can count Ryntra is published on the page and as
 JSON at [ryntra.io/api/stats/registry](https://ryntra.io/api/stats/registry):
 its network, the products it serves, its role (fees, payouts or treasury), the
 block it started at and a transaction that shows it at work. One address does
-one job: each product takes its fee into its own wallet, rewards are paid from
-their own wallets, and the treasury takes no fees. A public dashboard or a
+one job: one fee wallet takes the fees of every product (a product that needs
+figures of its own gets a wallet of its own later), rewards are paid from their
+own wallets, and the treasury takes no fees; which product a fee came from is
+the operation's, read from the history. A public dashboard or a
 listing counts from this list and nothing else.
 
 ## Where the numbers come from

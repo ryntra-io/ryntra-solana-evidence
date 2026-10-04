@@ -6,6 +6,20 @@ Entries dated before Sep 16, 2026 record earlier shipped work, written down when
 
 Evidence kit version in this repository: `1.6.0`. Machine-readable status: [`docs/product/status.json`](docs/product/status.json). Product documentation: [`docs/product/README.md`](docs/product/README.md). Repository: https://github.com/ryntra-io/ryntra-solana-evidence.
 
+## Oct 4, 2026 — The Ryntra fee by what you trade, shown as an amount before you sign
+
+**Trading** · verified on the live product
+
+Ryntra's fee now depends on what you trade: 1% on new and meme tokens, 0.5% on other verified tokens, 0.1% on major coins, 0.25% on tokenized stocks, 0.5% on Ondo and PreStocks, and nothing on a dollar-to-dollar swap. On the web, swaps are built through Jupiter's router with the fee paid straight to one public Ryntra fee wallet, and the Review shows the fee as an amount before you sign. The same amount appears in the receipt and is checked against the transaction on chain.
+
+- Swap, Spot and the stock sheets show «Ryntra fee» with its rate and amount in the Review, before the signature.
+- The fee is simulated before you sign: a transaction that would pay a different fee, or a fee above the rate, is refused.
+- The receipt records the fee the chain shows arrived at the fee wallet, and says whether it matches the Review.
+- Where Jupiter's request-for-quote route gives a better price after its share, and for Ondo, the swap uses Jupiter's order route as before.
+- API contract 1.24.0 names the new path and fee mechanism; existing clients keep reading the order route unchanged.
+
+Live: https://ryntra.io/docs/reference/fees
+
 ## Oct 4, 2026 — Stats by product and the public fee addresses
 
 **Analytics** · verified on the live product
