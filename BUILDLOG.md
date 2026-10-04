@@ -6,6 +6,20 @@ Entries dated before Sep 16, 2026 record earlier shipped work, written down when
 
 Evidence kit version in this repository: `1.6.0`. Machine-readable status: [`docs/product/status.json`](docs/product/status.json). Product documentation: [`docs/product/README.md`](docs/product/README.md). Repository: https://github.com/ryntra-io/ryntra-solana-evidence.
 
+## Oct 4, 2026 — Stats by product and the public fee addresses
+
+**Analytics** · verified on the live product
+
+The public stats page now shows executed volume, operations, users, fees paid, revenue and cashback, split by product and by payment network, all from the operations ledger. A new section lists every public address that receives Ryntra's fees, with the block it started at and an example transaction read from the chain, and the same list is published as JSON for Dune queries and analytics adapters.
+
+- Six figures and one table: product by network, with a total row; every filter's totals are computed on the server.
+- A fee without a dollar figure is shown as unknown with the reason, never as zero; a stablecoin is valued at par only by its mint, not by its symbol.
+- Revenue is Ryntra's share of fees minus the cashback paid back to the person who traded.
+- Public addresses: network, products, role, address, start and an example transaction; the start and example are read from the chain, not typed in.
+- The attribution rule 1.2.0 also recognises per-product fee wallets through their canonical token accounts; the referral path counts exactly as before.
+
+Live: https://ryntra.io/stats
+
 ## Sep 29, 2026 — Lighter Home and Portfolio
 
 **Portfolio & history** · verified on the live product
