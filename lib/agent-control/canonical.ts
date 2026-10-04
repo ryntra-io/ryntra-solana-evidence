@@ -41,7 +41,7 @@ export const AGENT_HASH_DOMAINS_V2 = {
      the substitution domain separation exists to stop. */
   commerceReceipt: "ryntra.agent-control.commerce-receipt.v2",
   /* An inbound A2A Agent Card is somebody else's document, and its digest is
-     the only thing canon `12 §9` asks Ryntra to keep of it. It gets its own
+     the only thing Ryntra keeps of it. It gets its own
      domain for the same reason a commerce receipt does: sharing one would let
      a card digest be replayed where an Agent Passport digest belongs, and an
      Agent Passport is Ryntra's own observation while a card is a claim. */
