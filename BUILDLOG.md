@@ -6,6 +6,20 @@ Entries dated before Sep 16, 2026 record earlier shipped work, written down when
 
 Evidence kit version in this repository: `1.6.0`. Machine-readable status: [`docs/product/status.json`](docs/product/status.json). Product documentation: [`docs/product/README.md`](docs/product/README.md). Repository: https://github.com/ryntra-io/ryntra-solana-evidence.
 
+## Oct 5, 2026 — Rewards ranks: a share of the fee Ryntra receives, growing with your rank
+
+**Platform** · shipped
+
+Rewards now share the fee Ryntra actually receives. Half of it comes back to you as cashback in USDC; the person who invited you earns 10–30% of it by their rank, and the person who invited them 5%. The payouts from one fee never exceed what arrived. The Rewards page shows your rank — Bronze, Silver, Gold, Sapphire or Diamond — by rank points over the last 30 days, where the points came from, how many the next rank needs, and what a friend's trade pays at each rank.
+
+- A rank point is a dollar of fee Ryntra received on your own trades or on trades of friends you invited.
+- Ranks begin at 0, 100, 1,000, 10,000 and 50,000 rank points; the inviter's share is 10%, 15%, 20%, 25% and 30%.
+- Every reward keeps the rules and the inviter's rank it was computed with; earlier trades keep their earlier shares.
+- When the rank cannot be read, the page says so instead of showing Bronze.
+- API contract 1.26.0 adds the rank to the Rewards answer; existing clients read it unchanged.
+
+Live: https://ryntra.io/app/rewards
+
 ## Oct 4, 2026 — The Ryntra fee by what you trade, shown as an amount before you sign
 
 **Trading** · verified on the live product
