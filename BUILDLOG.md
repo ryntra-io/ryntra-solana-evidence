@@ -6,6 +6,20 @@ Entries dated before Sep 16, 2026 record earlier shipped work, written down when
 
 Evidence kit version in this repository: `1.6.0`. Machine-readable status: [`docs/product/status.json`](docs/product/status.json). Product documentation: [`docs/product/README.md`](docs/product/README.md). Repository: https://github.com/ryntra-io/ryntra-solana-evidence.
 
+## Oct 6, 2026 — Ryntra Launch: your Solana token on a Meteora bonding curve in one signature
+
+**Platform** · shipped
+
+Launch is now in Ryntra's menu on Solana mainnet. Name a token, add its picture, pick a preset and sign once: the token opens on a Meteora Dynamic Bonding Curve and moves to a Meteora DAMM v2 pool when the curve fills. Every fair-launch mark is an account anyone can open, and the token's page shows its market, holders and facts of risk read from the chain.
+
+- Two presets: Classic — snipers pay a fee falling from 20% to 1% over 2 minutes, the creator may buy up to 5% of supply; Protected — from 50% to 1% over 10 minutes, up to 2%. The creator earns 40% of trading fees in both.
+- Every token is Token-2022 with a fixed supply of 1,000,000,000: mint and freeze authority revoked, metadata fixed at launch.
+- An optional first buy lands in the same transaction that opens the curve, under the preset's cap, and can be locked with vesting.
+- After the DEX, the creator's and Ryntra's liquidity is locked for ever; My launches shows what each token earned by source and claims it in one transaction.
+- Launch's curve configs, fee collector and pool creator are published with their first transactions on the attribution page; API contract 1.30.0 serves Launch on mainnet.
+
+Live: https://ryntra.io/app/launch/new
+
 ## Oct 5, 2026 — Rewards ranks: a share of the fee Ryntra receives, growing with your rank
 
 **Platform** · shipped

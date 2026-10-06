@@ -5,7 +5,7 @@
   "liveUrl": "https://ryntra.io",
   "repository": "https://github.com/ryntra-io/ryntra-solana-evidence",
   "publicKitVersion": "1.6.0",
-  "lastPublicProductUpdate": "2026-10-05",
+  "lastPublicProductUpdate": "2026-10-06",
   "capabilities": [
     {
       "id": "swap",
@@ -76,11 +76,11 @@
   ],
   "buildLog": {
     "path": "BUILDLOG.md",
-    "entries": 41,
+    "entries": 42,
     "latest": {
-      "id": "2026-10-05-rewards-ranks",
-      "date": "2026-10-05",
-      "title": "Rewards ranks: a share of the fee Ryntra receives, growing with your rank",
+      "id": "2026-10-06-ryntra-launch",
+      "date": "2026-10-06",
+      "title": "Ryntra Launch: your Solana token on a Meteora bonding curve in one signature",
       "productArea": "platform"
     }
   }
