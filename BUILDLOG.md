@@ -6,6 +6,20 @@ Entries dated before Sep 16, 2026 record earlier shipped work, written down when
 
 Evidence kit version in this repository: `1.6.0`. Machine-readable status: [`docs/product/status.json`](docs/product/status.json). Product documentation: [`docs/product/README.md`](docs/product/README.md). Repository: https://github.com/ryntra-io/ryntra-solana-evidence.
 
+## Oct 6, 2026 — One menu around launch, trade and bots, and one screener for every asset
+
+**Platform** · shipped
+
+Ryntra's menu is rebuilt around what people do: Launch a token on top, then Home and Markets; Trade, Launch and Bots; Portfolio, Money and Rewards. Markets is one screener for tokenized stocks, private companies, crypto and memes, and the search in the header opens a token from its contract address.
+
+- Markets is one table with tabs — All, Memes, Crypto, Stocks, Private, Watchlist — and each kind keeps its own columns: market cap, the hour, pool age and top holders for coins; the session and the deviation for stocks.
+- The order is the person's own — Trending, Gainers, Losers, Moving now, Newest, Liquidity or any column; deposit receipts such as jlUSDC are not rows.
+- A section's pages are tabs at the top of it: Spot and Swap; Launch a token and My launches; My bots and Catalog; Positions and History; Top up, Send, Receive and Cross-chain.
+- Bots gathers everything that runs on a person's rule: the recurring-buy rules and the trade plans, each plan's result on its card. Every buy is still signed by the person.
+- The search finds a token by name, ticker or pasted contract address; Ask Ryntra opens the assistant with the screen as its context; every old address leads to its new place.
+
+Live: https://ryntra.io/app/markets
+
 ## Oct 6, 2026 — Ryntra Launch: your Solana token on a Meteora bonding curve in one signature
 
 **Platform** · shipped

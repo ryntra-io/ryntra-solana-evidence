@@ -76,11 +76,11 @@
   ],
   "buildLog": {
     "path": "BUILDLOG.md",
-    "entries": 42,
+    "entries": 43,
     "latest": {
-      "id": "2026-10-06-ryntra-launch",
+      "id": "2026-10-06-one-menu-one-screener",
       "date": "2026-10-06",
-      "title": "Ryntra Launch: your Solana token on a Meteora bonding curve in one signature",
+      "title": "One menu around launch, trade and bots, and one screener for every asset",
       "productArea": "platform"
     }
   }
