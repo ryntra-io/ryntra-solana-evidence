@@ -76,11 +76,11 @@
   ],
   "buildLog": {
     "path": "BUILDLOG.md",
-    "entries": 45,
+    "entries": 46,
     "latest": {
-      "id": "2026-10-06-every-page-takes-the-screen",
+      "id": "2026-10-06-share-a-trade",
       "date": "2026-10-06",
-      "title": "Every page takes the width of the screen it is on",
+      "title": "Share a trade: a card of your result with your invite link",
       "productArea": "platform"
     }
   }

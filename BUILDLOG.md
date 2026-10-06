@@ -6,6 +6,19 @@ Entries dated before Sep 16, 2026 record earlier shipped work, written down when
 
 Evidence kit version in this repository: `1.6.0`. Machine-readable status: [`docs/product/status.json`](docs/product/status.json). Product documentation: [`docs/product/README.md`](docs/product/README.md). Repository: https://github.com/ryntra-io/ryntra-solana-evidence.
 
+## Oct 6, 2026 — Share a trade: a card of your result with your invite link
+
+**Platform** · shipped
+
+From Portfolio or a token's page, a person whose wallet is signed in can pick one of their trades made through Ryntra and turn it into a picture for X or Telegram. A sale shows its result in percent against the average price paid through Ryntra, with the entry, the exit and how long it was held; a purchase shows only its price and date. The card carries the token, the person's rank, a QR code and their invite link, which opens a page with the card and leads to the token in Ryntra. Every figure is recomputed on the server from the wallet's receipts, never taken from the request.
+
+- A loss is shown at the same size and in the same place as a profit; a sale whose cost is unknown makes no card.
+- Dollar amounts appear only when the person turns them on, and the wallet's address never appears.
+- An invite link can now lead to any page of the app — a token, a launch — and only to this site's own pages.
+- The first season of the weekly rankings starts in the week ten people outside Ryntra have traded through it, never earlier; until then the season page says seasons have not started.
+
+Live: https://ryntra.io/app/portfolio
+
 ## Oct 6, 2026 — Every page takes the width of the screen it is on
 
 **Platform** · shipped
