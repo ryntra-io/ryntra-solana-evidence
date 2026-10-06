@@ -6,6 +6,20 @@ Entries dated before Sep 16, 2026 record earlier shipped work, written down when
 
 Evidence kit version in this repository: `1.6.0`. Machine-readable status: [`docs/product/status.json`](docs/product/status.json). Product documentation: [`docs/product/README.md`](docs/product/README.md). Repository: https://github.com/ryntra-io/ryntra-solana-evidence.
 
+## Oct 6, 2026 — A launch that lands is always shown, and every launched token can be bought and sold
+
+**Platform** · shipped
+
+Ryntra no longer answers «nothing landed» for a token launch that reached Solana: a launch is called failed only when the chain is past its blockhash and no node holds its signature or its mint, and a mint on chain is a launch. A launch Ryntra has no record of is restored from the chain itself, and buying and selling a launched token reads the wallet's own token account directly.
+
+- A token's mint exists only once its creation lands, so a mint on chain makes the launch live — whatever a single node says of the signature.
+- «Not landed» needs every node asked to answer, from a slot past the blockhash's height, that it holds no such signature; a node that did not answer is never read as «absent».
+- A launch whose record was lost is restored from its creation transaction when Ryntra's pool payer paid for and signed it on one of Ryntra's curve configs, so its page, My launches, trades and fee claims serve it.
+- Launching, trading and claiming answer within a minute even when every node stalls; what was not read in time is said as pending and settled from the chain, never as an error on a transaction that landed.
+- A wallet's balance of a launched token or of USDC is read from its own token account by address, the account a trade spends from; a refused read is an error, never a zero.
+
+Live: https://ryntra.io/app/launch/new
+
 ## Oct 6, 2026 — One menu around launch, trade and bots, and one screener for every asset
 
 **Platform** · shipped

@@ -76,11 +76,11 @@
   ],
   "buildLog": {
     "path": "BUILDLOG.md",
-    "entries": 43,
+    "entries": 44,
     "latest": {
-      "id": "2026-10-06-one-menu-one-screener",
+      "id": "2026-10-06-a-launch-that-lands-is-shown",
       "date": "2026-10-06",
-      "title": "One menu around launch, trade and bots, and one screener for every asset",
+      "title": "A launch that lands is always shown, and every launched token can be bought and sold",
       "productArea": "platform"
     }
   }
