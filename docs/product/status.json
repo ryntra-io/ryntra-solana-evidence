@@ -76,11 +76,11 @@
   ],
   "buildLog": {
     "path": "BUILDLOG.md",
-    "entries": 44,
+    "entries": 45,
     "latest": {
-      "id": "2026-10-06-a-launch-that-lands-is-shown",
+      "id": "2026-10-06-every-page-takes-the-screen",
       "date": "2026-10-06",
-      "title": "A launch that lands is always shown, and every launched token can be bought and sold",
+      "title": "Every page takes the width of the screen it is on",
       "productArea": "platform"
     }
   }

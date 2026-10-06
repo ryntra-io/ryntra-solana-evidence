@@ -6,6 +6,19 @@ Entries dated before Sep 16, 2026 record earlier shipped work, written down when
 
 Evidence kit version in this repository: `1.6.0`. Machine-readable status: [`docs/product/status.json`](docs/product/status.json). Product documentation: [`docs/product/README.md`](docs/product/README.md). Repository: https://github.com/ryntra-io/ryntra-solana-evidence.
 
+## Oct 6, 2026 — Every page takes the width of the screen it is on
+
+**Platform** · shipped
+
+On a wide screen Ryntra's pages no longer sit in a narrow column at the left edge: launching a token, My launches, a token's page, Bots, Settings and the rest use the whole width — a form beside its review, cards that fill their row, the totals beside the list — while a single action such as Swap or Send stands in the middle.
+
+- Launch a token: the form's sections in two columns on a wide screen, with the token's card and the review beside them from the first moment.
+- My launches: the launches across the page, the earnings and the receipts beside them; a wide card shows all its figures in one row.
+- Bots, the catalog, Home, a company's page, Portfolio and Settings fill the screen at 1920 and 2560 pixels; Top up, Send, Receive and Swap stand in the middle.
+- A test now fails any page that caps its own width, and every page is measured on the rendered screen at 1440, 1920 and 2560 pixels.
+
+Live: https://ryntra.io/app/launch/mine
+
 ## Oct 6, 2026 — A launch that lands is always shown, and every launched token can be bought and sold
 
 **Platform** · shipped
