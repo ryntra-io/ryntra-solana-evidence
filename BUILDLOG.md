@@ -6,6 +6,20 @@ Entries dated before Sep 16, 2026 record earlier shipped work, written down when
 
 Evidence kit version in this repository: `1.6.0`. Machine-readable status: [`docs/product/status.json`](docs/product/status.json). Product documentation: [`docs/product/README.md`](docs/product/README.md). Repository: https://github.com/ryntra-io/ryntra-solana-evidence.
 
+## Oct 7, 2026 — Every launched token keeps a flight log: each event with its time, amount and transaction
+
+**Platform** · shipped
+
+A Ryntra Launch token's page now keeps its flight log: what happened to the token, the newest first, each entry with its time, its amount and the transaction anyone can open. The creator's sales stand there with the share of what they bought sold by then, and the graduation to the DEX names who sent it.
+
+- The launch and the creator's first purchase, the creator's lock and the sharing of the creator's fees are each an entry with its transaction.
+- Every sale of the creator's is an entry: how many tokens, for how much, and what share of what they bought they had sold by then — of the supply when they sold more than they bought.
+- The graduation to Meteora's DAMM v2 pool says the amount the curve held and who sent the migration: Ryntra, Meteora's own keeper or another wallet.
+- When the creator's trades could not all be read, the log says so: a sale not read is never shown as none.
+- The same log is served to the phone as GET /api/v1/launch/{mint}/journal, API contract 1.32.0.
+
+Live: https://ryntra.io/app/launch/new
+
 ## Oct 7, 2026 — A recurring buy for any token with liquidity, next to Market in every order
 
 **Trading** · shipped

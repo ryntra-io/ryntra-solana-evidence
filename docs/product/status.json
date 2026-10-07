@@ -76,12 +76,12 @@
   ],
   "buildLog": {
     "path": "BUILDLOG.md",
-    "entries": 47,
+    "entries": 48,
     "latest": {
-      "id": "2026-10-07-recurring-buy-any-token",
+      "id": "2026-10-07-launch-flight-log",
       "date": "2026-10-07",
-      "title": "A recurring buy for any token with liquidity, next to Market in every order",
-      "productArea": "trading"
+      "title": "Every launched token keeps a flight log: each event with its time, amount and transaction",
+      "productArea": "platform"
     }
   }
 }
