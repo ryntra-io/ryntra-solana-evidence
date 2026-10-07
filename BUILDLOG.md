@@ -6,6 +6,20 @@ Entries dated before Sep 16, 2026 record earlier shipped work, written down when
 
 Evidence kit version in this repository: `1.6.0`. Machine-readable status: [`docs/product/status.json`](docs/product/status.json). Product documentation: [`docs/product/README.md`](docs/product/README.md). Repository: https://github.com/ryntra-io/ryntra-solana-evidence.
 
+## Oct 7, 2026 — A recurring buy for any token with liquidity, next to Market in every order
+
+**Trading** · shipped
+
+A recurring buy is no longer only for tokenized stocks: any token with liquidity — a company, a coin like SOL, a meme or a new token — can be bought every day, week or month, when its price falls, or from every USDC payment, within a monthly budget. Recurring stands next to Market in the order of every token. Ryntra reminds and the person signs every purchase; the money stays in the wallet.
+
+- Recurring sits beside Market in Spot's order on every token: the rule is written, paused or deleted right there, and a reminder's link opens the same order set to the rule's purchase.
+- A meme or a new token shows the facts of its risk before the button — its age, liquidity, the ten largest holders, whether anyone can still mint or freeze it, its organic score and whether Jupiter verified it.
+- A token needs $25,000 of liquidity in its pools and 24 hours since its first pool. The floor is read again before every reminder and at the order: under it the purchase waits, and one note says why.
+- On a coin the price condition stands against the market price when the rule is turned on: the rule does not buy above the limit the person chose.
+- All rules live in Bots → My bots, each with its switch, next to the trade plans.
+
+Live: https://ryntra.io/app/spot
+
 ## Oct 6, 2026 — Share a trade: a card of your result with your invite link
 
 **Platform** · shipped

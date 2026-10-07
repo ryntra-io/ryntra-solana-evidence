@@ -5,7 +5,7 @@
   "liveUrl": "https://ryntra.io",
   "repository": "https://github.com/ryntra-io/ryntra-solana-evidence",
   "publicKitVersion": "1.6.0",
-  "lastPublicProductUpdate": "2026-10-06",
+  "lastPublicProductUpdate": "2026-10-07",
   "capabilities": [
     {
       "id": "swap",
@@ -76,12 +76,12 @@
   ],
   "buildLog": {
     "path": "BUILDLOG.md",
-    "entries": 46,
+    "entries": 47,
     "latest": {
-      "id": "2026-10-06-share-a-trade",
-      "date": "2026-10-06",
-      "title": "Share a trade: a card of your result with your invite link",
-      "productArea": "platform"
+      "id": "2026-10-07-recurring-buy-any-token",
+      "date": "2026-10-07",
+      "title": "A recurring buy for any token with liquidity, next to Market in every order",
+      "productArea": "trading"
     }
   }
 }
