@@ -6,6 +6,32 @@ Entries dated before Sep 16, 2026 record earlier shipped work, written down when
 
 Evidence kit version in this repository: `1.6.0`. Machine-readable status: [`docs/product/status.json`](docs/product/status.json). Product documentation: [`docs/product/README.md`](docs/product/README.md). Repository: https://github.com/ryntra-io/ryntra-solana-evidence.
 
+## Oct 9, 2026 — A shared trade shows up on X and Telegram as a large card, and Rewards sits in the header
+
+**Portfolio & history** · shipped
+
+A trade shared with a personal link now unfolds on X and Telegram as a large picture of the trade card, served next to the card's own page. Rewards moved into the header with the amount to claim, and the list of recent rewards opens folded to the latest few.
+
+- The card's picture lives beside its page, where link previews can fetch it; old picture links redirect to the new address.
+- Rewards in the header shows what can be claimed; its light breathes only when there is money to claim.
+- Recent rewards show the four newest and «Show all» for the rest.
+
+Live: https://ryntra.io/app/rewards
+
+## Oct 9, 2026 — One wallet signature per visit: sign in once and every page is yours
+
+**Platform** · shipped
+
+Signing in with a Solana wallet is now one signature for the whole site. The sign-in itself proves the address on every page and in every tab, so Home, Spot, Portfolio, Rewards, Money and the notifications open without asking again. A locked wallet no longer signs anyone out, and a sign-in lasts thirty days while the person keeps using the site.
+
+- One signature opens every page and every tab; a reload asks for nothing.
+- Every page reads one shared answer that the server gives before the page draws, so a page never shows «Confirm wallet» to somebody who has just signed.
+- A wallet that locks, switches accounts or restarts its extension is a pause, not a sign-out; a different address asks for a new sign-in, and Disconnect signs out.
+- When the session store does not answer, the page says it is checking and keeps the session, instead of asking for a new signature.
+- A wallet sign-in lives thirty days, like an email one, and renews while the person keeps using the site.
+
+Live: https://ryntra.io/app
+
 ## Oct 8, 2026 — A launched token's trades in History, each with its signed receipt and a link to share
 
 **Portfolio & history** · shipped

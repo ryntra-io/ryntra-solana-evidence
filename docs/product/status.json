@@ -5,7 +5,7 @@
   "liveUrl": "https://ryntra.io",
   "repository": "https://github.com/ryntra-io/ryntra-solana-evidence",
   "publicKitVersion": "1.6.0",
-  "lastPublicProductUpdate": "2026-10-08",
+  "lastPublicProductUpdate": "2026-10-09",
   "capabilities": [
     {
       "id": "swap",
@@ -76,11 +76,11 @@
   ],
   "buildLog": {
     "path": "BUILDLOG.md",
-    "entries": 49,
+    "entries": 51,
     "latest": {
-      "id": "2026-10-08-launch-trades-in-history",
-      "date": "2026-10-08",
-      "title": "A launched token's trades in History, each with its signed receipt and a link to share",
+      "id": "2026-10-09-trade-card-on-x",
+      "date": "2026-10-09",
+      "title": "A shared trade shows up on X and Telegram as a large card, and Rewards sits in the header",
       "productArea": "portfolio"
     }
   }
