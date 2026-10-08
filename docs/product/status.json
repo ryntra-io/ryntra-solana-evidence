@@ -5,7 +5,7 @@
   "liveUrl": "https://ryntra.io",
   "repository": "https://github.com/ryntra-io/ryntra-solana-evidence",
   "publicKitVersion": "1.6.0",
-  "lastPublicProductUpdate": "2026-10-07",
+  "lastPublicProductUpdate": "2026-10-08",
   "capabilities": [
     {
       "id": "swap",
@@ -76,12 +76,12 @@
   ],
   "buildLog": {
     "path": "BUILDLOG.md",
-    "entries": 48,
+    "entries": 49,
     "latest": {
-      "id": "2026-10-07-launch-flight-log",
-      "date": "2026-10-07",
-      "title": "Every launched token keeps a flight log: each event with its time, amount and transaction",
-      "productArea": "platform"
+      "id": "2026-10-08-launch-trades-in-history",
+      "date": "2026-10-08",
+      "title": "A launched token's trades in History, each with its signed receipt and a link to share",
+      "productArea": "portfolio"
     }
   }
 }

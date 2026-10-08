@@ -6,6 +6,20 @@ Entries dated before Sep 16, 2026 record earlier shipped work, written down when
 
 Evidence kit version in this repository: `1.6.0`. Machine-readable status: [`docs/product/status.json`](docs/product/status.json). Product documentation: [`docs/product/README.md`](docs/product/README.md). Repository: https://github.com/ryntra-io/ryntra-solana-evidence.
 
+## Oct 8, 2026 — A launched token's trades in History, each with its signed receipt and a link to share
+
+**Portfolio & history** · shipped
+
+A buy or a sale of a Ryntra Launch token — on its bonding curve or in the pool it moved into — is now written like every trade: a row in History under Launch, a signed receipt read from the trade's own transaction, and Ryntra's part of the fee stated. Right after a trade the person can open the receipt and share the trade with their own link.
+
+- History has a Launch filter: «Bought 47.3K NOWL for 10 USDC», the exact figures, the price, the fee paid and Ryntra's part of it in the row's details.
+- The receipt is built from the program's own swap event and the transaction's balances, next to the quote the wallet signed, and says whether the trade received at least its minimum.
+- On a launch's curve the fee is the curve's own; Ryntra's part is the partner's share of it and Meteora's referral, paid from Meteora's own fee — the person pays nothing on top.
+- After a trade: the transaction, its receipt, and «Share this trade» with the person's own link to the token.
+- Launch trades count on the public statistics as their own product, attributed by the receipt read from the chain.
+
+Live: https://ryntra.io/app/activity
+
 ## Oct 7, 2026 — Every launched token keeps a flight log: each event with its time, amount and transaction
 
 **Platform** · shipped
