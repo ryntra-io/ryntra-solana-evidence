@@ -6,6 +6,20 @@ Entries dated before Sep 16, 2026 record earlier shipped work, written down when
 
 Evidence kit version in this repository: `1.6.0`. Machine-readable status: [`docs/product/status.json`](docs/product/status.json). Product documentation: [`docs/product/README.md`](docs/product/README.md). Repository: https://github.com/ryntra-io/ryntra-solana-evidence.
 
+## Oct 9, 2026 — The trading terminal fits a laptop: the chart first, the order always in reach
+
+**Trading** · shipped
+
+Spot and the stock pages now lay out by the room they actually get beside the menu, not by the window, so a 1280–1536 px laptop shows the chart as the widest panel and ends it on the first screen. The market's name, price and figures sit on one compact line above it, the order stays in view under the top bar, and its action stays at the foot of the order while a long review scrolls under it.
+
+- On a 1280 × 720 laptop the Spot chart is about 640 px wide and ends on the first screen; before it was about 250 px wide and started below the fold.
+- The chart's height follows the height the window has left, so a taller screen gets a taller chart and a shorter one still sees all of it.
+- Timeframes, 25 / 50 / 75 / MAX and the tabs keep a compact size under a mouse and grow to a finger's size on a touch screen.
+- The order and the stock's purchase card stay in view below the top bar; «Sign» never sits under the window's edge.
+- The full market list returns beside the chart on a wide desktop and is one press away on a laptop.
+
+Live: https://ryntra.io/app/spot
+
 ## Oct 9, 2026 — A shared trade shows up on X and Telegram as a large card, and Rewards sits in the header
 
 **Portfolio & history** · shipped

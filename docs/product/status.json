@@ -76,12 +76,12 @@
   ],
   "buildLog": {
     "path": "BUILDLOG.md",
-    "entries": 51,
+    "entries": 52,
     "latest": {
-      "id": "2026-10-09-trade-card-on-x",
+      "id": "2026-10-09-terminal-on-a-laptop",
       "date": "2026-10-09",
-      "title": "A shared trade shows up on X and Telegram as a large card, and Rewards sits in the header",
-      "productArea": "portfolio"
+      "title": "The trading terminal fits a laptop: the chart first, the order always in reach",
+      "productArea": "trading"
     }
   }
 }
