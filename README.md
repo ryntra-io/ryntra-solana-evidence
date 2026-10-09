@@ -8,8 +8,9 @@ other Token-2022 assets on Solana: see what a mint lets its issuer do, check a
 transfer against your own policy and verify a receipt offline — with no wallet
 and no key.
 
-**Used in production by [Ryntra](https://ryntra.io/app)** — invest in tokenized
-stocks from $1, in your own wallet, on Solana.
+**Used in production by [Ryntra](https://ryntra.io/app)** — launch a token in
+one signature, trade Solana tokens and tokenized stocks from $1, from your own
+wallet.
 
 [SDK](packages/solana-evidence-sdk/README.md) ·
 [MCP server](packages/solana-evidence-mcp/README.md) ·
