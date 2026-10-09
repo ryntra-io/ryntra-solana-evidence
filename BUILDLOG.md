@@ -16,7 +16,7 @@ Spot and the stock pages now lay out by the room they actually get beside the me
 - The chart's height follows the height the window has left, so a taller screen gets a taller chart and a shorter one still sees all of it.
 - Timeframes, 25 / 50 / 75 / MAX and the tabs keep a compact size under a mouse and grow to a finger's size on a touch screen.
 - The order and the stock's purchase card stay in view below the top bar; «Sign» never sits under the window's edge.
-- The full market list returns beside the chart on a wide desktop and is one press away on a laptop.
+- The markets open from the arrow beside the market's name on every screen, a menu under the name on a desk and a sheet on a phone, so the chart keeps the whole width beside the order.
 
 Live: https://ryntra.io/app/spot
 
