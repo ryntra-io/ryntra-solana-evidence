@@ -6,6 +6,20 @@ Entries dated before Sep 16, 2026 record earlier shipped work, written down when
 
 Evidence kit version in this repository: `1.6.0`. Machine-readable status: [`docs/product/status.json`](docs/product/status.json). Product documentation: [`docs/product/README.md`](docs/product/README.md). Repository: https://github.com/ryntra-io/ryntra-solana-evidence.
 
+## Oct 9, 2026 — The launch executor runs on mainnet, every step in the market's flight log
+
+**Platform** · shipped
+
+Ryntra's executor now runs on Solana mainnet every minute over every market launched on Ryntra. It sends a market's move to the DEX as soon as its curve fills, and sends it again by itself if a move does not go through. The token page's flight log records what the executor did and each state the market moved into after the curve. Ryntra can pause the executor on one market or on all of them, and every pause is in the log too.
+
+- The move to the DEX goes out within a minute of a curve filling; a move that is refused or fails is sent again at once, then after a growing wait.
+- The flight log notes the executor's first pass over a market and each state after the curve: the core market on the DEX, the ladder placed, its upkeep, maturity after thirty days on the DEX.
+- A pause and its end show as one row in the log. While a market is paused, Ryntra signs nothing on it, and its market health says so.
+- Ryntra's buy steps below the price are named for what they are: the Fee-Funded Liquidity Ladder. They promise no price, and what they buy isn't sold into a drop.
+- The flight log's notes and the pause are in the open API, contract 1.37.0, additive.
+
+Live: https://ryntra.io/app/launch/markets
+
 ## Oct 9, 2026 — Every market launched on Ryntra on one public page, and each token's market health
 
 **Platform** · shipped
