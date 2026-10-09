@@ -76,12 +76,12 @@
   ],
   "buildLog": {
     "path": "BUILDLOG.md",
-    "entries": 52,
+    "entries": 53,
     "latest": {
-      "id": "2026-10-09-terminal-on-a-laptop",
+      "id": "2026-10-09-markets-launched-on-ryntra",
       "date": "2026-10-09",
-      "title": "The trading terminal fits a laptop: the chart first, the order always in reach",
-      "productArea": "trading"
+      "title": "Every market launched on Ryntra on one public page, and each token's market health",
+      "productArea": "platform"
     }
   }
 }

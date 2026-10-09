@@ -6,6 +6,21 @@ Entries dated before Sep 16, 2026 record earlier shipped work, written down when
 
 Evidence kit version in this repository: `1.6.0`. Machine-readable status: [`docs/product/status.json`](docs/product/status.json). Product documentation: [`docs/product/README.md`](docs/product/README.md). Repository: https://github.com/ryntra-io/ryntra-solana-evidence.
 
+## Oct 9, 2026 — Every market launched on Ryntra on one public page, and each token's market health
+
+**Platform** · shipped
+
+A new public page lists every market launched through Ryntra, read from the chain with no wallet needed: its stage, its way to the DEX, the pool's liquidity, what sellers can sell into down to 5% below the price, holders and the creator. Each token's page now shows its market health by fixed definitions, with everything that governs the market marked as a program's rule or Ryntra's policy.
+
+- Launches on Ryntra: a row per market — its stage, the way to the DEX, the pool's liquidity, depth at −5%, the budget, holders over $1 and the creator's lock and sales; live markets first, no ranking by hand.
+- Market health on every token page: executable depth at −2%, −5% and −10%, survival on the DEX, holders without pools, locks and Ryntra's wallets, the ten largest holders' share, the creator and Ryntra's executor.
+- Ryntra's own launches are marked as technical validation, never shown as demand.
+- What governs a market is marked: a rule a program enforces, which neither the creator nor Ryntra can change, or a policy Ryntra's server runs while it runs; the token's own rules are marked in Honest launch.
+- What is not counted yet says so, what was not read says “not read”, and a count from the accounts found says “at least” — never a zero; under the figures, plainly: the price can fall, liquidity can be used up, Ryntra never holds your money.
+- The flight log saves as JSON, and the same figures are in the open API: GET /api/v1/launch/markets, /markets/{mint} and /{mint}/health, API contract 1.36.0.
+
+Live: https://ryntra.io/app/launch/markets
+
 ## Oct 9, 2026 — The trading terminal fits a laptop: the chart first, the order always in reach
 
 **Trading** · shipped
