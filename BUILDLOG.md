@@ -6,6 +6,19 @@ Entries dated before Sep 16, 2026 record earlier shipped work, written down when
 
 Evidence kit version in this repository: `1.6.0`. Machine-readable status: [`docs/product/status.json`](docs/product/status.json). Product documentation: [`docs/product/README.md`](docs/product/README.md). Repository: https://github.com/ryntra-io/ryntra-solana-evidence.
 
+## Oct 10, 2026 — A market's budget from its own fees
+
+**Platform** · shipped
+
+On Micro and the demo market, Ryntra's executor now collects the partner fees of the markets Ryntra launched itself into each market's own budget: the whole graduation fee and surplus, and a quarter of the curve's and the locked pool position's fees; the other three quarters are Ryntra's revenue, kept apart. The budget pays for the Fee-Funded Liquidity Ladder — buy steps 2.5% apart below the price, at most 70% of the budget, at least 5 USDC a step. On markets launched by people nothing is collected yet: the fees wait in Meteora's pools, and the token page says so.
+
+- Market health shows earned, in the ladder and reserve, and where each dollar came from.
+- Every collection is an entry in the flight log with its transaction and the budget's part of it.
+- Risk limits every minute: a fall of more than 30% in an hour, a creator's sale in the first week or two price sources disagreeing stop new money into the ladder.
+- The executor signs only a fixed list of Meteora instructions, paid only to its own accounts.
+
+Live: https://ryntra.io/app/launch/markets
+
 ## Oct 10, 2026 — Micro: a small market that reaches the DEX at 750 USDC, its launch fee all for the market
 
 **Platform** · shipped

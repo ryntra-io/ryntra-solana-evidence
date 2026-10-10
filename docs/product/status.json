@@ -76,11 +76,11 @@
   ],
   "buildLog": {
     "path": "BUILDLOG.md",
-    "entries": 55,
+    "entries": 56,
     "latest": {
-      "id": "2026-10-10-micro-launch-preset",
+      "id": "2026-10-10-market-budget-from-fees",
       "date": "2026-10-10",
-      "title": "Micro: a small market that reaches the DEX at 750 USDC, its launch fee all for the market",
+      "title": "A market's budget from its own fees",
       "productArea": "platform"
     }
   }
