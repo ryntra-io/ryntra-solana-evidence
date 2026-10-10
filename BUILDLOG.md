@@ -6,6 +6,20 @@ Entries dated before Sep 16, 2026 record earlier shipped work, written down when
 
 Evidence kit version in this repository: `1.6.0`. Machine-readable status: [`docs/product/status.json`](docs/product/status.json). Product documentation: [`docs/product/README.md`](docs/product/README.md). Repository: https://github.com/ryntra-io/ryntra-solana-evidence.
 
+## Oct 10, 2026 — A market's whole cycle on mainnet: launch, the DEX, its budget and its ladder
+
+**Platform** · shipped
+
+A token Ryntra launched for its own technical validation went through the whole market cycle on Solana mainnet. It was launched with its creator's first buy under a lock, bought up to its 50 USDC threshold, and sent to the DEX by Ryntra's executor. The executor then collected the market's graduation fee into the market's own budget, opened a ladder pool, placed the Fee-Funded Liquidity Ladder from 70% of that budget and later moved it up after the price. A holder's position entered the pool with one coin, with the fee collector's permission in the same signature. Every step is in the token's public flight log with its transaction.
+
+- Every purchase from the creator's wallet after the launch is now in the flight log, as the sales already were.
+- A ladder that stands on a market's budget reads as maintained, with the budget split by where each dollar came from.
+- A holder's position card says when the fee collector next collects: once a day, from one dollar of fees.
+- A holder can enter a small pool through Meteora's Zap: the entry is simulated first and bounds the price move to its own swap plus the slippage.
+- The executor reads a graduated market's fees even where the public node refuses indexed requests.
+
+Live: https://ryntra.io/app/launch/markets
+
 ## Oct 10, 2026 — A market's budget from its own fees
 
 **Platform** · shipped

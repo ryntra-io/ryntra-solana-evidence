@@ -76,11 +76,11 @@
   ],
   "buildLog": {
     "path": "BUILDLOG.md",
-    "entries": 56,
+    "entries": 57,
     "latest": {
-      "id": "2026-10-10-market-budget-from-fees",
+      "id": "2026-10-10-market-cycle-on-mainnet",
       "date": "2026-10-10",
-      "title": "A market's budget from its own fees",
+      "title": "A market's whole cycle on mainnet: launch, the DEX, its budget and its ladder",
       "productArea": "platform"
     }
   }
