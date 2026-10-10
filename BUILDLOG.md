@@ -6,6 +6,19 @@ Entries dated before Sep 16, 2026 record earlier shipped work, written down when
 
 Evidence kit version in this repository: `1.6.0`. Machine-readable status: [`docs/product/status.json`](docs/product/status.json). Product documentation: [`docs/product/README.md`](docs/product/README.md). Repository: https://github.com/ryntra-io/ryntra-solana-evidence.
 
+## Oct 10, 2026 — Micro: a small market that reaches the DEX at 750 USDC, its launch fee all for the market
+
+**Platform** · shipped
+
+Ryntra Launch has a third preset for people. A Micro token reaches the DEX once 750 USDC is raised. Its whole 8% graduation fee goes to the market's own budget, none to the creator, and the creator still earns 40% of the curve's trading fees. The creator's first buy is capped at 2% of supply and goes under a lock with nothing unlocking for six months. The pool after graduation is locked for ever, as on every preset.
+
+- Graduation at exactly 750 USDC raised; Meteora's own keepers move a curve of that size to the DEX too.
+- The pool's fee falls from 2% to 0.25% as the market cap grows, and a quarter of the pool's fee goes back into its depth.
+- The token page says plainly when a creator's required lock did not land.
+- Both configs were rehearsed on devnet to the DEX before they were signed on mainnet, every field compared.
+
+Live: https://ryntra.io/app/launch/new
+
 ## Oct 9, 2026 — The launch executor runs on mainnet, every step in the market's flight log
 
 **Platform** · shipped

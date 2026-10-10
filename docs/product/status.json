@@ -5,7 +5,7 @@
   "liveUrl": "https://ryntra.io",
   "repository": "https://github.com/ryntra-io/ryntra-solana-evidence",
   "publicKitVersion": "1.6.0",
-  "lastPublicProductUpdate": "2026-10-09",
+  "lastPublicProductUpdate": "2026-10-10",
   "capabilities": [
     {
       "id": "swap",
@@ -76,11 +76,11 @@
   ],
   "buildLog": {
     "path": "BUILDLOG.md",
-    "entries": 54,
+    "entries": 55,
     "latest": {
-      "id": "2026-10-09-launch-executor-on-production",
-      "date": "2026-10-09",
-      "title": "The launch executor runs on mainnet, every step in the market's flight log",
+      "id": "2026-10-10-micro-launch-preset",
+      "date": "2026-10-10",
+      "title": "Micro: a small market that reaches the DEX at 750 USDC, its launch fee all for the market",
       "productArea": "platform"
     }
   }
