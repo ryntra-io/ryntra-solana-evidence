@@ -76,12 +76,12 @@
   ],
   "buildLog": {
     "path": "BUILDLOG.md",
-    "entries": 59,
+    "entries": 60,
     "latest": {
-      "id": "2026-10-11-review-first-press",
+      "id": "2026-10-11-coin-like-a-stock",
       "date": "2026-10-11",
-      "title": "Swap and Spot Review works on the first press",
-      "productArea": "platform"
+      "title": "A coin gets what a stock has: your position and «Sell», what it is, its market cap",
+      "productArea": "trading"
     }
   }
 }

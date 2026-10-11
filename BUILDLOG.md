@@ -6,6 +6,20 @@ Entries dated before Sep 16, 2026 record earlier shipped work, written down when
 
 Evidence kit version in this repository: `1.6.0`. Machine-readable status: [`docs/product/status.json`](docs/product/status.json). Product documentation: [`docs/product/README.md`](docs/product/README.md). Repository: https://github.com/ryntra-io/ryntra-solana-evidence.
 
+## Oct 11, 2026 — A coin gets what a stock has: your position and «Sell», what it is, its market cap
+
+**Trading** · shipped
+
+Spot now shows your position in the coin at the top of the order — what it is worth and how much you hold — with a quiet «Sell» that turns the same order into a sale. In Portfolio every priced coin has «Sell» too, through the same sheet a stock sells from: a sum in dollars or 25–100 %, the four-line Review, your signature and the receipt. The market's header says what the coin is, in its creator's own words from the token's metadata, with its site, X and Telegram — marked as the creator's and not checked by Ryntra. The chart switches between the price and the market cap.
+
+- «Sell» from your position in Spot and in Portfolio, with the same Review and receipt as every sale.
+- The coin's description is read from its on-chain metadata; a coin whose creator wrote none says so, and a read that failed says that instead.
+- Links show where they go: an X or Telegram face only for x.com and t.me, any other address by its own domain.
+- Market cap on the chart is the same candles at today's circulating supply, and the chart says so.
+- Selling SOL leaves 0.01 SOL for the network's fees, so a sale of everything still goes through.
+
+Live: https://ryntra.io/app/spot
+
 ## Oct 11, 2026 — Swap and Spot Review works on the first press
 
 **Platform** · shipped
