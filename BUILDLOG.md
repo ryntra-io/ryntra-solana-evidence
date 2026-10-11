@@ -6,6 +6,19 @@ Entries dated before Sep 16, 2026 record earlier shipped work, written down when
 
 Evidence kit version in this repository: `1.6.0`. Machine-readable status: [`docs/product/status.json`](docs/product/status.json). Product documentation: [`docs/product/README.md`](docs/product/README.md). Repository: https://github.com/ryntra-io/ryntra-solana-evidence.
 
+## Oct 11, 2026 — Swap and Spot Review works on the first press
+
+**Platform** · shipped
+
+Jupiter sometimes refuses to build an order for a moment, and the next press goes through. Ryntra now asks it once more on its own, a second later, before anything is reserved for your wallet, so the Review you asked for is the one you get. On the web the Review button no longer waits for the price estimate: it asks for your exact order on the amount you typed. If the order is refused, the reason stays under the button for as long as the pair and the amount stay the same.
+
+- Asked again only after the venue's own refusal or failure — never after a missing route, a wallet short of funds, or a rate limit, which has its own wait.
+- Asked once, at most, and only while nothing is locked: one press can still produce only one Review to sign.
+- The log now keeps the venue's own sentence, with every address and amount taken out.
+- Swap's «Review swap» and Spot's «Review» are pressable while the estimate is still pricing.
+
+Live: https://ryntra.io/app/swap
+
 ## Oct 11, 2026 — Earn from a launched token's pool — open to everyone
 
 **Platform** · shipped
