@@ -5,7 +5,7 @@
   "liveUrl": "https://ryntra.io",
   "repository": "https://github.com/ryntra-io/ryntra-solana-evidence",
   "publicKitVersion": "1.6.0",
-  "lastPublicProductUpdate": "2026-10-10",
+  "lastPublicProductUpdate": "2026-10-11",
   "capabilities": [
     {
       "id": "swap",
@@ -76,11 +76,11 @@
   ],
   "buildLog": {
     "path": "BUILDLOG.md",
-    "entries": 57,
+    "entries": 58,
     "latest": {
-      "id": "2026-10-10-market-cycle-on-mainnet",
-      "date": "2026-10-10",
-      "title": "A market's whole cycle on mainnet: launch, the DEX, its budget and its ladder",
+      "id": "2026-10-11-holder-entry-for-everyone",
+      "date": "2026-10-11",
+      "title": "Earn from a launched token's pool — open to everyone",
       "productArea": "platform"
     }
   }

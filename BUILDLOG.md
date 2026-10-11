@@ -6,6 +6,19 @@ Entries dated before Sep 16, 2026 record earlier shipped work, written down when
 
 Evidence kit version in this repository: `1.6.0`. Machine-readable status: [`docs/product/status.json`](docs/product/status.json). Product documentation: [`docs/product/README.md`](docs/product/README.md). Repository: https://github.com/ryntra-io/ryntra-solana-evidence.
 
+## Oct 11, 2026 — Earn from a launched token's pool — open to everyone
+
+**Platform** · shipped
+
+After a token launched on Ryntra reaches the DEX, anyone can now put one coin into its Meteora pool through Zap and let Ryntra's fee collector send the position's fees to their own wallet once a day, when $1 or more waits. The permission is spelled out on the card in four lines: Ryntra can collect your fees; it can't send them to itself; it can't take your position; revoke any time. Before opening, the collector's every attempt to move a position or its tokens was repeated on mainnet with Ryntra's own wallet as the signer, and the pool program refused all fifteen.
+
+- The permission is an SPL approval of zero on the position and Meteora's two «to the owner» bits: the program pays a claim only to the owner's own accounts.
+- Every collection is listed on the position with its date, amount and transaction.
+- A position says so when the owner closed the account the fees are paid into, and the collector waits.
+- Revoking is one signature; after it the collector can do nothing with the position.
+
+Live: https://ryntra.io/app/launch/markets
+
 ## Oct 10, 2026 — A market's whole cycle on mainnet: launch, the DEX, its budget and its ladder
 
 **Platform** · shipped
