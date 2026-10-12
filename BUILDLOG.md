@@ -6,6 +6,21 @@ Entries dated before Sep 16, 2026 record earlier shipped work, written down when
 
 Evidence kit version in this repository: `1.6.0`. Machine-readable status: [`docs/product/status.json`](docs/product/status.json). Product documentation: [`docs/product/README.md`](docs/product/README.md). Repository: https://github.com/ryntra-io/ryntra-solana-evidence.
 
+## Oct 12, 2026 — Pulse on Home: new tokens, curves close to the DEX and the market's moves, live
+
+**Trading** · shipped
+
+Home now opens with Pulse: five live feeds of Solana tokens — New (first pools under an hour old), Almost on DEX (launch curves a quarter of the way or more, read from each curve's own account on the chain), On DEX (left their curve in the last day), Trending and Movers. Every row shows the price, market cap, volume, liquidity, holders, the top ten's share, the facts against the token — a mint or freeze right still on, a suspicious flag, never a verdict — and four quick sums that open the token's exact Review. Markets launched on Ryntra stand first. Filters apply at once; Home's earlier blocks stay below.
+
+- Five feeds: New · Almost on DEX · On DEX · Trending · Movers, read again every 15 to 30 seconds while the page is in view.
+- Curve progress read from each curve's own account on the chain: pump.fun, Meteora DBC, LaunchLab and bonk.fun.
+- Filters by market cap, liquidity, volume, age, holders, top-10 and creator share; a figure nobody stated never passes a bound.
+- Four quick sums on every row open the token's exact Review — the wallet signs, or nothing happens.
+- Markets launched on Ryntra first, marked as Ryntra's; Powered by Jupiter and GeckoTerminal beside the data.
+- Minting and freezing still on are now read from the authority Jupiter names, on Pulse, the token page and Markets alike.
+
+Live: https://ryntra.io/app/home
+
 ## Oct 12, 2026 — Quick buy and quick sell: one tap to the Review, on every token, stock and launch
 
 **Trading** · shipped

@@ -76,11 +76,11 @@
   ],
   "buildLog": {
     "path": "BUILDLOG.md",
-    "entries": 62,
+    "entries": 63,
     "latest": {
-      "id": "2026-10-12-quick-buy-and-sell",
+      "id": "2026-10-12-pulse",
       "date": "2026-10-12",
-      "title": "Quick buy and quick sell: one tap to the Review, on every token, stock and launch",
+      "title": "Pulse on Home: new tokens, curves close to the DEX and the market's moves, live",
       "productArea": "trading"
     }
   }
