@@ -5,7 +5,7 @@
   "liveUrl": "https://ryntra.io",
   "repository": "https://github.com/ryntra-io/ryntra-solana-evidence",
   "publicKitVersion": "1.6.0",
-  "lastPublicProductUpdate": "2026-10-11",
+  "lastPublicProductUpdate": "2026-10-12",
   "capabilities": [
     {
       "id": "swap",
@@ -76,11 +76,11 @@
   ],
   "buildLog": {
     "path": "BUILDLOG.md",
-    "entries": 60,
+    "entries": 61,
     "latest": {
-      "id": "2026-10-11-coin-like-a-stock",
-      "date": "2026-10-11",
-      "title": "A coin gets what a stock has: your position and «Sell», what it is, its market cap",
+      "id": "2026-10-12-token-page",
+      "date": "2026-10-12",
+      "title": "The token page: who bought and sold, who holds, the risk facts and the chart's marks",
       "productArea": "trading"
     }
   }

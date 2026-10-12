@@ -6,6 +6,20 @@ Entries dated before Sep 16, 2026 record earlier shipped work, written down when
 
 Evidence kit version in this repository: `1.6.0`. Machine-readable status: [`docs/product/status.json`](docs/product/status.json). Product documentation: [`docs/product/README.md`](docs/product/README.md). Repository: https://github.com/ryntra-io/ryntra-solana-evidence.
 
+## Oct 12, 2026 — The token page: who bought and sold, who holds, the risk facts and the chart's marks
+
+**Trading** · shipped
+
+Every token in Spot now has its page under the chart. «Trades» shows who bought and who sold, how much, and the market cap at the trade. «Holders» lists the 20 largest holders from the chain with their share and how their holding moved. «Risk» lists facts with their reasons and sources and gives no verdict. The header switches its change and volume between 5 minutes, an hour, six hours and a day, and the chart marks the largest trades, the creator’s own and a deep fall in liquidity. A tokenized stock adds its issuer, where the issuer does not offer it, dividends with the multiplier and its price against the exchange.
+
+- Trades: who, bought or sold, tokens, dollars and the market cap then — from the pool where the token traded most today.
+- Holders: the 20 largest from the chain, their share and their own net buying or selling; programs' accounts are named and their share is said beside the list.
+- Risk: facts with reasons and sources, no score and no verdict; a check that could not be read says so.
+- Stocks: the issuer's own line, «Fair price» against the exchange, where the issuer does not offer the token — from its document, with its date — and dividends with the multiplier.
+- Ryntra launches: each holder's change over the last day beside its share.
+
+Live: https://ryntra.io/app/spot
+
 ## Oct 11, 2026 — A coin gets what a stock has: your position and «Sell», what it is, its market cap
 
 **Trading** · shipped
