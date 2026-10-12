@@ -6,6 +6,20 @@ Entries dated before Sep 16, 2026 record earlier shipped work, written down when
 
 Evidence kit version in this repository: `1.6.0`. Machine-readable status: [`docs/product/status.json`](docs/product/status.json). Product documentation: [`docs/product/README.md`](docs/product/README.md). Repository: https://github.com/ryntra-io/ryntra-solana-evidence.
 
+## Oct 12, 2026 — Quick buy and quick sell: one tap to the Review, on every token, stock and launch
+
+**Trading** · shipped
+
+A token's page, a company's page and a launch's page now buy in one tap: the person's four dollar sums — $10, $50, $100 and $500 until they set their own from $1 — sit by the order, and a tap opens the same exact Review every order has, with the Ryntra fee of the trade's kind, the minimum and the network fee. A position sells the same way: 25 %, 50 %, 75 % or all of it. Nothing is bought or sold until the person's wallet signs. The sums are remembered on the device and are the same on every page. A settled trade offers its card with the person's invitation link at once, and a company's page now offers it too.
+
+- Quick sums in dollars on the token, company and launch pages; paid in SOL, the sum is converted at the wallet's own SOL price.
+- The pencil changes the four sums; each is from $1, and they are remembered.
+- Quick sale: 25 %, 50 %, 75 % or all of the position, 100 % exactly what the wallet holds.
+- Every tap ends at the exact Review and the person's signature — never a trade on its own.
+- «Share a trade» right after a fill, and on a company's page.
+
+Live: https://ryntra.io/app/spot
+
 ## Oct 12, 2026 — The token page: who bought and sold, who holds, the risk facts and the chart's marks
 
 **Trading** · shipped

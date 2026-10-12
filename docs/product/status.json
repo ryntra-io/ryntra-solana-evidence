@@ -76,11 +76,11 @@
   ],
   "buildLog": {
     "path": "BUILDLOG.md",
-    "entries": 61,
+    "entries": 62,
     "latest": {
-      "id": "2026-10-12-token-page",
+      "id": "2026-10-12-quick-buy-and-sell",
       "date": "2026-10-12",
-      "title": "The token page: who bought and sold, who holds, the risk facts and the chart's marks",
+      "title": "Quick buy and quick sell: one tap to the Review, on every token, stock and launch",
       "productArea": "trading"
     }
   }
