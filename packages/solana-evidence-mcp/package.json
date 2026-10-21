@@ -35,7 +35,7 @@
   "types": "./src/server.ts",
   "sideEffects": false,
   "dependencies": {
-    "@modelcontextprotocol/server": "2.0.0",
+    "@modelcontextprotocol/server": "2.3.1",
     "@ryntra/solana-evidence-sdk": "file:../solana-evidence-sdk",
     "zod": "4.4.3"
   },
