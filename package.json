@@ -1,6 +1,6 @@
 {
   "name": "ryntra-solana-evidence",
-  "version": "1.6.0",
+  "version": "1.6.1",
   "private": true,
   "type": "module",
   "description": "Read-only Solana evidence kit: Token Extensions asset passports, exact transfer preflight against a declared policy, offline Outcome Receipt verification, an MCP server and a CLI — with the tokenized-stock model, the trading-plan helpers and the two-provider evidence layer the Ryntra product runs on.",
@@ -30,7 +30,7 @@
     "mcp": "node packages/solana-evidence-mcp/src/stdio.ts"
   },
   "dependencies": {
-    "@modelcontextprotocol/server": "2.0.0",
+    "@modelcontextprotocol/server": "2.3.1",
     "@solana-program/token-2022": "0.15.0",
     "@solana/kit": "7.1.0",
     "zod": "4.4.3"
@@ -42,5 +42,10 @@
     "@typescript-eslint/parser": "8.66.0",
     "eslint": "9.39.5",
     "typescript": "5.9.3"
+  },
+  "overrides": {
+    "@typescript-eslint/typescript-estree": {
+      "minimatch": "^11.0.1"
+    }
   }
 }

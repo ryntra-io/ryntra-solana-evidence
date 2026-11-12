@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.6.1] — 2026-11-12
+
+- Dependencies only: the MCP server and client 2.3.1 (request body limits,
+  per-request transport isolation and audience checks for bearer tokens —
+  GHSA-f897-62hf-6gxq, GHSA-46jr-4wx8-v453, GHSA-jm63-cq47-j5jp,
+  GHSA-rvq5-wwqv-78pq). No change to the kit's API, schemas or output.
+- `zod` stays at 4.4.3 for now: 4.6 (the fix for GHSA-mrhx-c7xc-m3w5)
+  requires seconds in every date-time with `Z` or an offset, which would
+  change what the kit's schemas and receipts accept, so it comes as its own
+  release. The kit's MCP server reads only its own process's stdio, at most
+  128 KiB a message.
+
 ## [1.6.0] — 2026-09-28
 
 - The README opens with what the kit is and who it is for, and with a
